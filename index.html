@@ -3,70 +3,608 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mi Presentación Web Dinámica</title>
-    <!-- Estilos base de Reveal.js -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/reveal.min.css">
-    <!-- Tema visual (puedes cambiar 'black' por 'white', 'beige', 'league', 'solarized') -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/theme/league.min.css">
+    <title>Ayllu Eco-Friendly | Conciencia Ambiental</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <style>
-        .reveal h1, .reveal h2, .reveal h3 {
-            text-transform: none; /* Evita que todo salga en mayúsculas */
+        :root {
+            --natgeo-yellow: #FFCC00;
+            --bg-black: #0A0A0A;
+            --bg-dark-gray: #161616;
+            --bg-card: #222222;
+            --text-light: #FFFFFF;
+            --text-muted: #B3B3B3;
+            --eco-green: #27AE60;
         }
-        .highlight {
-            color: #42ffa6;
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--bg-black);
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        /* LOGO & HEADER STYLE NATGEO */
+        header {
+            background-color: var(--bg-black);
+            border-bottom: 3px solid var(--natgeo-yellow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: var(--text-light);
+        }
+
+        .natgeo-box {
+            width: 24px;
+            height: 35px;
+            background-color: var(--natgeo-yellow);
+            display: inline-block;
+        }
+
+        .logo-text {
+            font-family: 'Oswald', sans-serif;
+            font-size: 24px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 700;
+        }
+
+        .logo-text span {
+            color: var(--eco-green);
+        }
+
+        /* NAVIGATION BAR */
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: var(--text-light);
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            transition: color 0.3s;
+            cursor: pointer;
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--natgeo-yellow);
+        }
+
+        /* MAIN CONTENT SECTIONS */
+        main {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+            min-height: 70vh;
+        }
+
+        .page-section {
+            display: none;
+        }
+
+        .page-section.active-section {
+            display: block;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h2.section-title {
+            font-family: 'Oswald', sans-serif;
+            font-size: 36px;
+            text-transform: uppercase;
+            border-left: 5px solid var(--natgeo-yellow);
+            padding-left: 15px;
+            margin-bottom: 30px;
+            letter-spacing: 1px;
+        }
+
+        /* HERO / INICIO STYLE */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1200&q=80') center/cover;
+            padding: 100px 40px;
+            text-align: center;
+            border-radius: 4px;
+            margin-bottom: 40px;
+        }
+
+        .hero h1 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 48px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+        }
+
+        .hero p {
+            font-size: 18px;
+            max-width: 800px;
+            margin: 0 auto 30px auto;
+            color: var(--text-muted);
+        }
+
+        /* GRID LAYOUTS */
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .card {
+            background-color: var(--bg-dark-gray);
+            border: 1px solid #2c2c2c;
+            border-top: 3px solid var(--eco-green);
+            padding: 25px;
+            border-radius: 4px;
+            transition: transform 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card-yellow {
+            border-top: 3px solid var(--natgeo-yellow);
+        }
+
+        .card h3 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 22px;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+        }
+
+        /* PLACEHOLDER / PROXIMAMENTE BLOCKS */
+        .placeholder-box {
+            background-color: var(--bg-dark-gray);
+            border: 2px dashed #444;
+            padding: 50px;
+            text-align: center;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+
+        .placeholder-box i {
+            font-size: 48px;
+            color: var(--natgeo-yellow);
+            margin-bottom: 15px;
+        }
+
+        /* CALCULATORS INTERACTIVES */
+        .calc-container {
+            background-color: var(--bg-dark-gray);
+            padding: 30px;
+            border-radius: 6px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
             font-weight: bold;
+            font-size: 14px;
+        }
+
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 12px;
+            background-color: var(--bg-black);
+            border: 1px solid #444;
+            color: white;
+            border-radius: 4px;
+            font-family: inherit;
+        }
+
+        button.btn {
+            background-color: var(--natgeo-yellow);
+            color: var(--bg-black);
+            border: none;
+            padding: 12px 24px;
+            font-weight: bold;
+            text-transform: uppercase;
+            cursor: pointer;
+            font-family: 'Oswald', sans-serif;
+            letter-spacing: 1px;
+            transition: background 0.3s;
+            width: 100%;
+        }
+
+        button.btn:hover {
+            background-color: #e6b800;
+        }
+
+        .calc-result {
+            margin-top: 25px;
+            padding: 15px;
+            background-color: rgba(39, 174, 96, 0.2);
+            border-left: 4px solid var(--eco-green);
+            display: none;
+        }
+
+        /* RECURSOS & BLOG */
+        .btn-download {
+            background-color: transparent;
+            border: 2px solid var(--text-light);
+            color: var(--text-light);
+            padding: 8px 16px;
+            text-decoration: none;
+            display: inline-block;
+            font-weight: bold;
+            font-size: 12px;
+            text-transform: uppercase;
+            margin-top: 15px;
+            transition: all 0.3s;
+        }
+
+        .btn-download:hover {
+            background-color: var(--text-light);
+            color: var(--bg-black);
+        }
+
+        /* CALENDARIO ACCIÓN */
+        table.eco-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background-color: var(--bg-dark-gray);
+        }
+
+        table.eco-table th, table.eco-table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #333;
+        }
+
+        table.eco-table th {
+            background-color: #000;
+            color: var(--natgeo-yellow);
+            font-family: 'Oswald', sans-serif;
+            text-transform: uppercase;
+        }
+
+        /* FOOTER */
+        footer {
+            background-color: #000;
+            border-top: 1px solid #222;
+            padding: 40px 20px;
+            text-align: center;
+            font-size: 14px;
+            color: var(--text-muted);
+            margin-top: 60px;
+        }
+
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+            nav ul {
+                justify-content: center;
+            }
         }
     </style>
 </head>
 <body>
 
-    <div class="reveal">
-        <div class="slides">
-
-            <!-- DIAPOSITIVA 1: Portada -->
-            <section data-background-gradient="linear-gradient(to bottom, #283048, #859398)">
-                <h1>Mi Sitio Web Dinámico</h1>
-                <p>Creado con GitHub Pages & Reveal.js</p>
-                <small style="opacity: 0.6;">Presiona la flecha derecha → para avanzar</small>
-            </section>
-
-            <!-- DIAPOSITIVA 2: ¿Cómo funciona? -->
-            <section>
-                <h2>Estructura Simple</h2>
-                <p>Cada bloque de contenido está envuelto en etiquetas <span class="highlight">&lt;section&gt;</span>.</p>
-                <p>Esto hace que editar el texto sea tan fácil como rellenar una plantilla.</p>
-            </section>
-
-            <!-- DIAPOSITIVA 3: Características -->
-            <section>
-                <h2>Beneficios de este formato</h2>
+    <header>
+        <div class="header-container">
+            <a href="#" class="logo-area" onclick="switchSection('inicio')">
+                <span class="natgeo-box"></span>
+                <span class="logo-text">Ayllu <span>Eco</span></span>
+            </a>
+            <nav>
                 <ul>
-                    <li>Transiciones dinámicas automáticas.</li>
-                    <li>Carga ultra rápida sin servidores complejos.</li>
-                    <li>Editable directamente desde GitHub.com.</li>
+                    <li><a onclick="switchSection('inicio')" id="nav-inicio" class="active">Inicio</a></li>
+                    <li><a onclick="switchSection('entretenimiento')" id="nav-entretenimiento">Entretenimiento</a></li>
+                    <li><a onclick="switchSection('podcasts')" id="nav-podcasts">Podcasts</a></li>
+                    <li><a onclick="switchSection('blog')" id="nav-blog">Blog</a></li>
+                    <li><a onclick="switchSection('calendario')" id="nav-calendario">Calendario</a></li>
+                    <li><a onclick="switchSection('herramientas')" id="nav-herramientas">Herramientas</a></li>
+                    <li><a onclick="switchSection('recursos')" id="nav-recursos">Recursos</a></li>
+                    <li><a onclick="switchSection('comunidad')" id="nav-comunidad">Comunidad</a></li>
                 </ul>
-            </section>
-
-            <!-- DIAPOSITIVA 4: Despedida -->
-            <section data-background-gradient="linear-gradient(to top, #11998e, #38ef7d)">
-                <h2>¡Listo para Empezar!</h2>
-                <p>Modifica este archivo y dale tu propio estilo.</p>
-            </section>
-
+            </nav>
         </div>
-    </div>
+    </header>
 
-    <!-- Scripts de Reveal.js -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/reveal.min.js"></script>
+    <main>
+
+        <section id="inicio" class="page-section active-section">
+            <div class="hero">
+                <h1>Hacia un Futuro Sostenible en Anta</h1>
+                <p>Protegiendo nuestra biodiversidad andina frente a la contaminación por plásticos y la deforestación mediante acciones directas y educación ambiental comunitaria.</p>
+            </div>
+            
+            <h2 class="section-title">Novedades y Problemática Local</h2>
+            <div class="grid-3">
+                <div class="card">
+                    <h3><i class="fa-solid fa-triangle-exclamation"></i> Alerta Ambiental</h3>
+                    <p>La acumulación inadecuada de residuos sólidos plásticos en zonas rurales y urbanas deteriora la salud humana y acelera la pérdida de especies endémicas locales.</p>
+                </div>
+                <div class="card card-yellow">
+                    <h3><i class="fa-solid fa-tree"></i> Pulmones Verdes</h3>
+                    <p>Promovemos la regla de las 3R (Reducir, Reutilizar, Reciclar) y organizamos jornadas de reforestación activa para mitigar las emisiones locales de gases de efecto invernadero.</p>
+                </div>
+                <div class="card">
+                    <h3><i class="fa-solid fa-radio"></i> Podcast Reciente</h3>
+                    <p>Escucha nuestro último episodio sobre cómo las artesanías de plástico reciclado dinamizan la economía y cuidan los ecosistemas terrestres.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="entretenimiento" class="page-section">
+            <h2 class="section-title">Entretenimiento Verde</h2>
+            <p>Un espacio interactivo diseñado para aprender jugando a través de la literatura, tiras cómicas y desafíos dinámicos.</p>
+            
+            <div class="placeholder-box">
+                <i class="fa-solid fa-book-open"></i>
+                <h3>Cuentos, Cómics y Trivias Ecológicas</h3>
+                <p>Estamos preparando increíbles aventuras gráficas e historias inspiradas en la conservación de nuestros paisajes andinos. ¡Próximamente!</p>
+            </div>
+        </section>
+
+        <section id="podcasts" class="page-section">
+            <h2 class="section-title">Eco-Podcasts</h2>
+            <p>Nuestra biblioteca de audio con entrevistas a expertos, audiocuentos para niños y cápsulas informativas dinámicas.</p>
+            
+            <div class="placeholder-box">
+                <i class="fa-solid fa-microphone-lines"></i>
+                <h3>Audiocuentos y Cápsulas de Audio</h3>
+                <p>Espacio reservado para los reproductores multimedia de audio. Aquí podrás escuchar las transmisiones que cambiarán tu perspectiva ecológica de la comunidad.</p>
+            </div>
+        </section>
+
+        <section id="blog" class="page-section">
+            <h2 class="section-title">Eco-Blog</h2>
+            <div class="grid-3">
+                <div class="card card-yellow">
+                    <h3>Guía de Reciclaje en el Hogar</h3>
+                    <p>Aprende a segregar correctamente tus botellas plásticas y a darles un segundo uso útil mediante el diseño colaborativo.</p>
+                    <a href="#" class="btn-download">Leer Artículo</a>
+                </div>
+                <div class="card">
+                    <h3>El Impacto Oculto del Microplástico</h3>
+                    <p>Análisis crítico de cómo los desechos sintéticos afectan los ciclos biogeoquímicos de la flora andina.</p>
+                    <a href="#" class="btn-download">Leer Artículo</a>
+                </div>
+                <div class="card card-yellow">
+                    <h3>¿Qué es un Oasis Natural Urbano?</h3>
+                    <p>Descubre los beneficios térmicos, ambientales y paisajísticos de implementar plantaciones masivas de árboles locales.</p>
+                    <a href="#" class="btn-download">Leer Artículo</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="calendario" class="page-section">
+            <h2 class="section-title">Calendario de Acción</h2>
+            <p>Mantente al tanto de nuestros próximos eventos comunitarios, talleres eco-amigables y grandes retos del año.</p>
+            
+            <table class="eco-table">
+                <thead>
+                    <tr>
+                        <th>Actividad / Evento</th>
+                        <th>Fecha Estimada</th>
+                        <th>Objetivo</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Jornada de Reforestación Activa</strong></td>
+                        <td>Junio</td>
+                        <td>Plantación de especies forestales y recolección de evidencias en zonas críticas de Anta.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Lanzamiento Digital y Difusión Web</strong></td>
+                        <td>Junio</td>
+                        <td>Apertura de canales interactivos informativos para concientización global.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Gran Feria Ambiental Comunitaria</strong></td>
+                        <td>Julio</td>
+                        <td>Exposición interactiva de artesanías ecológicas a base de plásticos reciclados y concursos creativos.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="herramientas" class="page-section">
+            <h2 class="section-title">Herramientas Interactivas</h2>
+            
+            <div class="grid-3" style="grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));">
+                <div class="calc-container">
+                    <h3><i class="fa-solid fa-droplet" style="color: #3498db;"></i> Huella de Agua Básica</h3>
+                    <div class="form-group">
+                        <label>Tiempo promedio en la ducha (minutos):</label>
+                        <input type="number" id="duchaTime" placeholder="Ej. 10" min="1">
+                    </div>
+                    <div class="form-group">
+                        <label>¿Cierras el grifo al lavarte los dientes?</label>
+                        <select id="grifoDientes">
+                            <option value="si">Sí, siempre</option>
+                            <option value="no">No, lo dejo corriendo</option>
+                        </select>
+                    </div>
+                    <button class="btn" onclick="calcularAgua()">Calcular Consumo</button>
+                    <div id="resultadoAgua" class="calc-result"></div>
+                </div>
+
+                <div class="calc-container">
+                    <h3><i class="fa-solid fa-cloud" style="color: var(--text-muted);"></i> Impacto de Plástico Semanal</h3>
+                    <div class="form-group">
+                        <label>Botellas plásticas de un solo uso consumidas:</label>
+                        <input type="number" id="botellasPlastico" placeholder="Ej. 5" min="0">
+                    </div>
+                    <div class="form-group">
+                        <label>¿Usas bolsas de tela reutilizables para tus compras?</label>
+                        <select id="bolsasTela">
+                            <option value="si">Sí, casi siempre</option>
+                            <option value="no">No, uso plásticas</option>
+                        </select>
+                    </div>
+                    <button class="btn" onclick="calcularCarbono()">Calcular Impacto</button>
+                    <div id="resultadoCarbono" class="calc-result"></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="recursos" class="page-section">
+            <h2 class="section-title">Recursos Descargables</h2>
+            <p>Material pedagógico libre y gratuito para profesores, activistas, niños y público en general.</p>
+            
+            <div class="grid-3" style="margin-top: 20px;">
+                <div class="card">
+                    <h3>Póster Oficial Eco-Friendly</h3>
+                    <p>Infografía en alta definición con los pasos clave para reducir la contaminación por residuos sólidos en Izcuchaca.</p>
+                    <a href="#" class="btn-download"><i class="fa-solid fa-file-pdf"></i> Descargar PDF</a>
+                </div>
+                <div class="card card-yellow">
+                    <h3>Dibujos para Colorear: Flora Andina</h3>
+                    <p>Fichas didácticas infantiles para dar vida y reconocer los árboles y plantas nativas de nuestra región.</p>
+                    <a href="#" class="btn-download"><i class="fa-solid fa-image"></i> Descargar Pack</a>
+                </div>
+                <div class="card">
+                    <h3>Guía Comunitaria de las 3R</h3>
+                    <p>Manual técnico simplificado para el correcto diseño de artesanías estables con botellas y tapas descartables.</p>
+                    <a href="#" class="btn-download"><i class="fa-solid fa-file-pdf"></i> Descargar Manual</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="comunidad" class="page-section">
+            <h2 class="section-title">Comunidad y Directorio Ecológico</h2>
+            
+            <div class="grid-3" style="grid-template-columns: 2fr 1fr;">
+                <div>
+                    <h3>Muro de Acción Comunitaria</h3>
+                    <p>Visualiza el impacto de los ciudadanos comprometidos con el medio ambiente.</p>
+                    <div class="placeholder-box" style="padding: 30px;">
+                        <i class="fa-solid fa-camera-retro"></i>
+                        <p>Aquí se reflejará la galería de fotos subidas por los usuarios mostrando sus acciones de reciclaje y reforestación familiar.</p>
+                    </div>
+                </div>
+                
+                <div class="card card-yellow">
+                    <h3>Directorio de Reciclaje</h3>
+                    <p>Encuentra de forma rápida los puntos verdes de recolección de plástico autorizados y coordinados localmente.</p>
+                    <div style="background-color:#111; height:150px; border:1px solid #333; margin-top:15px; display:flex; align-items:center; justify-center; text-align:center; padding:10px; border-radius:4px;">
+                        <span style="color:var(--text-muted); font-size:12px; width:100%;"><i class="fa-solid fa-map-location-dot" style="font-size:24px; color:var(--natgeo-yellow); display:block; margin-bottom:5px;"></i> Mapa interactivo próximamente integrado</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Ayllu Eco-Friendly. Impulsando la Conciencia e Impacto Ambiental en la Comunidad de Anta.</p>
+        <p style="font-size: 11px; margin-top: 10px; color: #555;">Inspirado en la preservación de los ecosistemas terrestres globales y el desarrollo sostenible.</p>
+    </footer>
+
     <script>
-        // Inicialización de la presentación interactiva
-        Reveal.initialize({
-            hash: true,          // Permite guardar el progreso en la URL
-            controls: true,      // Muestra las flechas de control
-            progress: true,      // Muestra la barra de progreso inferior
-            center: true,        // Centra el contenido verticalmente
-            transition: 'slide'  // Tipo de transición: none/fade/slide/convex/concave/zoom
-        });
+        // Función para cambiar de sección de forma dinámica (SPA)
+        function switchSection(sectionId) {
+            // Ocultar todas las secciones
+            const sections = document.querySelectorAll('.page-section');
+            sections.forEach(sec => sec.classList.remove('active-section'));
+            
+            // Quitar clase activa a los enlaces de navegación
+            const navLinks = document.querySelectorAll('nav a');
+            navLinks.forEach(link => link.classList.remove('active'));
+            
+            // Activar la sección seleccionada
+            const targetSection = document.getElementById(sectionId);
+            if(targetSection) {
+                targetSection.classList.add('active-section');
+            }
+            
+            // Activar el botón del menú correspondiente
+            const targetLink = document.getElementById('nav-' + sectionId);
+            if(targetLink) {
+                targetLink.classList.add('active');
+            }
+
+            // Desplazar hacia arriba suavemente
+            window.scrollTo({top: 0, behavior: 'smooth'});
+        }
+
+        // Lógica de la calculadora de agua
+        function calcularAgua() {
+            const tiempo = parseFloat(document.getElementById('duchaTime').value) || 0;
+            const grifo = document.getElementById('grifoDientes').value;
+            const resultBox = document.getElementById('resultadoAgua');
+            
+            if(tiempo <= 0) {
+                resultBox.style.display = 'block';
+                resultBox.style.borderColor = '#e74c3c';
+                resultBox.innerHTML = "Por favor, introduce un tiempo válido de ducha.";
+                return;
+            }
+
+            // Estimaciones básicas: ~12 litros por minuto de ducha
+            let totalLitros = tiempo * 12;
+            if(grifo === 'no') {
+                totalLitros += 15; // 15 litros extra si se deja correr el grifo
+            }
+
+            resultBox.style.display = 'block';
+            resultBox.style.borderColor = 'var(--eco-green)';
+            resultBox.innerHTML = `<strong>Resultado:</strong> Tu consumo estimado en estas actividades es de aproximadamente <strong>${totalLitros} litros</strong> de agua por sesión. <br><br>💡 <em>Tip: Reducir tu ducha a 5 minutos ahorra más de 60 litros de agua diarios.</em>`;
+        }
+
+        // Lógica de la calculadora de carbono plástico
+        function calcularCarbono() {
+            const botellas = parseInt(document.getElementById('botellasPlastico').value) || 0;
+            const bolsas = document.getElementById('bolsasTela').value;
+            const resultBox = document.getElementById('resultadoCarbono');
+
+            // Estimación aproximada: Fabricar una botella plástica de PET genera aprox 80g de CO2 eq
+            let gramosCO2 = botellas * 80;
+            if(bolsas === 'no') {
+                gramosCO2 += 120; // Huella adicional por bolsas plásticas desechables semanales
+            }
+
+            resultBox.style.display = 'block';
+            resultBox.style.borderColor = 'var(--eco-green)';
+            resultBox.innerHTML = `<strong>Resultado:</strong> Tu consumo de plástico genera un aproximado de <strong>${gramosCO2}g de CO2</strong> semanalmente.<br><br>💡 <em>Tip: Las artesanías hechas con plástico reutilizado o la sustitución por botellas de vidrio disminuyen este impacto a cero.</em>`;
+        }
     </script>
 </body>
 </html>
