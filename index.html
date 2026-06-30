@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Presentación Web Dinámica</title>
+    <!-- Estilos base de Reveal.js -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/reveal.min.css">
+    <!-- Tema visual (puedes cambiar 'black' por 'white', 'beige', 'league', 'solarized') -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/theme/league.min.css">
+    <style>
+        .reveal h1, .reveal h2, .reveal h3 {
+            text-transform: none; /* Evita que todo salga en mayúsculas */
+        }
+        .highlight {
+            color: #42ffa6;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="reveal">
+        <div class="slides">
+
+            <!-- DIAPOSITIVA 1: Portada -->
+            <section data-background-gradient="linear-gradient(to bottom, #283048, #859398)">
+                <h1>Mi Sitio Web Dinámico</h1>
+                <p>Creado con GitHub Pages & Reveal.js</p>
+                <small style="opacity: 0.6;">Presiona la flecha derecha → para avanzar</small>
+            </section>
+
+            <!-- DIAPOSITIVA 2: ¿Cómo funciona? -->
+            <section>
+                <h2>Estructura Simple</h2>
+                <p>Cada bloque de contenido está envuelto en etiquetas <span class="highlight">&lt;section&gt;</span>.</p>
+                <p>Esto hace que editar el texto sea tan fácil como rellenar una plantilla.</p>
+            </section>
+
+            <!-- DIAPOSITIVA 3: Características -->
+            <section>
+                <h2>Beneficios de este formato</h2>
+                <ul>
+                    <li>Transiciones dinámicas automáticas.</li>
+                    <li>Carga ultra rápida sin servidores complejos.</li>
+                    <li>Editable directamente desde GitHub.com.</li>
+                </ul>
+            </section>
+
+            <!-- DIAPOSITIVA 4: Despedida -->
+            <section data-background-gradient="linear-gradient(to top, #11998e, #38ef7d)">
+                <h2>¡Listo para Empezar!</h2>
+                <p>Modifica este archivo y dale tu propio estilo.</p>
+            </section>
+
+        </div>
+    </div>
+
+    <!-- Scripts de Reveal.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/reveal.min.js"></script>
+    <script>
+        // Inicialización de la presentación interactiva
+        Reveal.initialize({
+            hash: true,          // Permite guardar el progreso en la URL
+            controls: true,      // Muestra las flechas de control
+            progress: true,      // Muestra la barra de progreso inferior
+            center: true,        // Centra el contenido verticalmente
+            transition: 'slide'  // Tipo de transición: none/fade/slide/convex/concave/zoom
+        });
+    </script>
+</body>
+</html>
