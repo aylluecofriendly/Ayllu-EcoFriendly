@@ -451,7 +451,7 @@
             margin-bottom: 10px;
         }
 
-        /* SECCIÓN TAKIKUNA SUBSECCIONES */
+        /* SECCIÓN  SUBSECCIONES */
         .subnav-tabs {
             display: flex;
             gap: 15px;
@@ -567,6 +567,7 @@
                     <li><a onclick="switchSection('herramientas')" id="nav-herramientas">Herramientas</a></li>
                     <li><a onclick="switchSection('recursos')" id="nav-recursos">Recursos</a></li>
                     <li><a onclick="switchSection('comunidad')" id="nav-comunidad">Comunidad</a></li>
+                    <li><a onclick="switchSection('colaboraciones')" id="nav-colaboraciones">Colaboraciones</a></li>
                 </ul>
             </nav>
         </div>
@@ -689,7 +690,7 @@
                         <strong>Plásticos eternos:</strong> Una sola botella plástica tarda un promedio de 450 años en descomponerse por completo en los ecosistemas andinos.
                     </div>
                     <div class="did-you-know-item">
-                        <strong>Especies únicas:</strong> La región de Anta alberga aves y plantas medicinales nativas que no existen en ningún otro continente.
+                        <strong>Especies únicas:</strong> La región de Anta alberga aves y plantas medicinales nativas que no existen en ningún otro continenté.
                     </div>
                     <div class="did-you-know-item">
                         <strong>Reciclaje local:</strong> Reutilizar tapas plásticas para confeccionar artesanías reduce directamente la cantidad de basura acumulada en Izcuchaca.
@@ -735,7 +736,7 @@
             </div>
 
             <div class="placeholder-box" style="padding: 20px; border-style: dotted; margin-top: 20px;">
-                <p style="font-size:13px; color:var(--text-muted)"><i class="fa-solid fa-calendar-plus"></i> Las actividades históricas de Junio (Jornada de Reforestación y Lanzamiento Web) han sido archivadas. Próximamente se habilitará el cambio de mes interactivo.</p>
+                <p style="font-size:13px; color:var(--text-muted)"><i class="fa-solid fa-calendar-plus"></i> Las actividades históricas de Junio han sido archivadas. Próximamente se habilitará el cambio de mes interactivo.</p>
             </div>
         </section>
 
@@ -798,7 +799,7 @@
             <div class="placeholder-box" style="margin-top: 10px;">
                 <i class="fa-solid fa-laptop-code"></i>
                 <h3>Próximas Herramientas en Desarrollo</h3>
-                <p>Calculadora de Ahorro Energético Comunitario y Test de Conocimiento Ecológico Andino. ¡Próximamente disponibles para la comunidad!</p>
+                <p>Calculadora de Ahorro Energético Comunitario y Test de Conocimiento Ecológico Andino. ¡Próximamente disponibles!</p>
             </div>
         </section>
 
@@ -848,6 +849,37 @@
             </div>
         </section>
 
+        <section id="colaboraciones" class="page-section">
+            <h2 class="section-title">Nuestras Colaboraciones</h2>
+            <p style="margin-bottom: 20px;">Agradecemos profundamente a las personas, colectivos y marcas aliadas que se suman a la causa para impulsar un impacto ambiental real en nuestra comunidad.</p>
+            
+            <div class="grid-3" style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));">
+                <div class="card" style="border-top: 3px solid var(--eco-green); text-align: center;">
+                    <div style="width: 80px; height: 80px; background-color: #333; border-radius: 50%; margin: 0 auto 15px auto; display: flex; align-items: center; justify-content: center;">
+                        <i class="fa-solid fa-user" style="font-size: 32px; color: var(--eco-green);"></i>
+                    </div>
+                    <h3>Nombre del Colaborador</h3>
+                    <span style="font-size: 12px; color: var(--natgeo-yellow); font-weight: bold; text-transform: uppercase;">Activista Independiente</span>
+                    <p style="font-size: 13px; color: var(--text-muted); margin-top: 10px;">Apoya activamente en la difusión y talleres educativos de reciclaje en Izcuchaca.</p>
+                </div>
+
+                <div class="card" style="border-top: 3px solid var(--natgeo-yellow); text-align: center;">
+                    <div style="width: 80px; height: 80px; background-color: #333; border-radius: 50%; margin: 0 auto 15px auto; display: flex; align-items: center; justify-content: center;">
+                        <i class="fa-solid fa-handshake" style="font-size: 32px; color: var(--natgeo-yellow);"></i>
+                    </div>
+                    <h3>Marca / Colectivo Aliado</h3>
+                    <span style="font-size: 12px; color: var(--eco-green); font-weight: bold; text-transform: uppercase;">Socio Ecológico</span>
+                    <p style="font-size: 13px; color: var(--text-muted); margin-top: 10px;">Donación de materiales compostables y logística para las jornadas de reforestación.</p>
+                </div>
+
+                <div class="placeholder-box" style="margin-top: 0; padding: 25px; display: flex; flex-direction: column; justify-content: center;">
+                    <i class="fa-solid fa-user-plus" style="font-size: 28px; color: var(--text-muted);"></i>
+                    <h3 style="font-size: 18px; font-family: 'Oswald', sans-serif; margin-bottom: 5px;">¿Quieres colaborar?</h3>
+                    <p style="font-size: 12px; color: var(--text-muted);">Espacio reservado para nuevas marcas, emprendimientos u organizaciones eco-friendly que deseen unirse.</p>
+                </div>
+            </div>
+        </section>
+
     </main>
 
     <footer>
@@ -891,13 +923,9 @@
 
         // Lógica interactiva del Calendario Tradicional
         function showEvent(dayNumber, title, dateStr, description) {
-            // Quitar clase seleccionada previa
             document.querySelectorAll('.win-day').forEach(d => d.classList.remove('selected-day'));
-            
-            // Añadir clase al elemento clickeado
             document.getElementById('day-' + dayNumber).classList.add('selected-day');
 
-            // Actualizar panel lateral
             document.getElementById('event-date').innerText = dateStr;
             document.getElementById('event-title').innerText = title;
             document.getElementById('event-desc').innerText = description;
@@ -942,7 +970,7 @@
             resultBox.innerHTML = `<strong>Resultado:</strong> Tu consumo de plástico genera un aproximado de <strong>${gramosCO2}g de CO2</strong> semanalmente.<br><br>💡 <em>Tip: Las artesanías hechas con plástico reutilizado o la sustitución por botellas de vidrio disminuyen este impacto a cero.</em>`;
         }
 
-        // NUEVA LÓGICA: Calculadora de Compostaje
+        // Calculadora de Compostaje
         function calcularCompost() {
             const kilos = parseFloat(document.getElementById('residuosKilos').value) || 0;
             const tieneEspacio = document.getElementById('composteraEspacio').value;
@@ -955,7 +983,6 @@
                 return;
             }
 
-            // Estimación: El 40% del residuo orgánico se convierte en compost rico en nutrientes al cabo de unas semanas
             let compostAnual = (kilos * 0.4) * 365;
             let sugerencia = tieneEspacio === 'si' 
                 ? "¡Excelente! Puedes iniciar hoy mismo tu compostera familiar." 
