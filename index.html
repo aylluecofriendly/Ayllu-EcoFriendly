@@ -15,7 +15,9 @@
             --bg-card: #222222;
             --text-light: #FFFFFF;
             --text-muted: #B3B3B3;
-            --eco-green: #162B4E;
+            --eco-green: #2ecc71; /* Verde más vivo, familiar y llamativo */
+            --friendly-blue: #3498db; /* Azul para la palabra FRIENDLY */
+            --win-accent: #0078d4; /* Color de énfasis estilo Windows para el calendario */
         }
 
         * {
@@ -72,8 +74,15 @@
             font-weight: 700;
         }
 
-        .logo-text span {
+        .logo-text span.green-txt {
             color: var(--eco-green);
+        }
+
+        .logo-text span.blue-txt {
+            color: var(--friendly-blue);
+            font-size: 18px;
+            vertical-align: middle;
+            margin-left: 5px;
         }
 
         /* NAVIGATION BAR */
@@ -163,6 +172,45 @@
             margin-bottom: 40px;
         }
 
+        /* NOTICIAS LAYOUT CON PANEL LATERAL */
+        .news-container {
+            display: grid;
+            grid-template-columns: 2.5fr 1fr;
+            gap: 30px;
+        }
+
+        @media (max-width: 900px) {
+            .news-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .sidebar-panel {
+            background-color: var(--bg-dark-gray);
+            border: 1px solid #2c2c2c;
+            border-top: 3px solid var(--natgeo-yellow);
+            padding: 20px;
+            border-radius: 4px;
+            height: fit-content;
+        }
+
+        .sidebar-panel h3 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 22px;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            color: var(--natgeo-yellow);
+        }
+
+        .did-you-know-item {
+            border-bottom: 1px solid #333;
+            padding: 12px 0;
+            font-size: 14px;
+        }
+        .did-you-know-item:last-child {
+            border-bottom: none;
+        }
+
         .card {
             background-color: var(--bg-dark-gray);
             border: 1px solid #2c2c2c;
@@ -191,14 +239,14 @@
         .placeholder-box {
             background-color: var(--bg-dark-gray);
             border: 2px dashed #444;
-            padding: 50px;
+            padding: 40px;
             text-align: center;
             border-radius: 8px;
             margin-top: 20px;
         }
 
         .placeholder-box i {
-            font-size: 48px;
+            font-size: 36px;
             color: var(--natgeo-yellow);
             margin-bottom: 15px;
         }
@@ -208,8 +256,7 @@
             background-color: var(--bg-dark-gray);
             padding: 30px;
             border-radius: 6px;
-            max-width: 600px;
-            margin: 0 auto;
+            max-width: 100%;
         }
 
         .form-group {
@@ -254,7 +301,7 @@
         .calc-result {
             margin-top: 25px;
             padding: 15px;
-            background-color: rgba(39, 174, 96, 0.2);
+            background-color: rgba(46, 204, 113, 0.15);
             border-left: 4px solid var(--eco-green);
             display: none;
         }
@@ -279,25 +326,205 @@
             color: var(--bg-black);
         }
 
-        /* CALENDARIO ACCIÓN */
-        table.eco-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-            background-color: var(--bg-dark-gray);
+        /* ESTILO CALENDARIO WINDOWS TRADICIONAL */
+        .windows-calendar-layout {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 30px;
+            background-color: #1f1f1f;
+            padding: 25px;
+            border-radius: 8px;
+            border: 1px solid #333;
         }
 
-        table.eco-table th, table.eco-table td {
-            padding: 15px;
-            text-align: left;
-            border-bottom: 1px solid #333;
+        @media (max-width: 800px) {
+            .windows-calendar-layout {
+                grid-template-columns: 1fr;
+            }
         }
 
-        table.eco-table th {
-            background-color: #000;
-            color: var(--natgeo-yellow);
+        .win-calendar-box {
+            background-color: #111111;
+            padding: 20px;
+            border-radius: 4px;
+        }
+
+        .win-calendar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
             font-family: 'Oswald', sans-serif;
+        }
+
+        .win-calendar-header h3 {
+            font-size: 20px;
+            text-transform: capitalize;
+        }
+
+        .win-calendar-arrows i {
+            cursor: pointer;
+            margin-left: 15px;
+            color: var(--text-muted);
+        }
+        .win-calendar-arrows i:hover {
+            color: white;
+        }
+
+        .win-weekdays {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            text-align: center;
+            font-weight: bold;
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-bottom: 10px;
+        }
+
+        .win-days-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            text-align: center;
+            gap: 5px;
+        }
+
+        .win-day {
+            padding: 12px 0;
+            font-size: 14px;
+            cursor: pointer;
+            border-radius: 2px;
+            position: relative;
+            color: #fff;
+        }
+        .win-day:hover {
+            background-color: rgba(255,255,255,0.1);
+        }
+
+        .win-day.prev-month, .win-day.next-month {
+            color: #555555;
+        }
+
+        .win-day.current-day {
+            background-color: transparent;
+            border: 2px solid var(--text-muted);
+        }
+
+        .win-day.has-event {
+            background-color: rgba(46, 204, 113, 0.2);
+            font-weight: bold;
+        }
+        .win-day.has-event::after {
+            content: '';
+            width: 4px;
+            height: 4px;
+            background-color: var(--eco-green);
+            position: absolute;
+            bottom: 4px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 50%;
+        }
+
+        .win-day.selected-day {
+            background-color: var(--eco-green) !important;
+            color: black !important;
+            font-weight: bold;
+        }
+        .win-day.selected-day::after {
+            background-color: black;
+        }
+
+        .win-event-panel {
+            background-color: #1a1a1a;
+            padding: 20px;
+            border-radius: 4px;
+            border-left: 4px solid var(--eco-green);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .win-event-panel h4 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 18px;
+            color: var(--natgeo-yellow);
+            margin-bottom: 10px;
+        }
+
+        /* SECCIÓN TAKIKUNA SUBSECCIONES */
+        .subnav-tabs {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 25px;
+            border-bottom: 1px solid #333;
+            padding-bottom: 10px;
+        }
+
+        .tab-btn {
+            background: transparent;
+            border: none;
+            color: var(--text-muted);
+            font-family: 'Oswald', sans-serif;
+            font-size: 18px;
             text-transform: uppercase;
+            cursor: pointer;
+            padding: 5px 15px;
+            transition: all 0.3s;
+        }
+
+        .tab-btn.active-tab, .tab-btn:hover {
+            color: var(--eco-green);
+            border-bottom: 3px solid var(--eco-green);
+        }
+
+        .takikuna-subcontent {
+            display: none;
+        }
+        .takikuna-subcontent.active-subview {
+            display: block;
+        }
+
+        .media-link-card {
+            background: #1c1c1c;
+            border: 1px solid #333;
+            padding: 20px;
+            border-radius: 6px;
+            margin-bottom: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .media-link-card h4 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 18px;
+        }
+
+        .media-link-card .badge {
+            background: var(--eco-green);
+            color: black;
+            font-size: 11px;
+            font-weight: bold;
+            padding: 2px 8px;
+            border-radius: 20px;
+            text-transform: uppercase;
+        }
+
+        .btn-play {
+            background: var(--natgeo-yellow);
+            color: black;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 16px;
+            transition: transform 0.2s;
+        }
+        .btn-play:hover {
+            transform: scale(1.1);
         }
 
         /* FOOTER */
@@ -328,14 +555,14 @@
         <div class="header-container">
             <a href="#" class="logo-area" onclick="switchSection('inicio')">
                 <span class="natgeo-box"></span>
-                <span class="logo-text">Ayllu <span>Eco</span></span>
+                <span class="logo-text">Ayllu <span class="green-txt">Eco</span><span class="blue-txt">Friendly</span></span>
             </a>
             <nav>
                 <ul>
                     <li><a onclick="switchSection('inicio')" id="nav-inicio" class="active">Inicio</a></li>
                     <li><a onclick="switchSection('entretenimiento')" id="nav-entretenimiento">Entretenimiento</a></li>
-                    <li><a onclick="switchSection('podcasts')" id="nav-podcasts">Podcasts</a></li>
-                    <li><a onclick="switchSection('blog')" id="nav-blog">Blog</a></li>
+                    <li><a onclick="switchSection('podcasts')" id="nav-podcasts">Takikuna</a></li>
+                    <li><a onclick="switchSection('blog')" id="nav-blog">Noticias</a></li>
                     <li><a onclick="switchSection('calendario')" id="nav-calendario">Calendario</a></li>
                     <li><a onclick="switchSection('herramientas')" id="nav-herramientas">Herramientas</a></li>
                     <li><a onclick="switchSection('recursos')" id="nav-recursos">Recursos</a></li>
@@ -364,7 +591,7 @@
                     <p>Promovemos la regla de las 3R (Reducir, Reutilizar, Reciclar) y organizamos jornadas de reforestación activa para mitigar las emisiones locales de gases de efecto invernadero.</p>
                 </div>
                 <div class="card">
-                    <h3><i class="fa-solid fa-radio"></i> Podcast Reciente</h3>
+                    <h3><i class="fa-solid fa-radio"></i> Takikuna Reciente</h3>
                     <p>Escucha nuestro último episodio sobre cómo las artesanías de plástico reciclado dinamizan la economía y cuidan los ecosistemas terrestres.</p>
                 </div>
             </div>
@@ -382,75 +609,142 @@
         </section>
 
         <section id="podcasts" class="page-section">
-            <h2 class="section-title">Eco-Podcasts</h2>
-            <p>Nuestra biblioteca de audio con entrevistas a expertos, audiocuentos para niños y cápsulas informativas dinámicas.</p>
+            <h2 class="section-title">Takikuna</h2>
+            <p>Nuestra biblioteca de audio ancestral y moderno. Elige entre nuestras producciones radiales e informativas o nuestra selección musical.</p>
             
-            <div class="placeholder-box">
-                <i class="fa-solid fa-microphone-lines"></i>
-                <h3>Audiocuentos y Cápsulas de Audio</h3>
-                <p>Espacio reservado para los reproductores multimedia de audio. Aquí podrás escuchar las transmisiones que cambiarán tu perspectiva ecológica de la comunidad.</p>
+            <div class="subnav-tabs">
+                <button class="tab-btn active-tab" onclick="switchTakikunaTab('taki-podcasts')">Podcasts</button>
+                <button class="tab-btn" onclick="switchTakikunaTab('taki-musica')">Música</button>
+            </div>
+
+            <div id="taki-podcasts" class="takikuna-subcontent active-subview">
+                <div class="media-link-card">
+                    <div>
+                        <span class="badge">Medioambiental</span>
+                        <h4 style="margin-top: 5px;">Episodio 1: Rescatando los Ecosistemas de Anta</h4>
+                        <p style="font-size:13px; color:var(--text-muted)">Análisis de los microplásticos en las tierras agrícolas.</p>
+                    </div>
+                    <a href="#" class="btn-play"><i class="fa-solid fa-play"></i></a>
+                </div>
+                <div class="media-link-card">
+                    <div>
+                        <span class="badge">Otros</span>
+                        <h4 style="margin-top: 5px;">Mitos y Leyendas de la Comunidad de Izcuchaca</h4>
+                        <p style="font-size:13px; color:var(--text-muted)">Narraciones tradicionales recopiladas de adultos mayores.</p>
+                    </div>
+                    <a href="#" class="btn-play"><i class="fa-solid fa-play"></i></a>
+                </div>
+
+                <div class="placeholder-box" style="padding: 20px; border-style: dotted;">
+                    <i class="fa-solid fa-circle-plus" style="font-size: 24px;"></i>
+                    <p style="font-size: 13px;">Espacio disponible para programar y enlazar futuros canales o feeds completos de podcasts externos.</p>
+                </div>
+            </div>
+
+            <div id="taki-musica" class="takikuna-subcontent">
+                <div class="media-link-card">
+                    <div>
+                        <span class="badge">Medioambiental</span>
+                        <h4 style="margin-top: 5px;">Canto a la Pachamama - Versión Acústica</h4>
+                        <p style="font-size:13px; color:var(--text-muted)">Melodías andinas orientadas a la concientización del cuidado de la tierra.</p>
+                    </div>
+                    <a href="#" class="btn-play"><i class="fa-solid fa-music"></i></a>
+                </div>
+                
+                <div class="placeholder-box" style="padding: 25px;">
+                    <i class="fa-solid fa-sliders"></i>
+                    <h3>Sección Musical Expandible</h3>
+                    <p>Próximamente se integrarán playlists completas de Spotify, SoundCloud y audios nativos editables desde este bloque.</p>
+                </div>
             </div>
         </section>
 
         <section id="blog" class="page-section">
-            <h2 class="section-title">Eco-Blog</h2>
-            <div class="grid-3">
-                <div class="card card-yellow">
-                    <h3>Guía de Reciclaje en el Hogar</h3>
-                    <p>Aprende a segregar correctamente tus botellas plásticas y a darles un segundo uso útil mediante el diseño colaborativo.</p>
-                    <a href="#" class="btn-download">Leer Artículo</a>
+            <h2 class="section-title">Eco-Noticias</h2>
+            
+            <div class="news-container">
+                <div>
+                    <div class="grid-3" style="grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); margin-bottom: 0;">
+                        <div class="card card-yellow">
+                            <h3>Guía de Reciclaje en el Hogar</h3>
+                            <p>Aprende a segregar correctamente tus botellas plásticas y a darles un segundo uso útil mediante el diseño colaborativo.</p>
+                            <a href="#" class="btn-download">Leer Artículo</a>
+                        </div>
+                        <div class="card">
+                            <h3>El Impacto Oculto del Microplástico</h3>
+                            <p>Análisis crítico de cómo los desechos sintéticos afectan los ciclos biogeoquímicos de la flora andina.</p>
+                            <a href="#" class="btn-download">Leer Artículo</a>
+                        </div>
+                        <div class="card card-yellow">
+                            <h3>¿Qué es un Oasis Natural Urbano?</h3>
+                            <p>Descubre los beneficios térmicos, ambientales y paisajísticos de implementar plantaciones masivas de árboles locales.</p>
+                            <a href="#" class="btn-download">Leer Artículo</a>
+                        </div>
+                    </div>
                 </div>
-                <div class="card">
-                    <h3>El Impacto Oculto del Microplástico</h3>
-                    <p>Análisis crítico de cómo los desechos sintéticos afectan los ciclos biogeoquímicos de la flora andina.</p>
-                    <a href="#" class="btn-download">Leer Artículo</a>
-                </div>
-                <div class="card card-yellow">
-                    <h3>¿Qué es un Oasis Natural Urbano?</h3>
-                    <p>Descubre los beneficios térmicos, ambientales y paisajísticos de implementar plantaciones masivas de árboles locales.</p>
-                    <a href="#" class="btn-download">Leer Artículo</a>
-                </div>
+
+                <aside class="sidebar-panel">
+                    <h3>¿Sabías que?</h3>
+                    <div class="did-you-know-item">
+                        <strong>Plásticos eternos:</strong> Una sola botella plástica tarda un promedio de 450 años en descomponerse por completo en los ecosistemas andinos.
+                    </div>
+                    <div class="did-you-know-item">
+                        <strong>Especies únicas:</strong> La región de Anta alberga aves y plantas medicinales nativas que no existen en ningún otro continente.
+                    </div>
+                    <div class="did-you-know-item">
+                        <strong>Reciclaje local:</strong> Reutilizar tapas plásticas para confeccionar artesanías reduce directamente la cantidad de basura acumulada en Izcuchaca.
+                    </div>
+                </aside>
             </div>
         </section>
 
         <section id="calendario" class="page-section">
             <h2 class="section-title">Calendario de Acción</h2>
-            <p>Mantente al tanto de nuestros próximos eventos comunitarios, talleres eco-amigables y grandes retos del año.</p>
+            <p style="margin-bottom: 20px;">Mantente al tanto de nuestros próximos eventos comunitarios, talleres eco-amigables y grandes retos del año seleccionando el día.</p>
             
-            <table class="eco-table">
-                <thead>
-                    <tr>
-                        <th>Actividad / Evento</th>
-                        <th>Fecha Estimada</th>
-                        <th>Objetivo</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><strong>Jornada de Reforestación Activa</strong></td>
-                        <td>Junio</td>
-                        <td>Plantación de especies forestales y recolección de evidencias en zonas críticas de Anta.</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Lanzamiento Digital y Difusión Web</strong></td>
-                        <td>Junio</td>
-                        <td>Apertura de canales interactivos informativos para concientización global.</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Gran Feria Ambiental Comunitaria</strong></td>
-                        <td>Julio</td>
-                        <td>Exposición interactiva de artesanías ecológicas a base de plásticos reciclados y concursos creativos.</td>
-                    </tr>
-                </tbody>
-            </table>
+            <div class="windows-calendar-layout">
+                <div class="win-calendar-box">
+                    <div class="win-calendar-header">
+                        <h3 id="calendar-month-year">julio de 2026</h3>
+                        <div class="win-calendar-arrows">
+                            <i class="fa-solid fa-chevron-up"></i>
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </div>
+                    </div>
+                    <div class="win-weekdays">
+                        <div>do.</div><div>lu.</div><div>ma.</div><div>mi.</div><div>ju.</div><div>vi.</div><div>sá.</div>
+                    </div>
+                    <div class="win-days-grid">
+                        <div class="win-day prev-month">28</div><div class="win-day prev-month">29</div><div class="win-day prev-month">30</div>
+                        <div class="win-day current-day selected-day has-event" id="day-1" onclick="showEvent(1, 'Gran Feria Ambiental Comunitaria', 'Julio 1, 2026', 'Exposición interactiva de artesanías ecológicas a base de plásticos reciclados y concursos creativos en Anta.')">1</div>
+                        <div class="win-day">2</div><div class="win-day">3</div><div class="win-day">4</div>
+                        <div class="win-day">5</div><div class="win-day">6</div><div class="win-day">7</div><div class="win-day">8</div><div class="win-day">9</div><div class="win-day">10</div><div class="win-day">11</div>
+                        <div class="win-day">12</div><div class="win-day">13</div><div class="win-day">14</div><div class="win-day">15</div><div class="win-day">16</div><div class="win-day">17</div><div class="win-day">18</div>
+                        <div class="win-day">19</div><div class="win-day">20</div><div class="win-day">21</div><div class="win-day">22</div><div class="win-day">23</div><div class="win-day">24</div><div class="win-day">25</div>
+                        <div class="win-day">26</div><div class="win-day">27</div><div class="win-day">28</div><div class="win-day">29</div><div class="win-day">30</div><div class="win-day">31</div>
+                        <div class="win-day next-month">1</div>
+                        <div class="win-day next-month">2</div><div class="win-day next-month">3</div><div class="win-day next-month">4</div><div class="win-day next-month">5</div><div class="win-day next-month">6</div><div class="win-day next-month">7</div><div class="win-day next-month">8</div>
+                    </div>
+                </div>
+
+                <div class="win-event-panel" id="event-detail-box">
+                    <span style="font-size:12px; text-transform:uppercase; color:var(--text-muted); font-weight:bold" id="event-date">Miércoles, 1 de julio</span>
+                    <h4 id="event-title" style="font-size:22px; margin-top:5px">Gran Feria Ambiental Comunitaria</h4>
+                    <p id="event-desc" style="font-size:14px; color:var(--text-muted)">Exposición interactiva de artesanías ecológicas a base de plásticos reciclados y concursos creativos.</p>
+                </div>
+            </div>
+
+            <div class="placeholder-box" style="padding: 20px; border-style: dotted; margin-top: 20px;">
+                <p style="font-size:13px; color:var(--text-muted)"><i class="fa-solid fa-calendar-plus"></i> Las actividades históricas de Junio (Jornada de Reforestación y Lanzamiento Web) han sido archivadas. Próximamente se habilitará el cambio de mes interactivo.</p>
+            </div>
         </section>
 
         <section id="herramientas" class="page-section">
             <h2 class="section-title">Herramientas Interactivas</h2>
             
-            <div class="grid-3" style="grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));">
+            <div class="grid-3" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));">
                 <div class="calc-container">
-                    <h3><i class="fa-solid fa-droplet" style="color: #3498db;"></i> Huella de Agua Básica</h3>
+                    <h3><i class="fa-solid fa-droplet" style="color: var(--eco-green);"></i> Huella de Agua Básica</h3>
                     <div class="form-group">
                         <label>Tiempo promedio en la ducha (minutos):</label>
                         <input type="number" id="duchaTime" placeholder="Ej. 10" min="1">
@@ -467,13 +761,13 @@
                 </div>
 
                 <div class="calc-container">
-                    <h3><i class="fa-solid fa-cloud" style="color: var(--text-muted);"></i> Impacto de Plástico Semanal</h3>
+                    <h3><i class="fa-solid fa-cloud" style="color: var(--text-muted);"></i> Impacto de Plástico</h3>
                     <div class="form-group">
-                        <label>Botellas plásticas de un solo uso consumidas:</label>
+                        <label>Botellas plásticas consumidas por semana:</label>
                         <input type="number" id="botellasPlastico" placeholder="Ej. 5" min="0">
                     </div>
                     <div class="form-group">
-                        <label>¿Usas bolsas de tela reutilizables para tus compras?</label>
+                        <label>¿Usas bolsas de tela reutilizables?</label>
                         <select id="bolsasTela">
                             <option value="si">Sí, casi siempre</option>
                             <option value="no">No, uso plásticas</option>
@@ -482,6 +776,29 @@
                     <button class="btn" onclick="calcularCarbono()">Calcular Impacto</button>
                     <div id="resultadoCarbono" class="calc-result"></div>
                 </div>
+
+                <div class="calc-container">
+                    <h3><i class="fa-solid fa-seedling" style="color: var(--eco-green);"></i> Potencial de Compostaje</h3>
+                    <div class="form-group">
+                        <label>Residuos de cocina generados al día (en kg aprox):</label>
+                        <input type="number" id="residuosKilos" placeholder="Ej. 1.5" step="0.1" min="0">
+                    </div>
+                    <div class="form-group">
+                        <label>¿Tienes espacio para una compostera pequeña?</label>
+                        <select id="composteraEspacio">
+                            <option value="si">Sí, jardín o maceta</option>
+                            <option value="no">No tengo espacio disponible</option>
+                        </select>
+                    </div>
+                    <button class="btn" onclick="calcularCompost()">Calcular Abono</button>
+                    <div id="resultadoCompost" class="calc-result"></div>
+                </div>
+            </div>
+
+            <div class="placeholder-box" style="margin-top: 10px;">
+                <i class="fa-solid fa-laptop-code"></i>
+                <h3>Próximas Herramientas en Desarrollo</h3>
+                <p>Calculadora de Ahorro Energético Comunitario y Test de Conocimiento Ecológico Andino. ¡Próximamente disponibles para la comunidad!</p>
             </div>
         </section>
 
@@ -524,7 +841,7 @@
                 <div class="card card-yellow">
                     <h3>Directorio de Reciclaje</h3>
                     <p>Encuentra de forma rápida los puntos verdes de recolección de plástico autorizados y coordinados localmente.</p>
-                    <div style="background-color:#111; height:150px; border:1px solid #333; margin-top:15px; display:flex; align-items:center; justify-center; text-align:center; padding:10px; border-radius:4px;">
+                    <div style="background-color:#111; height:150px; border:1px solid #333; margin-top:15px; display:flex; align-items:center; justify-content:center; text-align:center; padding:10px; border-radius:4px;">
                         <span style="color:var(--text-muted); font-size:12px; width:100%;"><i class="fa-solid fa-map-location-dot" style="font-size:24px; color:var(--natgeo-yellow); display:block; margin-bottom:5px;"></i> Mapa interactivo próximamente integrado</span>
                     </div>
                 </div>
@@ -541,28 +858,49 @@
     <script>
         // Función para cambiar de sección de forma dinámica (SPA)
         function switchSection(sectionId) {
-            // Ocultar todas las secciones
             const sections = document.querySelectorAll('.page-section');
             sections.forEach(sec => sec.classList.remove('active-section'));
             
-            // Quitar clase activa a los enlaces de navegación
             const navLinks = document.querySelectorAll('nav a');
             navLinks.forEach(link => link.classList.remove('active'));
             
-            // Activar la sección seleccionada
             const targetSection = document.getElementById(sectionId);
             if(targetSection) {
                 targetSection.classList.add('active-section');
             }
             
-            // Activar el botón del menú correspondiente
             const targetLink = document.getElementById('nav-' + sectionId);
             if(targetLink) {
                 targetLink.classList.add('active');
             }
 
-            // Desplazar hacia arriba suavemente
             window.scrollTo({top: 0, behavior: 'smooth'});
+        }
+
+        // Lógica de navegación interna para la pestaña Takikuna
+        function switchTakikunaTab(subviewId) {
+            const contents = document.querySelectorAll('.takikuna-subcontent');
+            contents.forEach(c => c.classList.remove('active-subview'));
+
+            const buttons = document.querySelectorAll('.subnav-tabs .tab-btn');
+            buttons.forEach(b => b.classList.remove('active-tab'));
+
+            document.getElementById(subviewId).classList.add('active-subview');
+            event.currentTarget.classList.add('active-tab');
+        }
+
+        // Lógica interactiva del Calendario Tradicional
+        function showEvent(dayNumber, title, dateStr, description) {
+            // Quitar clase seleccionada previa
+            document.querySelectorAll('.win-day').forEach(d => d.classList.remove('selected-day'));
+            
+            // Añadir clase al elemento clickeado
+            document.getElementById('day-' + dayNumber).classList.add('selected-day');
+
+            // Actualizar panel lateral
+            document.getElementById('event-date').innerText = dateStr;
+            document.getElementById('event-title').innerText = title;
+            document.getElementById('event-desc').innerText = description;
         }
 
         // Lógica de la calculadora de agua
@@ -578,10 +916,9 @@
                 return;
             }
 
-            // Estimaciones básicas: ~12 litros por minuto de ducha
             let totalLitros = tiempo * 12;
             if(grifo === 'no') {
-                totalLitros += 15; // 15 litros extra si se deja correr el grifo
+                totalLitros += 15;
             }
 
             resultBox.style.display = 'block';
@@ -595,15 +932,38 @@
             const bolsas = document.getElementById('bolsasTela').value;
             const resultBox = document.getElementById('resultadoCarbono');
 
-            // Estimación aproximada: Fabricar una botella plástica de PET genera aprox 80g de CO2 eq
             let gramosCO2 = botellas * 80;
             if(bolsas === 'no') {
-                gramosCO2 += 120; // Huella adicional por bolsas plásticas desechables semanales
+                gramosCO2 += 120;
             }
 
             resultBox.style.display = 'block';
             resultBox.style.borderColor = 'var(--eco-green)';
             resultBox.innerHTML = `<strong>Resultado:</strong> Tu consumo de plástico genera un aproximado de <strong>${gramosCO2}g de CO2</strong> semanalmente.<br><br>💡 <em>Tip: Las artesanías hechas con plástico reutilizado o la sustitución por botellas de vidrio disminuyen este impacto a cero.</em>`;
+        }
+
+        // NUEVA LÓGICA: Calculadora de Compostaje
+        function calcularCompost() {
+            const kilos = parseFloat(document.getElementById('residuosKilos').value) || 0;
+            const tieneEspacio = document.getElementById('composteraEspacio').value;
+            const resultBox = document.getElementById('resultadoCompost');
+
+            if (kilos <= 0) {
+                resultBox.style.display = 'block';
+                resultBox.style.borderColor = '#e74c3c';
+                resultBox.innerHTML = "Por favor, introduce un valor válido en kilogramos.";
+                return;
+            }
+
+            // Estimación: El 40% del residuo orgánico se convierte en compost rico en nutrientes al cabo de unas semanas
+            let compostAnual = (kilos * 0.4) * 365;
+            let sugerencia = tieneEspacio === 'si' 
+                ? "¡Excelente! Puedes iniciar hoy mismo tu compostera familiar." 
+                : "Aunque no tengas patio, puedes probar con una vermicompostera compacta de balcón.";
+
+            resultBox.style.display = 'block';
+            resultBox.style.borderColor = 'var(--eco-green)';
+            resultBox.innerHTML = `<strong>Resultado:</strong> Evitando tirar estos residuos podrías generar cerca de <strong>${compostAnual.toFixed(1)} kg de abono natural</strong> al año.<br><br>💡 <em>${sugerencia}</em>`;
         }
     </script>
 </body>
