@@ -707,7 +707,7 @@
                         <strong>Plásticos eternos:</strong> Una sola botella plástica tarda un promedio de 450 años en descomponerse por completo en los ecosistemas andinos.
                     </div>
                     <div class="did-you-know-item">
-                        <strong>Especies únicas:</strong> La región de Anta alberga aves y plantas medicinales nativas que no existen en ningún otro continente.
+                        <strong>Especies únicas:</strong> La región de Anta alberga aves y plantas medicinales nativas que no existen en ningún otro continent.
                     </div>
                     <div class="did-you-know-item">
                         <strong>Reciclaje local:</strong> Reutilizar tapas plásticas para confeccionar artesanías reduce directamente la cantidad de basura acumulada en Izcuchaca.
@@ -734,7 +734,7 @@
                     </div>
                     <div class="win-days-grid">
                         <div class="win-day prev-month">28</div><div class="win-day prev-month">29</div><div class="win-day prev-month">30</div>
-                        <div class="win-day current-day selected-day has-event" id="day-1" onclick="showEvent(1, 'Gran Feria Ambiental Comunitaria', 'Julio 1, 2026', 'Exposición interactiva de artesanías ecológicas a base de plásticos reciclados y concursos creativos en Anta.')">1</div>
+                        <div class="win-day" id="day-1">1</div>
                         <div class="win-day">2</div><div class="win-day">3</div><div class="win-day">4</div>
                         <div class="win-day">5</div><div class="win-day">6</div><div class="win-day">7</div><div class="win-day">8</div><div class="win-day">9</div><div class="win-day">10</div><div class="win-day">11</div>
                         <div class="win-day">12</div><div class="win-day">13</div><div class="win-day">14</div><div class="win-day">15</div><div class="win-day">16</div><div class="win-day">17</div><div class="win-day">18</div>
@@ -746,9 +746,9 @@
                 </div>
 
                 <div class="win-event-panel" id="event-detail-box">
-                    <span style="font-size:12px; text-transform:uppercase; color:var(--text-muted); font-weight:bold" id="event-date">Miércoles, 1 de julio</span>
-                    <h4 id="event-title" style="font-size:22px; margin-top:5px">Gran Feria Ambiental Comunitaria</h4>
-                    <p id="event-desc" style="font-size:14px; color:var(--text-muted)">Exposición interactiva de artesanías ecológicas a base de plásticos reciclados y concursos creativos.</p>
+                    <span style="font-size:12px; text-transform:uppercase; color:var(--text-muted); font-weight:bold" id="event-date">Selecciona un día</span>
+                    <h4 id="event-title" style="font-size:22px; margin-top:5px">No hay eventos</h4>
+                    <p id="event-desc" style="font-size:14px; color:var(--text-muted)">Próximamente se asignarán las fechas para las nuevas actividades comunitarias.</p>
                 </div>
             </div>
 
@@ -955,6 +955,22 @@
             document.getElementById('event-title').innerText = title;
             document.getElementById('event-desc').innerText = description;
         }
+
+        // Nuevas actividades mapeadas para futura implementación (sin fecha definida)
+        const actividadesPendientes = {
+            muralAmbiental: {
+                titulo: "Creación de Mural Ambiental (Plan B: Otellazo)",
+                descripcion: "Oportunidad de participar en la creación de un mural de carácter ambiental auspiciado por una institución. Esta actividad nos permitió expresar, a través del arte, la importancia del cuidado y la conservación del medio ambiente. Su propósito es promover la conciencia ecológica entre los habitantes de la comunidad de Anta, incentivando la reflexión sobre la protección de los recursos naturales, la reducción de la contaminación y la adopción de prácticas responsables."
+            },
+            intercambioReciclaje: {
+                titulo: "Actividad de Intercambio de Reciclaje",
+                descripcion: "Iniciativa cuyo objetivo fue promover la correcta gestión de los residuos sólidos y fortalecer la cultura del reciclaje en la comunidad de Anta. Los participantes entregaron materiales reciclables (papel, cartón, plástico y botellas) a cambio de incentivos. Esta experiencia permitió sensibilizar a la comunidad sobre la importancia de reducir la contaminación, reutilizar los recursos y adoptar hábitos responsables."
+            },
+            jornadaReforestacion: {
+                titulo: "Plantas vs Anta: Jornada de Reforestación",
+                descripcion: "Con el propósito de contribuir a la recuperación de las áreas verdes, participamos en una jornada de reforestación en la comunidad de Anta. Sembramos diversos árboles nativos, comprendiendo su importancia para la conservación de la biodiversidad, la protección del suelo y la mejora de la calidad del aire, fomentando una mayor conciencia ecológica."
+            }
+        };
 
         // Lógica de la calculadora de agua
         function calcularAgua() {
