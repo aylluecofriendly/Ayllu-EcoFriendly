@@ -17,7 +17,6 @@
             --text-muted: #B3B3B3;
             --eco-green: #2ecc71; /* Verde más vivo, familiar y llamativo */
             --friendly-blue: #3498db; /* Azul para la palabra FRIENDLY */
-            --win-accent: #0078d4; /* Color de énfasis estilo Windows para el calendario */
         }
 
         * {
@@ -326,132 +325,7 @@
             color: var(--bg-black);
         }
 
-        /* ESTILO CALENDARIO WINDOWS TRADICIONAL */
-        .windows-calendar-layout {
-            display: grid;
-            grid-template-columns: 1.2fr 1fr;
-            gap: 30px;
-            background-color: #1f1f1f;
-            padding: 25px;
-            border-radius: 8px;
-            border: 1px solid #333;
-        }
-
-        @media (max-width: 800px) {
-            .windows-calendar-layout {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        .win-calendar-box {
-            background-color: #111111;
-            padding: 20px;
-            border-radius: 4px;
-        }
-
-        .win-calendar-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-            font-family: 'Oswald', sans-serif;
-        }
-
-        .win-calendar-header h3 {
-            font-size: 20px;
-            text-transform: capitalize;
-        }
-
-        .win-calendar-arrows i {
-            cursor: pointer;
-            margin-left: 15px;
-            color: var(--text-muted);
-        }
-        .win-calendar-arrows i:hover {
-            color: white;
-        }
-
-        .win-weekdays {
-            display: grid;
-            grid-template-columns: repeat(7, 1fr);
-            text-align: center;
-            font-weight: bold;
-            font-size: 12px;
-            color: var(--text-muted);
-            margin-bottom: 10px;
-        }
-
-        .win-days-grid {
-            display: grid;
-            grid-template-columns: repeat(7, 1fr);
-            text-align: center;
-            gap: 5px;
-        }
-
-        .win-day {
-            padding: 12px 0;
-            font-size: 14px;
-            cursor: pointer;
-            border-radius: 2px;
-            position: relative;
-            color: #fff;
-        }
-        .win-day:hover {
-            background-color: rgba(255,255,255,0.1);
-        }
-
-        .win-day.prev-month, .win-day.next-month {
-            color: #555555;
-        }
-
-        .win-day.current-day {
-            background-color: transparent;
-            border: 2px solid var(--text-muted);
-        }
-
-        .win-day.has-event {
-            background-color: rgba(46, 204, 113, 0.2);
-            font-weight: bold;
-        }
-        .win-day.has-event::after {
-            content: '';
-            width: 4px;
-            height: 4px;
-            background-color: var(--eco-green);
-            position: absolute;
-            bottom: 4px;
-            left: 50%;
-            transform: translateX(-50%);
-            border-radius: 50%;
-        }
-
-        .win-day.selected-day {
-            background-color: var(--eco-green) !important;
-            color: black !important;
-            font-weight: bold;
-        }
-        .win-day.selected-day::after {
-            background-color: black;
-        }
-
-        .win-event-panel {
-            background-color: #1a1a1a;
-            padding: 20px;
-            border-radius: 4px;
-            border-left: 4px solid var(--eco-green);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-
-        .win-event-panel h4 {
-            font-family: 'Oswald', sans-serif;
-            font-size: 18px;
-            color: var(--natgeo-yellow);
-            margin-bottom: 10px;
-        }
-
-        /* SECCIÓN SUBSECCIONES */
+        /* SECCIÓN SUBSECCIONES TAKIKUNA */
         .subnav-tabs {
             display: flex;
             gap: 15px;
@@ -484,6 +358,7 @@
             display: block;
         }
 
+        /* AUDIO PLAYER CARDS (TAKIKUNA) */
         .media-link-card {
             background: #1c1c1c;
             border: 1px solid #333;
@@ -491,13 +366,8 @@
             border-radius: 6px;
             margin-bottom: 15px;
             display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .media-link-card h4 {
-            font-family: 'Oswald', sans-serif;
-            font-size: 18px;
+            flex-direction: column;
+            gap: 12px;
         }
 
         .media-link-card .badge {
@@ -508,23 +378,50 @@
             padding: 2px 8px;
             border-radius: 20px;
             text-transform: uppercase;
+            width: fit-content;
         }
 
-        .btn-play {
-            background: var(--natgeo-yellow);
-            color: black;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
+        .media-link-card h4 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 18px;
+        }
+
+        .audio-player-wrapper {
+            width: 100%;
+            margin-top: 5px;
+        }
+
+        .audio-player-wrapper audio {
+            width: 100%;
+            outline: none;
+        }
+
+        /* GALLERY SECTION */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .gallery-placeholder-item {
+            background-color: var(--bg-dark-gray);
+            border: 2px dashed #444;
+            border-radius: 6px;
+            aspect-ratio: 4 / 3;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
-            text-decoration: none;
-            font-size: 16px;
-            transition: transform 0.2s;
+            color: var(--text-muted);
+            padding: 15px;
+            text-align: center;
         }
-        .btn-play:hover {
-            transform: scale(1.1);
+
+        .gallery-placeholder-item i {
+            font-size: 28px;
+            margin-bottom: 10px;
+            color: var(--eco-green);
         }
 
         /* VIDEO RESPONSIVE EMBED */
@@ -580,10 +477,9 @@
                     <li><a onclick="switchSection('entretenimiento')" id="nav-entretenimiento">Entretenimiento</a></li>
                     <li><a onclick="switchSection('podcasts')" id="nav-podcasts">Takikuna</a></li>
                     <li><a onclick="switchSection('blog')" id="nav-blog">Noticias</a></li>
-                    <li><a onclick="switchSection('calendario')" id="nav-calendario">Calendario</a></li>
+                    <li><a onclick="switchSection('galeria')" id="nav-galeria">Galería</a></li>
                     <li><a onclick="switchSection('herramientas')" id="nav-herramientas">Herramientas</a></li>
                     <li><a onclick="switchSection('recursos')" id="nav-recursos">Recursos</a></li>
-                    <li><a onclick="switchSection('comunidad')" id="nav-comunidad">Comunidad</a></li>
                     <li><a onclick="switchSection('colaboraciones')" id="nav-colaboraciones">Colaboraciones</a></li>
                 </ul>
             </nav>
@@ -636,43 +532,77 @@
             </div>
 
             <div id="taki-podcasts" class="takikuna-subcontent active-subview">
-                <div class="media-link-card">
-                    <div>
-                        <span class="badge">Medioambiental</span>
-                        <h4 style="margin-top: 5px;">Episodio 1: Rescatando los Ecosistemas de Anta</h4>
-                        <p style="font-size:13px; color:var(--text-muted)">Análisis de los microplásticos in las tierras agrícolas.</p>
-                    </div>
-                    <a href="#" class="btn-play"><i class="fa-solid fa-play"></i></a>
-                </div>
-                <div class="media-link-card">
-                    <div>
-                        <span class="badge">Otros</span>
-                        <h4 style="margin-top: 5px;">Mitos y Leyendas de la Comunidad de Izcuchaca</h4>
-                        <p style="font-size:13px; color:var(--text-muted)">Narraciones tradicionales recopiladas de adultos mayores.</p>
-                    </div>
-                    <a href="#" class="btn-play"><i class="fa-solid fa-play"></i></a>
-                </div>
-
-                <div class="placeholder-box" style="padding: 20px; border-style: dotted;">
-                    <i class="fa-solid fa-circle-plus" style="font-size: 24px;"></i>
-                    <p style="font-size: 13px;">Espacio disponible para programar y enlazar futuros canales o feeds completos de podcasts externos.</p>
+                <div class="placeholder-box" style="padding: 40px; border-style: dotted;">
+                    <i class="fa-solid fa-microphone-slash" style="font-size: 36px; color: var(--text-muted); margin-bottom: 15px;"></i>
+                    <h3>Podcasts no disponibles por el momento</h3>
+                    <p style="font-size: 14px; color: var(--text-muted); max-width: 600px; margin: 0 auto;">Estamos preparando los primeros episodios sobre el rescate de ecosistemas y leyendas de Izcuchaca. ¡Estarán listos muy pronto!</p>
                 </div>
             </div>
 
             <div id="taki-musica" class="takikuna-subcontent">
                 <div class="media-link-card">
                     <div>
-                        <span class="badge">Medioambiental</span>
-                        <h4 style="margin-top: 5px;">Canto a la Pachamama - Versión Acústica</h4>
-                        <p style="font-size:13px; color:var(--text-muted)">Melodías andinas orientadas a la concientización del cuidado de la tierra.</p>
+                        <span class="badge">Audio 1</span>
+                        <h4 style="margin-top: 5px;">Pista Musical 1</h4>
                     </div>
-                    <a href="#" class="btn-play"><i class="fa-solid fa-music"></i></a>
+                    <div class="audio-player-wrapper">
+                        <audio controls>
+                            <source src="Audio 1.mpeg" type="audio/mpeg">
+                            Tu navegador no soporta el reproductor de audio.
+                        </audio>
+                    </div>
                 </div>
-                
-                <div class="placeholder-box" style="padding: 25px;">
-                    <i class="fa-solid fa-sliders"></i>
-                    <h3>Sección Musical Expandible</h3>
-                    <p>Próximamente se integrarán playlists completas de Spotify, SoundCloud y audios nativos editables desde este bloque.</p>
+
+                <div class="media-link-card">
+                    <div>
+                        <span class="badge">Audio 2</span>
+                        <h4 style="margin-top: 5px;">Pista Musical 2</h4>
+                    </div>
+                    <div class="audio-player-wrapper">
+                        <audio controls>
+                            <source src="Audio 2.mpeg" type="audio/mpeg">
+                            Tu navegador no soporta el reproductor de audio.
+                        </audio>
+                    </div>
+                </div>
+
+                <div class="media-link-card">
+                    <div>
+                        <span class="badge">Audio 3</span>
+                        <h4 style="margin-top: 5px;">Pista Musical 3</h4>
+                    </div>
+                    <div class="audio-player-wrapper">
+                        <audio controls>
+                            <source src="Audio 3.mpeg" type="audio/mpeg">
+                            Tu navegador no soporta el reproductor de audio.
+                        </audio>
+                    </div>
+                </div>
+
+                <div class="media-link-card">
+                    <div>
+                        <span class="badge">Audio 4</span>
+                        <h4 style="margin-top: 5px;">Pista Musical 4</h4>
+                    </div>
+                    <div class="audio-player-wrapper">
+                        <audio controls>
+                            <source src="Audio 4.mpeg" type="audio/mpeg">
+                            Tu navegador no soporta el reproductor de audio.
+                        </audio>
+                    </div>
+                </div>
+
+                <div class="media-link-card">
+                    <div>
+                        <span class="badge">Audio 5</span>
+                        <h4 style="margin-top: 5px;">Pista Musical 5</h4>
+                    </div>
+                    <div class="audio-player-wrapper">
+                        <audio controls>
+                            <source src="Audio 5.mpeg" type="audio/mpeg">
+                            Tu navegador no soporta el reproductor de audio.
+                        </audio>
+                    </div>
                 </div>
             </div>
         </section>
@@ -707,7 +637,7 @@
                         <strong>Plásticos eternos:</strong> Una sola botella plástica tarda un promedio de 450 años en descomponerse por completo en los ecosistemas andinos.
                     </div>
                     <div class="did-you-know-item">
-                        <strong>Especies únicas:</strong> La región de Anta alberga aves y plantas medicinales nativas que no existen en ningún otro continent.
+                        <strong>Especies únicas:</strong> La región de Anta alberga aves y plantas medicinales nativas que no existen en ningún otro continente.
                     </div>
                     <div class="did-you-know-item">
                         <strong>Reciclaje local:</strong> Reutilizar tapas plásticas para confeccionar artesanías reduce directamente la cantidad de basura acumulada en Izcuchaca.
@@ -716,44 +646,27 @@
             </div>
         </section>
 
-        <section id="calendario" class="page-section">
-            <h2 class="section-title">Calendario de Acción</h2>
-            <p style="margin-bottom: 20px;">Mantente al tanto de nuestros próximos eventos comunitarios, talleres eco-amigables y grandes retos del año seleccionando el día.</p>
+        <section id="galeria" class="page-section">
+            <h2 class="section-title">Galería de Fotos</h2>
+            <p>Un espacio visual para documentar nuestros logros ambientales, jornadas de reforestación y talleres de reciclaje.</p>
             
-            <div class="windows-calendar-layout">
-                <div class="win-calendar-box">
-                    <div class="win-calendar-header">
-                        <h3 id="calendar-month-year">julio de 2026</h3>
-                        <div class="win-calendar-arrows">
-                            <i class="fa-solid fa-chevron-up"></i>
-                            <i class="fa-solid fa-chevron-down"></i>
-                        </div>
-                    </div>
-                    <div class="win-weekdays">
-                        <div>do.</div><div>lu.</div><div>ma.</div><div>mi.</div><div>ju.</div><div>vi.</div><div>sá.</div>
-                    </div>
-                    <div class="win-days-grid">
-                        <div class="win-day prev-month">28</div><div class="win-day prev-month">29</div><div class="win-day prev-month">30</div>
-                        <div class="win-day" id="day-1">1</div>
-                        <div class="win-day">2</div><div class="win-day">3</div><div class="win-day">4</div>
-                        <div class="win-day">5</div><div class="win-day">6</div><div class="win-day">7</div><div class="win-day">8</div><div class="win-day">9</div><div class="win-day">10</div><div class="win-day">11</div>
-                        <div class="win-day">12</div><div class="win-day">13</div><div class="win-day">14</div><div class="win-day">15</div><div class="win-day">16</div><div class="win-day">17</div><div class="win-day">18</div>
-                        <div class="win-day">19</div><div class="win-day">20</div><div class="win-day">21</div><div class="win-day">22</div><div class="win-day">23</div><div class="win-day">24</div><div class="win-day">25</div>
-                        <div class="win-day">26</div><div class="win-day">27</div><div class="win-day">28</div><div class="win-day">29</div><div class="win-day">30</div><div class="win-day">31</div>
-                        <div class="win-day next-month">1</div>
-                        <div class="win-day next-month">2</div><div class="win-day next-month">3</div><div class="win-day next-month">4</div><div class="win-day next-month">5</div><div class="win-day next-month">6</div><div class="win-day next-month">7</div><div class="win-day next-month">8</div>
-                    </div>
+            <div class="gallery-grid">
+                <div class="gallery-placeholder-item">
+                    <i class="fa-regular fa-image"></i>
+                    <span>Foto 1 (Próximamente)</span>
                 </div>
-
-                <div class="win-event-panel" id="event-detail-box">
-                    <span style="font-size:12px; text-transform:uppercase; color:var(--text-muted); font-weight:bold" id="event-date">Selecciona un día</span>
-                    <h4 id="event-title" style="font-size:22px; margin-top:5px">No hay eventos</h4>
-                    <p id="event-desc" style="font-size:14px; color:var(--text-muted)">Próximamente se asignarán las fechas para las nuevas actividades comunitarias.</p>
+                <div class="gallery-placeholder-item">
+                    <i class="fa-regular fa-image"></i>
+                    <span>Foto 2 (Próximamente)</span>
                 </div>
-            </div>
-
-            <div class="placeholder-box" style="padding: 20px; border-style: dotted; margin-top: 20px;">
-                <p style="font-size:13px; color:var(--text-muted)"><i class="fa-solid fa-calendar-plus"></i> Las actividades históricas de Junio han sido archivadas. Próximamente se habilitará el cambio de mes interactivo.</p>
+                <div class="gallery-placeholder-item">
+                    <i class="fa-regular fa-image"></i>
+                    <span>Foto 3 (Próximamente)</span>
+                </div>
+                <div class="gallery-placeholder-item">
+                    <i class="fa-regular fa-image"></i>
+                    <span>Foto 4 (Próximamente)</span>
+                </div>
             </div>
         </section>
 
@@ -843,29 +756,6 @@
             </div>
         </section>
 
-        <section id="comunidad" class="page-section">
-            <h2 class="section-title">Comunidad y Directorio Ecológico</h2>
-            
-            <div class="grid-3" style="grid-template-columns: 2fr 1fr;">
-                <div>
-                    <h3>Muro de Acción Comunitaria</h3>
-                    <p>Visualiza el impacto de los ciudadanos comprometidos con el medio ambiente.</p>
-                    <div class="placeholder-box" style="padding: 30px;">
-                        <i class="fa-solid fa-camera-retro"></i>
-                        <p>Aquí se reflejará la galería de fotos subidas por los usuarios mostrando sus acciones de reciclaje y reforestación familiar.</p>
-                    </div>
-                </div>
-                
-                <div class="card card-yellow">
-                    <h3>Directorio de Reciclaje</h3>
-                    <p>Encuentra de forma rápida los puntos verdes de recolección de plástico autorizados y coordinados localmente.</p>
-                    <div style="background-color:#111; height:150px; border:1px solid #333; margin-top:15px; display:flex; align-items:center; justify-content:center; text-align:center; padding:10px; border-radius:4px;">
-                        <span style="color:var(--text-muted); font-size:12px; width:100%;"><i class="fa-solid fa-map-location-dot" style="font-size:24px; color:var(--natgeo-yellow); display:block; margin-bottom:5px;"></i> Mapa interactivo próximamente integrado</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
         <section id="colaboraciones" class="page-section">
             <h2 class="section-title">Nuestras Colaboraciones</h2>
             <p style="margin-bottom: 20px;">Agradecemos profundamente a las personas, colectivos y marcas aliadas que se suman a la causa para impulsar un impacto ambiental real en nuestra comunidad.</p>
@@ -945,32 +835,6 @@
             document.getElementById(subviewId).classList.add('active-subview');
             event.currentTarget.classList.add('active-tab');
         }
-
-        // Lógica interactiva del Calendario Tradicional
-        function showEvent(dayNumber, title, dateStr, description) {
-            document.querySelectorAll('.win-day').forEach(d => d.classList.remove('selected-day'));
-            document.getElementById('day-' + dayNumber).classList.add('selected-day');
-
-            document.getElementById('event-date').innerText = dateStr;
-            document.getElementById('event-title').innerText = title;
-            document.getElementById('event-desc').innerText = description;
-        }
-
-        // Nuevas actividades mapeadas para futura implementación (sin fecha definida)
-        const actividadesPendientes = {
-            muralAmbiental: {
-                titulo: "Creación de Mural Ambiental (Plan B: Otellazo)",
-                descripcion: "Oportunidad de participar en la creación de un mural de carácter ambiental auspiciado por una institución. Esta actividad nos permitió expresar, a través del arte, la importancia del cuidado y la conservación del medio ambiente. Su propósito es promover la conciencia ecológica entre los habitantes de la comunidad de Anta, incentivando la reflexión sobre la protección de los recursos naturales, la reducción de la contaminación y la adopción de prácticas responsables."
-            },
-            intercambioReciclaje: {
-                titulo: "Actividad de Intercambio de Reciclaje",
-                descripcion: "Iniciativa cuyo objetivo fue promover la correcta gestión de los residuos sólidos y fortalecer la cultura del reciclaje en la comunidad de Anta. Los participantes entregaron materiales reciclables (papel, cartón, plástico y botellas) a cambio de incentivos. Esta experiencia permitió sensibilizar a la comunidad sobre la importancia de reducir la contaminación, reutilizar los recursos y adoptar hábitos responsables."
-            },
-            jornadaReforestacion: {
-                titulo: "Plantas vs Anta: Jornada de Reforestación",
-                descripcion: "Con el propósito de contribuir a la recuperación de las áreas verdes, participamos en una jornada de reforestación en la comunidad de Anta. Sembramos diversos árboles nativos, comprendiendo su importancia para la conservación de la biodiversidad, la protección del suelo y la mejora de la calidad del aire, fomentando una mayor conciencia ecológica."
-            }
-        };
 
         // Lógica de la calculadora de agua
         function calcularAgua() {
