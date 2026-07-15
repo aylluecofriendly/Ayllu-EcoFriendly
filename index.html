@@ -250,61 +250,6 @@
             margin-bottom: 15px;
         }
 
-        /* CALCULATORS INTERACTIVES */
-        .calc-container {
-            background-color: var(--bg-dark-gray);
-            padding: 30px;
-            border-radius: 6px;
-            max-width: 100%;
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: bold;
-            font-size: 14px;
-        }
-
-        .form-group input, .form-group select {
-            width: 100%;
-            padding: 12px;
-            background-color: var(--bg-black);
-            border: 1px solid #444;
-            color: white;
-            border-radius: 4px;
-            font-family: inherit;
-        }
-
-        button.btn {
-            background-color: var(--natgeo-yellow);
-            color: var(--bg-black);
-            border: none;
-            padding: 12px 24px;
-            font-weight: bold;
-            text-transform: uppercase;
-            cursor: pointer;
-            font-family: 'Oswald', sans-serif;
-            letter-spacing: 1px;
-            transition: background 0.3s;
-            width: 100%;
-        }
-
-        button.btn:hover {
-            background-color: #e6b800;
-        }
-
-        .calc-result {
-            margin-top: 25px;
-            padding: 15px;
-            background-color: rgba(46, 204, 113, 0.15);
-            border-left: 4px solid var(--eco-green);
-            display: none;
-        }
-
         /* RECURSOS & BLOG */
         .btn-download {
             background-color: transparent;
@@ -439,6 +384,231 @@
             display: block;
             max-height: 500px;
             background-color: #000;
+        }
+
+        /* ESTILOS DE LA NUEVA SECCIÓN HERRAMIENTAS GAMIFICADAS */
+        .eco-profile-panel {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            border-radius: 8px;
+            padding: 25px;
+            margin-bottom: 35px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            align-items: center;
+        }
+
+        @media (max-width: 768px) {
+            .eco-profile-panel {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .profile-stat {
+            background-color: rgba(0,0,0,0.4);
+            padding: 15px;
+            border-radius: 6px;
+            text-align: center;
+            border-left: 4px solid var(--natgeo-yellow);
+        }
+
+        .stat-value {
+            font-size: 36px;
+            font-family: 'Oswald', sans-serif;
+            color: var(--natgeo-yellow);
+            font-weight: bold;
+        }
+
+        .planet-visualizer {
+            text-align: center;
+        }
+
+        .planet-icon {
+            font-size: 64px;
+            color: #e74c3c; /* Empieza rojo (Mal estado) */
+            transition: color 1s, transform 0.5s;
+        }
+
+        .planet-visualizer.moderate .planet-icon {
+            color: var(--natgeo-yellow);
+        }
+
+        .planet-visualizer.healthy .planet-icon {
+            color: var(--eco-green);
+            transform: scale(1.1);
+        }
+
+        /* CALCULADORAS INTERACTIVAS MEJORADAS */
+        .calc-container {
+            background-color: var(--bg-dark-gray);
+            padding: 25px;
+            border-radius: 6px;
+            border: 1px solid #2c2c2c;
+            border-top: 3px solid var(--natgeo-yellow);
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 10px;
+            background-color: var(--bg-black);
+            border: 1px solid #444;
+            color: white;
+            border-radius: 4px;
+            font-family: inherit;
+        }
+
+        button.btn {
+            background-color: var(--natgeo-yellow);
+            color: var(--bg-black);
+            border: none;
+            padding: 12px 24px;
+            font-weight: bold;
+            text-transform: uppercase;
+            cursor: pointer;
+            font-family: 'Oswald', sans-serif;
+            letter-spacing: 1px;
+            transition: background 0.3s;
+            width: 100%;
+            border-radius: 4px;
+        }
+
+        button.btn:hover {
+            background-color: #e6b800;
+        }
+
+        .calc-result {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 4px;
+            display: none;
+            animation: fadeIn 0.3s ease-in-out;
+        }
+
+        /* BARRA DE COLOR DE HUELLA DE CARBONO */
+        .carbon-bar-bg {
+            width: 100%;
+            height: 12px;
+            background-color: #444;
+            border-radius: 6px;
+            margin: 15px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .carbon-bar-fill {
+            height: 100%;
+            width: 0%;
+            background-color: var(--eco-green);
+            transition: width 1s ease-in-out, background-color 1s;
+        }
+
+        /* CLASIFICADOR DE RESIDUOS */
+        .classifier-input-box {
+            display: flex;
+            gap: 10px;
+        }
+
+        .classifier-input-box input {
+            flex: 1;
+            padding: 10px;
+            background-color: var(--bg-black);
+            border: 1px solid #444;
+            color: white;
+            border-radius: 4px;
+        }
+
+        /* TIMELINE DE DEGRADACIÓN */
+        .timeline-container {
+            display: flex;
+            justify-content: space-around;
+            background: #222;
+            padding: 15px;
+            border-radius: 6px;
+            margin-top: 15px;
+        }
+
+        .timeline-item {
+            font-size: 28px;
+            cursor: pointer;
+            transition: transform 0.2s;
+            opacity: 0.7;
+        }
+
+        .timeline-item:hover, .timeline-item.active {
+            transform: scale(1.3);
+            opacity: 1;
+        }
+
+        /* QUIZ AMBIENTAL */
+        .quiz-box {
+            background: #1c1c1c;
+            padding: 20px;
+            border-radius: 6px;
+            border: 1px solid #333;
+        }
+
+        .quiz-option {
+            background: #2b2b2b;
+            padding: 12px;
+            border-radius: 4px;
+            margin-top: 10px;
+            cursor: pointer;
+            transition: background 0.2s;
+            border: 1px solid #444;
+        }
+
+        .quiz-option:hover {
+            background: #3a3a3a;
+        }
+
+        .quiz-option.correct {
+            background-color: rgba(46, 204, 113, 0.2) !important;
+            border-color: var(--eco-green) !important;
+        }
+
+        .quiz-option.incorrect {
+            background-color: rgba(231, 76, 60, 0.2) !important;
+            border-color: #e74c3c !important;
+        }
+
+        /* RULETA DIARIA */
+        .roulette-container {
+            text-align: center;
+            background: #1c1c1c;
+            padding: 20px;
+            border-radius: 6px;
+            border: 1px solid #333;
+        }
+
+        .roulette-display {
+            font-size: 18px;
+            font-weight: bold;
+            min-height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #111;
+            padding: 15px;
+            border-radius: 4px;
+            margin-bottom: 15px;
+            border-left: 4px solid var(--eco-green);
+        }
+
+        .completed-btn-wrapper {
+            margin-top: 10px;
+            display: none;
         }
 
         /* FOOTER */
@@ -671,66 +841,165 @@
         </section>
 
         <section id="herramientas" class="page-section">
-            <h2 class="section-title">Herramientas Interactivas</h2>
-            
-            <div class="grid-3" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));">
-                <div class="calc-container">
-                    <h3><i class="fa-solid fa-droplet" style="color: var(--eco-green);"></i> Huella de Agua Básica</h3>
-                    <div class="form-group">
-                        <label>Tiempo promedio en la ducha (minutos):</label>
-                        <input type="number" id="duchaTime" placeholder="Ej. 10" min="1">
-                    </div>
-                    <div class="form-group">
-                        <label>¿Cierras el grifo al lavarte los dientes?</label>
-                        <select id="grifoDientes">
-                            <option value="si">Sí, siempre</option>
-                            <option value="no">No, lo dejo corriendo</option>
-                        </select>
-                    </div>
-                    <button class="btn" onclick="calcularAgua()">Calcular Consumo</button>
-                    <div id="resultadoAgua" class="calc-result"></div>
-                </div>
+            <h2 class="section-title">Eco-Game Hub & Herramientas</h2>
+            <p style="margin-bottom: 20px;">Interactúa con nuestras mini-apps de cálculo ecológico. ¡Cada cálculo y acción completada te otorga EcoPuntos para subir de nivel!</p>
 
-                <div class="calc-container">
-                    <h3><i class="fa-solid fa-cloud" style="color: var(--text-muted);"></i> Impacto de Plástico</h3>
-                    <div class="form-group">
-                        <label>Botellas plásticas consumidas por semana:</label>
-                        <input type="number" id="botellasPlastico" placeholder="Ej. 5" min="0">
+            <div class="eco-profile-panel">
+                <div>
+                    <h3 style="font-family:'Oswald', sans-serif; font-size: 26px; margin-bottom: 10px;">🌍 TU ECO-PERFIL</h3>
+                    <p style="font-size:14px; opacity:0.9; margin-bottom:15px;">Usa las herramientas para subir tu puntuación y sanar el planeta virtual.</p>
+                    <div style="display: flex; gap: 15px;">
+                        <div class="profile-stat" style="flex:1;">
+                            <span style="font-size:11px; text-transform:uppercase; color:var(--text-muted);">EcoPuntos</span>
+                            <div class="stat-value" id="userPoints">0</div>
+                        </div>
+                        <div class="profile-stat" style="flex:1;">
+                            <span style="font-size:11px; text-transform:uppercase; color:var(--text-muted);">Rango</span>
+                            <div class="stat-value" id="userRange" style="font-size:18px; margin-top:10px; color:var(--eco-green);">🌱 Semilla</div>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label>¿Usas bolsas de tela reutilizables?</label>
-                        <select id="bolsasTela">
-                            <option value="si">Sí, casi siempre</option>
-                            <option value="no">No, uso plásticas</option>
-                        </select>
-                    </div>
-                    <button class="btn" onclick="calcularCarbono()">Calcular Impacto</button>
-                    <div id="resultadoCarbono" class="calc-result"></div>
                 </div>
-
-                <div class="calc-container">
-                    <h3><i class="fa-solid fa-seedling" style="color: var(--eco-green);"></i> Potencial de Compostaje</h3>
-                    <div class="form-group">
-                        <label>Residuos de cocina generados al día (en kg aprox):</label>
-                        <input type="number" id="residuosKilos" placeholder="Ej. 1.5" step="0.1" min="0">
-                    </div>
-                    <div class="form-group">
-                        <label>¿Tienes espacio para una compostera pequeña?</label>
-                        <select id="composteraEspacio">
-                            <option value="si">Sí, jardín o maceta</option>
-                            <option value="no">No tengo espacio disponible</option>
-                        </select>
-                    </div>
-                    <button class="btn" onclick="calcularCompost()">Calcular Abono</button>
-                    <div id="resultadoCompost" class="calc-result"></div>
+                <div class="planet-visualizer" id="planetVisual">
+                    <i class="fa-solid fa-earth-americas planet-icon"></i>
+                    <h4 style="font-family:'Oswald', sans-serif; text-transform:uppercase; margin-top:10px;">Estado de tu Planeta</h4>
+                    <span id="planetStatusText" style="color:#e74c3c; font-weight:bold; font-size:14px;">Crítico (🔴 Alerta Ambiental)</span>
                 </div>
             </div>
 
-            <div class="placeholder-box" style="margin-top: 10px;">
-                <i class="fa-solid fa-laptop-code"></i>
-                <h3>Próximas Herramientas en Desarrollo</h3>
-                <p>Calculadora de Ahorro Energético Comunitario y Test de Conocimiento Ecológico Andino. ¡Próximamente disponibles!</p>
+            <div class="grid-3">
+                <div class="calc-container">
+                    <h3><i class="fa-solid fa-cloud" style="color: var(--text-muted);"></i> Huella de Carbono Personal</h3>
+                    <p style="font-size: 12px; color:var(--text-muted); margin-bottom: 15px;">Estima tu huella según tus hábitos cotidianos de transporte y energía.</p>
+                    
+                    <div class="form-group">
+                        <label>¿Cómo te trasladas habitualmente?</label>
+                        <select id="carbonTransporte">
+                            <option value="bici">🚶 Caminando o en Bicicleta</option>
+                            <option value="bus">🚌 Autobús de Servicio Público</option>
+                            <option value="auto">🚗 Automóvil Particular</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Uso diario de dispositivos electrónicos (horas):</label>
+                        <input type="number" id="carbonDispositivos" placeholder="Ej. 6" min="0">
+                    </div>
+                    <div class="form-group">
+                        <label>Consumo de carne a la semana (veces):</label>
+                        <input type="number" id="carbonCarne" placeholder="Ej. 3" min="0">
+                    </div>
+                    <button class="btn" onclick="calcularHuellaCarbono()">Estimar Huella</button>
+                    
+                    <div id="resultadoCarbono" class="calc-result" style="background-color: rgba(22, 22, 22, 0.9); border: 1px solid #333;">
+                        <div style="font-family:'Oswald'; text-transform:uppercase; font-size: 18px;" id="carbonStatusTitle">Análisis:</div>
+                        <div class="carbon-bar-bg">
+                            <div class="carbon-bar-fill" id="carbonBarFill"></div>
+                        </div>
+                        <p id="carbonDetails" style="font-size: 13px; color:var(--text-light);"></p>
+                    </div>
+                </div>
+
+                <div class="calc-container">
+                    <h3><i class="fa-solid fa-droplet" style="color: var(--friendly-blue);"></i> Calculadora de Agua Pro</h3>
+                    <p style="font-size: 12px; color:var(--text-muted); margin-bottom: 15px;">Calcula tu consumo real aproximado de agua sumando actividades básicas.</p>
+                    
+                    <div class="form-group">
+                        <label>Tiempo en la ducha diario (minutos):</label>
+                        <input type="number" id="waterShower" placeholder="Ej. 10" min="0">
+                    </div>
+                    <div class="form-group">
+                        <label>Frecuencia de lavado de ropa (veces/semana):</label>
+                        <input type="number" id="waterLaundry" placeholder="Ej. 2" min="0">
+                    </div>
+                    <div class="form-group">
+                        <label>¿Lavas los platos con el grifo abierto?</label>
+                        <select id="waterDishes">
+                            <option value="no">Cierro el grifo al enjabonar</option>
+                            <option value="si">Dejo correr el agua siempre</option>
+                        </select>
+                    </div>
+                    <button class="btn" onclick="calcularAguaCompleto()">Verificar Litros</button>
+                    
+                    <div id="resultadoAguaCompleto" class="calc-result" style="background-color: rgba(52, 152, 219, 0.15); border-left: 4px solid var(--friendly-blue);">
+                        <p id="waterResultText" style="font-size: 14px;"></p>
+                    </div>
+                </div>
+
+                <div class="calc-container">
+                    <h3><i class="fa-solid fa-recycle" style="color: var(--eco-green);"></i> ¿Qué Basura Soy?</h3>
+                    <p style="font-size: 12px; color:var(--text-muted); margin-bottom: 15px;">Escribe un residuo común (ej. "botella", "pila", "manzana", "carton") para clasificarlo.</p>
+                    
+                    <div class="form-group classifier-input-box">
+                        <input type="text" id="trashQuery" placeholder="Escribe un objeto...">
+                        <button class="btn" style="width: auto; padding: 10px 15px;" onclick="clasificarResiduo()"><i class="fa-solid fa-magnifying-glass"></i></button>
+                    </div>
+                    
+                    <div id="resultadoClasificador" class="calc-result" style="background-color: rgba(46, 204, 113, 0.15); border-left: 4px solid var(--eco-green);">
+                        <p id="trashResultText" style="font-size: 14px;"></p>
+                    </div>
+                </div>
             </div>
+
+            <div class="grid-3">
+                <div class="calc-container">
+                    <h3><i class="fa-solid fa-hourglass-half" style="color: var(--natgeo-yellow);"></i> ¿Cuánto Tarda en Degradarse?</h3>
+                    <p style="font-size: 12px; color:var(--text-muted); margin-bottom: 15px;">Haz clic en los siguientes elementos para revelar su ciclo de descomposición en la naturaleza:</p>
+                    
+                    <div class="timeline-container">
+                        <div class="timeline-item" onclick="mostrarDegradacion('platano', this)">🍌</div>
+                        <div class="timeline-item" onclick="mostrarDegradacion('papel', this)">📄</div>
+                        <div class="timeline-item" onclick="mostrarDegradacion('botella', this)">🥤</div>
+                        <div class="timeline-item" onclick="mostrarDegradacion('pila', this)">🪫</div>
+                    </div>
+
+                    <div id="resultadoDegradacion" class="calc-result" style="background-color: #1c1c1c; border: 1px dashed var(--natgeo-yellow); display: block; margin-top: 15px; padding: 15px;">
+                        <h4 id="degLabel" style="font-family:'Oswald'; color:var(--natgeo-yellow); text-transform:uppercase;">Selecciona un objeto de arriba</h4>
+                        <p id="degDesc" style="font-size: 13px; color:var(--text-muted); margin-top: 5px;">Aprende cómo afecta cada residuo si termina abandonado en nuestro entorno andino.</p>
+                    </div>
+                </div>
+
+                <div class="calc-container">
+                    <h3><i class="fa-solid fa-circle-question" style="color: var(--eco-green);"></i> Trivia Ambiental</h3>
+                    <p style="font-size: 12px; color:var(--text-muted); margin-bottom: 15px;">Pon a prueba tus conocimientos sobre reciclaje y conservación y acumula puntos.</p>
+                    
+                    <div class="quiz-box">
+                        <div id="quizQuestion" style="font-weight: bold; font-size: 14px; margin-bottom: 10px;">¿Cargando pregunta?</div>
+                        <div id="quizOptions"></div>
+                        <div id="quizFeedback" style="margin-top: 15px; font-size: 13px; display: none; padding: 8px; border-radius: 4px;"></div>
+                    </div>
+                </div>
+
+                <div class="calc-container">
+                    <h3><i class="fa-solid fa-dice" style="color: var(--natgeo-yellow);"></i> Ruleta de Misiones Verdes</h3>
+                    <p style="font-size: 12px; color:var(--text-muted); margin-bottom: 15px;">Gira la ruleta y asume un reto de impacto directo para tu día a día.</p>
+                    
+                    <div class="roulette-container">
+                        <div class="roulette-display" id="missionText">¡Haz girar la ruleta para obtener tu misión diaria!</div>
+                        <button class="btn" id="btnGirarRuleta" onclick="girarRuleta()">Girar Ruleta 🎲</button>
+                        
+                        <div class="completed-btn-wrapper" id="missionCompleteWrapper">
+                            <button class="btn" style="background-color: var(--eco-green); color: black;" onclick="completarMision()">¡Completado! (+15 EcoPuntos)</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="calc-container" style="max-width: 500px; margin: 0 auto;">
+                <h3><i class="fa-solid fa-seedling" style="color: var(--eco-green);"></i> Potencial de Compostaje</h3>
+                <div class="form-group">
+                    <label>Residuos de cocina generados al día (en kg aprox):</label>
+                    <input type="number" id="residuosKilos" placeholder="Ej. 1.5" step="0.1" min="0">
+                </div>
+                <div class="form-group">
+                    <label>¿Tienes espacio para una compostera pequeña?</label>
+                    <select id="composteraEspacio">
+                        <option value="si">Sí, jardín o maceta</option>
+                        <option value="no">No tengo espacio disponible</option>
+                    </select>
+                </div>
+                <button class="btn" onclick="calcularCompost()">Calcular Abono</button>
+                <div id="resultadoCompost" class="calc-result"></div>
+            </div>
+
         </section>
 
         <section id="recursos" class="page-section">
@@ -803,6 +1072,44 @@
     </footer>
 
     <script>
+        // Sistema de Gamificación - Estados Globales
+        let ecoPoints = 0;
+
+        function addPoints(pts) {
+            ecoPoints += pts;
+            document.getElementById('userPoints').innerText = ecoPoints;
+            updateEcoProfile();
+        }
+
+        function updateEcoProfile() {
+            const rangeEl = document.getElementById('userRange');
+            const planetVisualEl = document.getElementById('planetVisual');
+            const planetStatusText = document.getElementById('planetStatusText');
+            
+            // Lógica de Rangos
+            if (ecoPoints >= 80) {
+                rangeEl.innerText = "🏆 Eco-Héroe";
+                rangeEl.style.color = "var(--natgeo-yellow)";
+                planetVisualEl.className = "planet-visualizer healthy";
+                planetStatusText.innerHTML = "Sano (🟢 Ecosistema Protegido)";
+            } else if (ecoPoints >= 40) {
+                rangeEl.innerText = "🌳 Árbol";
+                rangeEl.style.color = "var(--friendly-blue)";
+                planetVisualEl.className = "planet-visualizer moderate";
+                planetStatusText.innerHTML = "Estable (🟡 Bajo Recuperación)";
+            } else if (ecoPoints >= 15) {
+                rangeEl.innerText = "🌿 Brote";
+                rangeEl.style.color = "#a3e4d7";
+                planetVisualEl.className = "planet-visualizer moderate";
+                planetStatusText.innerHTML = "Estable (🟡 Bajo Recuperación)";
+            } else {
+                rangeEl.innerText = "🌱 Semilla";
+                rangeEl.style.color = "var(--eco-green)";
+                planetVisualEl.className = "planet-visualizer";
+                planetStatusText.innerHTML = "Crítico (🔴 Alerta Ambiental)";
+            }
+        }
+
         // Función para cambiar de sección de forma dinámica (SPA)
         function switchSection(sectionId) {
             const sections = document.querySelectorAll('.page-section');
@@ -836,46 +1143,263 @@
             event.currentTarget.classList.add('active-tab');
         }
 
-        // Lógica de la calculadora de agua
-        function calcularAgua() {
-            const tiempo = parseFloat(document.getElementById('duchaTime').value) || 0;
-            const grifo = document.getElementById('grifoDientes').value;
-            const resultBox = document.getElementById('resultadoAgua');
+        // 1. LÓGICA: CALCULADORA DE CARBONO MEJORADA
+        function calcularHuellaCarbono() {
+            const transporte = document.getElementById('carbonTransporte').value;
+            const dispositivos = parseFloat(document.getElementById('carbonDispositivos').value) || 0;
+            const carne = parseFloat(document.getElementById('carbonCarne').value) || 0;
+            const resultBox = document.getElementById('resultadoCarbono');
+            const barFill = document.getElementById('carbonBarFill');
+            const statusTitle = document.getElementById('carbonStatusTitle');
+            const details = document.getElementById('carbonDetails');
+
+            let score = 0;
+
+            // Calcular según inputs
+            if (transporte === 'auto') score += 40;
+            else if (transporte === 'bus') score += 20;
+            else score += 5;
+
+            score += Math.min(dispositivos * 4, 30);
+            score += Math.min(carne * 5, 30);
+
+            // Mostrar resultados
+            resultBox.style.display = 'block';
+            barFill.style.width = score + '%';
+
+            if (score <= 30) {
+                barFill.style.backgroundColor = 'var(--eco-green)';
+                statusTitle.innerText = "🟢 Huella muy Baja";
+                statusTitle.style.color = "var(--eco-green)";
+                details.innerText = `¡Espectacular! Tu impacto ambiental es mínimo (${score}/100 puntos). Tus hábitos son sumamente amigables con los ecosistemas de Anta.`;
+            } else if (score <= 65) {
+                barFill.style.backgroundColor = 'var(--natgeo-yellow)';
+                statusTitle.innerText = "🟡 Huella Moderada";
+                statusTitle.style.color = "var(--natgeo-yellow)";
+                details.innerText = `Tu puntaje es de ${score}/100. Vas por buen camino, pero puedes mejorar disminuyendo tu consumo de carne semanal o reduciendo el uso de computadoras.`;
+            } else {
+                barFill.style.backgroundColor = '#e74c3c';
+                statusTitle.innerText = "🔴 Huella Alta";
+                statusTitle.style.color = "#e74c3c";
+                details.innerText = `Puntaje elevado de ${score}/100. Para proteger la biodiversidad, prioriza caminar, reduce tu consumo cárnico y desconecta los cargadores que no uses.`;
+            }
+
+            addPoints(5);
+        }
+
+        // 2. LÓGICA: CALCULADORA DE AGUA MEJORADA
+        function calcularAguaCompleto() {
+            const shower = parseFloat(document.getElementById('waterShower').value) || 0;
+            const laundry = parseFloat(document.getElementById('waterLaundry').value) || 0;
+            const dishes = document.getElementById('waterDishes').value;
+            const resultBox = document.getElementById('resultadoAguaCompleto');
+            const textEl = document.getElementById('waterResultText');
+
+            let totalLitros = (shower * 12) + ((laundry * 100) / 7);
+            if (dishes === 'si') totalLitros += 30;
+            else totalLitros += 10;
+
+            totalLitros = Math.round(totalLitros);
             
-            if(tiempo <= 0) {
+            const equivalenciaDuchas = Math.round(totalLitros / 15);
+            const equivalenciaBotellas = Math.round(totalLitros / 0.5);
+
+            resultBox.style.display = 'block';
+            textEl.innerHTML = `<strong>Consumes aprox:</strong> <span style="font-size:20px; color:var(--friendly-blue); font-weight:bold;">${totalLitros} litros al día.</span><br><br>
+            Eso equivale aproximadamente a:<br>
+            🚿 <strong>${equivalenciaDuchas} duchas cortas</strong> de 1.5 minutos.<br>
+            🥤 <strong>${equivalenciaBotellas} botellas plásticas</strong> de 500ml llenas.`;
+
+            addPoints(5);
+        }
+
+        // 3. LÓGICA: CLASIFICADOR DE RESIDUOS
+        const databaseResiduos = {
+            "botella": { contenedor: "Amarillo (Plásticos)", degradacion: "450 años", dato: "Reutilizándolas puedes crear hermosos maceteros o manualidades para tu hogar." },
+            "pila": { contenedor: "Contenedor de Pilas / Residuos Peligrosos", degradacion: "1000 años", dato: "Contienen metales pesados altamente tóxicos. ¡Nunca las mezcles con tu basura común!" },
+            "bateria": { contenedor: "Contenedor de Pilas / Residuos Peligrosos", degradacion: "1000 años", dato: "Contienen metales pesados altamente tóxicos. ¡Nunca las mezcles con tu basura común!" },
+            "carton": { contenedor: "Azul (Papel y Cartón)", degradacion: "1 año", dato: "Si se moja o se llena de grasa (como las cajas de pizza) ya no se puede reciclar." },
+            "papel": { contenedor: "Azul (Papel y Cartón)", degradacion: "1 año", dato: "Si se moja o se llena de grasa ya no se puede reciclar." },
+            "manzana": { contenedor: "Marrón (Orgánico)", degradacion: "2 meses", dato: "Es ideal para transformarlo en abono de alta calidad (compost) para tus plantas." },
+            "platano": { contenedor: "Marrón (Orgánico)", degradacion: "2 meses", dato: "Es ideal para transformarlo en abono de alta calidad (compost) para tus plantas." },
+            "organico": { contenedor: "Marrón (Orgánico)", degradacion: "2 meses", dato: "Es ideal para transformarlo en abono de alta calidad (compost) para tus plantas." },
+            "vidrio": { contenedor: "Verde (Vidrio)", degradacion: "4000 años", dato: "El vidrio es 100% reciclable de forma infinita sin perder calidad." }
+        };
+
+        function clasificarResiduo() {
+            const query = document.getElementById('trashQuery').value.toLowerCase().trim();
+            const resultBox = document.getElementById('resultadoClasificador');
+            const resultText = document.getElementById('trashResultText');
+
+            if (!query) {
                 resultBox.style.display = 'block';
                 resultBox.style.borderColor = '#e74c3c';
-                resultBox.innerHTML = "Por favor, introduce un tiempo válido de ducha.";
+                resultText.innerText = "Por favor ingresa el nombre de algún desecho.";
                 return;
             }
 
-            let totalLitros = tiempo * 12;
-            if(grifo === 'no') {
-                totalLitros += 15;
+            let found = null;
+            for (let key in databaseResiduos) {
+                if (query.includes(key)) {
+                    found = databaseResiduos[key];
+                    break;
+                }
             }
 
             resultBox.style.display = 'block';
-            resultBox.style.borderColor = 'var(--eco-green)';
-            resultBox.innerHTML = `<strong>Resultado:</strong> Tu consumo estimado en estas actividades es de aproximadamente <strong>${totalLitros} litros</strong> de agua por sesión. <br><br>💡 <em>Tip: Reducir tu ducha a 5 minutos ahorra más de 60 litros de agua diarios.</em>`;
+            if (found) {
+                resultText.innerHTML = `♻️ <strong>Va en:</strong> Contenedor <span style="color:var(--eco-green); font-weight:bold;">${found.contenedor}</span>.<br><br>
+                ⏳ <strong>Tiempo de degradación:</strong> ${found.degradacion}.<br><br>
+                💡 <strong>Dato curioso:</strong> ${found.dato}`;
+                addPoints(5);
+            } else {
+                resultText.innerHTML = `❌ No encontramos ese desecho específico en nuestra base de datos rápida, pero recuerda la regla general: <strong>Orgánico va a composta, papeles limpios en azul y plásticos duros en amarillo</strong>.`;
+            }
         }
 
-        // Lógica de la calculadora de carbono plástico
-        function calcularCarbono() {
-            const botellas = parseInt(document.getElementById('botellasPlastico').value) || 0;
-            const bolsas = document.getElementById('bolsasTela').value;
-            const resultBox = document.getElementById('resultadoCarbono');
+        // 4. LÓGICA: LÍNEA DE TIEMPO DE DEGRADACIÓN
+        const dataDegradacion = {
+            platano: { titulo: "Cáscara de Plátano 🍌", tiempo: "2 meses", desc: "Aunque es de origen orgánico y se composta fácil, tirarlo en asfalto tarda semanas y puede atraer plagas indeseadas." },
+            papel: { titulo: "Papel o Cartón 📄", tiempo: "1 año", desc: "Se biodegrada rápido si hay humedad, pero si se compacta en vertederos sin oxígeno puede tardar mucho más." },
+            botella: { titulo: "Botella de Plástico 🥤", tiempo: "450 años", desc: "No se descompone, solo se fragmenta en partículas diminutas llamadas microplásticos que contaminan el agua de nuestros ríos." },
+            pila: { titulo: "Baterías / Pilas 🪫", tiempo: "1,000 años", desc: "El material externo de metal se oxida lentamente, pero los químicos tóxicos de su interior nunca dejan de contaminar la tierra." }
+        };
 
-            let gramosCO2 = botellas * 80;
-            if(bolsas === 'no') {
-                gramosCO2 += 120;
+        function mostrarDegradacion(item, element) {
+            document.querySelectorAll('.timeline-item').forEach(i => i.classList.remove('active'));
+            element.classList.add('active');
+
+            const info = dataDegradacion[item];
+            document.getElementById('degLabel').innerHTML = `${info.titulo} &bull; <span style="color:var(--natgeo-yellow);">${info.tiempo}</span>`;
+            document.getElementById('degDesc').innerText = info.desc;
+
+            addPoints(2);
+        }
+
+        // 5. LÓGICA: TRIVIA / QUIZ AMBIENTAL
+        const databaseQuiz = [
+            {
+                q: "¿Cuánto tarda una botella de plástico común en degradarse?",
+                options: ["20 años", "100 años", "450 años", "1000 años"],
+                correct: 2,
+                explain: "Las botellas plásticas tardan una media de 450 años en degradarse, fragmentándose en microplásticos dañinos."
+            },
+            {
+                q: "¿Qué residuo NUNCA se debe echar en el compost?",
+                options: ["Restos de fruta", "Hojas secas", "Plásticos reciclables", "Cáscaras de huevo"],
+                correct: 2,
+                explain: "Los plásticos no son de origen orgánico y no se descomponen en el compost; contaminarían la mezcla."
+            },
+            {
+                q: "¿Cuál es la forma más efectiva de reducir tu impacto de plásticos?",
+                options: ["Reciclar botellas", "Reutilizar bolsas", "Reducir la compra de envases descartables", "Quemarlos"],
+                correct: 2,
+                explain: "Reducir es el paso más importante de las 3R. Evitar el residuo en origen es siempre la mejor opción."
+            }
+        ];
+
+        let currentQuizIndex = 0;
+
+        function loadQuizQuestion() {
+            const data = databaseQuiz[currentQuizIndex];
+            document.getElementById('quizQuestion').innerText = data.q;
+            
+            const optionsEl = document.getElementById('quizOptions');
+            optionsEl.innerHTML = "";
+            
+            data.options.forEach((opt, index) => {
+                const btn = document.createElement('div');
+                btn.className = "quiz-option";
+                btn.innerText = opt;
+                btn.onclick = () => selectQuizAnswer(index, btn);
+                optionsEl.appendChild(btn);
+            });
+
+            const feedback = document.getElementById('quizFeedback');
+            feedback.style.display = "none";
+        }
+
+        function selectQuizAnswer(selectedIndex, clickedElement) {
+            const data = databaseQuiz[currentQuizIndex];
+            const feedback = document.getElementById('quizFeedback');
+            
+            // Deshabilitar clics en otras opciones
+            const options = document.querySelectorAll('.quiz-option');
+            options.forEach(opt => opt.onclick = null);
+
+            feedback.style.display = "block";
+
+            if (selectedIndex === data.correct) {
+                clickedElement.classList.add('correct');
+                feedback.style.backgroundColor = "rgba(46, 204, 113, 0.15)";
+                feedback.style.color = "var(--eco-green)";
+                feedback.innerHTML = `<strong>✅ ¡Excelente!</strong> ${data.explain}`;
+                addPoints(10);
+            } else {
+                clickedElement.classList.add('incorrect');
+                options[data.correct].classList.add('correct');
+                feedback.style.backgroundColor = "rgba(231, 76, 60, 0.15)";
+                feedback.style.color = "#e74c3c";
+                feedback.innerHTML = `<strong>❌ Incorrecto.</strong> ${data.explain}`;
             }
 
-            resultBox.style.display = 'block';
-            resultBox.style.borderColor = 'var(--eco-green)';
-            resultBox.innerHTML = `<strong>Resultado:</strong> Tu consumo de plástico genera un aproximado de <strong>${gramosCO2}g de CO2</strong> semanalmente.<br><br>💡 <em>Tip: Las artesanías hechas con plástico reutilizado o la sustitución por botellas de vidrio disminuyen este impacto a cero.</em>`;
+            // Cambiar a la siguiente pregunta después de unos segundos
+            setTimeout(() => {
+                currentQuizIndex = (currentQuizIndex + 1) % databaseQuiz.length;
+                loadQuizQuestion();
+            }, 6000);
         }
 
-        // Calculadora de Compostaje
+        // Inicializar la trivia al cargar la web
+        loadQuizQuestion();
+
+        // 6. LÓGICA: RULETA VERDE DE MISIONES DIARIAS
+        const misionesRuleta = [
+            "Lleva hoy tu propia botella reutilizable y evita comprar una descartable.",
+            "Desconecta todos los cargadores de tu habitación que no estés utilizando ahora.",
+            "Separa y limpia al menos 3 botellas de plástico para tu caja de reciclaje.",
+            "Apaga las luces de las habitaciones de tu casa que estén vacías.",
+            "Ahorra agua lavándote los dientes usando solo un vaso con agua."
+        ];
+
+        let misionSeleccionada = "";
+
+        function girarRuleta() {
+            const missionTextEl = document.getElementById('missionText');
+            const btnGirar = document.getElementById('btnGirarRuleta');
+            const completeWrapper = document.getElementById('missionCompleteWrapper');
+
+            completeWrapper.style.display = "none";
+            btnGirar.disabled = true;
+            btnGirar.innerText = "Girando... 🔄";
+
+            let ticks = 0;
+            const interval = setInterval(() => {
+                const tempIndex = Math.floor(Math.random() * misionesRuleta.length);
+                missionTextEl.innerText = misionesRuleta[tempIndex];
+                ticks++;
+
+                if (ticks >= 10) {
+                    clearInterval(interval);
+                    misionSeleccionada = misionesRuleta[Math.floor(Math.random() * misionesRuleta.length)];
+                    missionTextEl.innerHTML = `🌟 <strong>TU MISIÓN:</strong><br>${misionSeleccionada}`;
+                    btnGirar.disabled = false;
+                    btnGirar.innerText = "Girar de Nuevo 🎲";
+                    completeWrapper.style.display = "block";
+                }
+            }, 150);
+        }
+
+        function completarMision() {
+            const completeWrapper = document.getElementById('missionCompleteWrapper');
+            const missionTextEl = document.getElementById('missionText');
+
+            completeWrapper.style.display = "none";
+            missionTextEl.innerHTML = "🎉 <strong>¡Misión completada con éxito!</strong><br>Gracias por contribuir directamente con el cuidado de Anta.";
+            addPoints(15);
+        }
+
+        // Lógica de la calculadora de Compostaje (Preservada)
         function calcularCompost() {
             const kilos = parseFloat(document.getElementById('residuosKilos').value) || 0;
             const tieneEspacio = document.getElementById('composteraEspacio').value;
@@ -896,6 +1420,7 @@
             resultBox.style.display = 'block';
             resultBox.style.borderColor = 'var(--eco-green)';
             resultBox.innerHTML = `<strong>Resultado:</strong> Evitando tirar estos residuos podrías generar cerca de <strong>${compostAnual.toFixed(1)} kg de abono natural</strong> al año.<br><br>💡 <em>${sugerencia}</em>`;
+            addPoints(5);
         }
     </script>
 </body>
