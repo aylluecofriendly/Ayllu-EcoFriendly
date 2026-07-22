@@ -234,22 +234,6 @@
             margin-bottom: 15px;
         }
 
-        /* PLACEHOLDER / PROXIMAMENTE BLOCKS */
-        .placeholder-box {
-            background-color: var(--bg-dark-gray);
-            border: 2px dashed #444;
-            padding: 40px;
-            text-align: center;
-            border-radius: 8px;
-            margin-top: 20px;
-        }
-
-        .placeholder-box i {
-            font-size: 36px;
-            color: var(--natgeo-yellow);
-            margin-bottom: 15px;
-        }
-
         /* RECURSOS & BLOG */
         .btn-download {
             background-color: transparent;
@@ -263,6 +247,7 @@
             text-transform: uppercase;
             margin-top: 15px;
             transition: all 0.3s;
+            cursor: pointer;
         }
 
         .btn-download:hover {
@@ -426,7 +411,7 @@
 
         .planet-icon {
             font-size: 64px;
-            color: #e74c3c; /* Empieza rojo (Mal estado) */
+            color: #e74c3c;
             transition: color 1s, transform 0.5s;
         }
 
@@ -612,6 +597,89 @@
             display: none;
         }
 
+        /* MODALES PAPERCRAFTS Y DIBUJOS */
+        .modal-papercraft {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(5px);
+            overflow-y: auto;
+            padding: 40px 20px;
+        }
+
+        .modal-papercraft-content {
+            background-color: var(--bg-dark-gray);
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 30px;
+            border-radius: 8px;
+            border: 2px solid var(--natgeo-yellow);
+            position: relative;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 28px;
+            color: var(--text-light);
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+
+        .close-modal:hover {
+            color: var(--natgeo-yellow);
+        }
+
+        .papercraft-item-card {
+            background-color: #111;
+            border: 1px solid #333;
+            border-radius: 6px;
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .papercraft-item-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 4px;
+            margin-bottom: 15px;
+            border: 1px solid #2c2c2c;
+        }
+
+        .papercraft-item-card h4 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: var(--eco-green);
+        }
+
+        /* EMBED VISOR PDF EN ENTRETENIMIENTO */
+        .pdf-viewer-container {
+            display: none;
+            margin-top: 20px;
+            background-color: #111;
+            border: 2px solid var(--natgeo-yellow);
+            border-radius: 6px;
+            padding: 15px;
+        }
+
+        .pdf-viewer-container embed {
+            width: 100%;
+            height: 600px;
+            border: none;
+            border-radius: 4px;
+        }
+
         /* FOOTER */
         footer {
             background-color: #000;
@@ -684,12 +752,28 @@
 
         <section id="entretenimiento" class="page-section">
             <h2 class="section-title">Entretenimiento Verde</h2>
-            <p>Un espacio interactivo diseñado para aprender jugando a través de la literatura, tiras cómicas y desafíos dinámicos.</p>
+            <p style="margin-bottom: 25px;">Un espacio interactivo diseñado para aprender leyendo nuestras historias ilustradas directamente en la página.</p>
             
-            <div class="placeholder-box">
-                <i class="fa-solid fa-book-open"></i>
-                <h3>Cuentos, Cómics y Trivias Ecológicas</h3>
-                <p>Estamos preparando increíbles aventuras gráficas e historias inspiradas en la conservación de nuestros paisajes andinos. ¡Próximamente!</p>
+            <div class="grid-3">
+                <div class="card card-yellow">
+                    <h3><i class="fa-solid fa-book-open" style="color: var(--natgeo-yellow);"></i> Historias del Ayllu Verde - CAP 1</h3>
+                    <p>Descubre el inicio de esta aventura ambiental para proteger los paisajes y ecosistemas de nuestra comunidad.</p>
+                    <button class="btn-download" onclick="togglePdfViewer('pdfViewerCap1')"><i class="fa-solid fa-book-reader"></i> Leer Capítulo 1</button>
+                    
+                    <div id="pdfViewerCap1" class="pdf-viewer-container">
+                        <embed src="Historias del Ayllu Verde CAP1.pdf" type="application/pdf">
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3><i class="fa-solid fa-book-open" style="color: var(--eco-green);"></i> Historias del Ayllu Verde - CAP 2</h3>
+                    <p>Sigue aprendiendo sobre el impacto del reciclaje y el cuidado de la fauna silvestre en la continuación de la saga.</p>
+                    <button class="btn-download" onclick="togglePdfViewer('pdfViewerCap2')"><i class="fa-solid fa-book-reader"></i> Leer Capítulo 2</button>
+                    
+                    <div id="pdfViewerCap2" class="pdf-viewer-container">
+                        <embed src="Historias del Ayllu Verde CAP2.pdf" type="application/pdf">
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -703,10 +787,17 @@
             </div>
 
             <div id="taki-podcasts" class="takikuna-subcontent active-subview">
-                <div class="placeholder-box" style="padding: 40px; border-style: dotted;">
-                    <i class="fa-solid fa-microphone-slash" style="font-size: 36px; color: var(--text-muted); margin-bottom: 15px;"></i>
-                    <h3>Podcasts no disponibles por el momento</h3>
-                    <p style="font-size: 14px; color: var(--text-muted); max-width: 600px; margin: 0 auto;">Estamos preparando los primeros episodios sobre el rescate de ecosistemas y leyendas de Izcuchaca. ¡Estarán listos muy pronto!</p>
+                <div class="media-link-card">
+                    <div>
+                        <span class="badge" style="background: var(--natgeo-yellow); color: black;">Episodio 1</span>
+                        <h4 style="margin-top: 5px;">Podcast Ambiental - Ayllu Eco-Friendly</h4>
+                    </div>
+                    <div class="audio-player-wrapper">
+                        <audio controls preload="metadata">
+                            <source src="Podcast.mp3" type="audio/mpeg">
+                            Tu navegador no soporta el reproductor de audio.
+                        </audio>
+                    </div>
                 </div>
             </div>
 
@@ -1010,18 +1101,13 @@
             <div class="grid-3" style="margin-top: 20px;">
                 <div class="card">
                     <h3>Papercraft</h3>
-                    <p>Plantillas imprimibles para armar figuras de papel</p>
-                    <a href="#" class="btn-download"><i class="fa-solid fa-file-pdf"></i> Descargar PDF</a>
+                    <p>Plantillas imprimibles para armar figuras de papel de animales y fauna.</p>
+                    <button onclick="togglePapercraftModal(true)" class="btn-download"><i class="fa-solid fa-eye"></i> Ver Papercrafts</button>
                 </div>
                 <div class="card card-yellow">
-                    <h3>Dibujos para Colorear: Flora Andina</h3>
-                    <p>Fichas didácticas infantiles para dar vida y reconocer los árboles y plantas nativas de nuestra región.</p>
-                    <a href="#" class="btn-download"><i class="fa-solid fa-image"></i> Descargar Pack</a>
-                </div>
-                <div class="card">
-                    <h3>Guía Comunitaria de las 3R</h3>
-                    <p>Manual técnico simplificado para el correcto diseño de artesanías estables con botellas y tapas descartables.</p>
-                    <a href="#" class="btn-download"><i class="fa-solid fa-file-pdf"></i> Descargar Manual</a>
+                    <h3>Dibujos para Colorear: Flora y Fauna</h3>
+                    <p>Fichas didácticas infantiles para dar vida y reconocer los animales, ríos y paisajes nativos de nuestra región.</p>
+                    <button onclick="toggleDibujosModal(true)" class="btn-download"><i class="fa-solid fa-eye"></i> Ver Dibujos</button>
                 </div>
             </div>
         </section>
@@ -1058,8 +1144,8 @@
                     <p style="font-size: 13px; color: var(--text-muted); margin-top: 10px;">Colabora difundiendo las acciones comunitarias de reciclaje y reforestación.</p>
                 </div>
 
-                <div class="placeholder-box" style="margin-top: 0; padding: 25px; display: flex; flex-direction: column; justify-content: center;">
-                    <i class="fa-solid fa-user-plus" style="font-size: 28px; color: var(--text-muted);"></i>
+                <div class="placeholder-box" style="margin-top: 0; padding: 25px; display: flex; flex-direction: column; justify-content: center; background-color: var(--bg-dark-gray); border: 2px dashed #444; border-radius: 8px; text-align: center;">
+                    <i class="fa-solid fa-user-plus" style="font-size: 28px; color: var(--text-muted); margin-bottom:10px;"></i>
                     <h3 style="font-size: 18px; font-family: 'Oswald', sans-serif; margin-bottom: 5px;">¿Quieres colaborar?</h3>
                     <p style="font-size: 12px; color: var(--text-muted);">Espacio reservado para nuevas marcas, emprendimientos u organizaciones eco-friendly que deseen unirse.</p>
                 </div>
@@ -1093,6 +1179,83 @@
         </section>
 
     </main>
+
+    <div id="papercraftModal" class="modal-papercraft">
+        <div class="modal-papercraft-content">
+            <span class="close-modal" onclick="togglePapercraftModal(false)">&times;</span>
+            <h2 class="section-title" style="margin-bottom: 20px;">Galería de Papercrafts</h2>
+            <p style="margin-bottom: 25px; color: var(--text-muted);">Explora y descarga nuestras plantillas imprimibles para armar figuras en 3D.</p>
+            
+            <div class="grid-3" style="grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));">
+                <div class="papercraft-item-card">
+                    <img src="Canguro.jpeg" alt="Papercraft Canguro">
+                    <h4>Canguro</h4>
+                    <a href="Canguro.jpeg" download="Canguro.jpeg" class="btn-download"><i class="fa-solid fa-download"></i> Descargar</a>
+                </div>
+                <div class="papercraft-item-card">
+                    <img src="Gateto.jpeg" alt="Papercraft Gateto">
+                    <h4>Gateto</h4>
+                    <a href="Gateto.jpeg" download="Gateto.jpeg" class="btn-download"><i class="fa-solid fa-download"></i> Descargar</a>
+                </div>
+                <div class="papercraft-item-card">
+                    <img src="Tiger.jpeg" alt="Papercraft Tigre">
+                    <h4>Tigre</h4>
+                    <a href="Tiger.jpeg" download="Tiger.jpeg" class="btn-download"><i class="fa-solid fa-download"></i> Descargar</a>
+                </div>
+                <div class="papercraft-item-card">
+                    <img src="Ave.jpeg" alt="Papercraft Ave">
+                    <h4>Ave</h4>
+                    <a href="Ave.jpeg" download="Ave.jpeg" class="btn-download"><i class="fa-solid fa-download"></i> Descargar</a>
+                </div>
+                <div class="papercraft-item-card">
+                    <img src="Pez.jpeg" alt="Papercraft Pez">
+                    <h4>Pez</h4>
+                    <a href="Pez.jpeg" download="Pez.jpeg" class="btn-download"><i class="fa-solid fa-download"></i> Descargar</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="dibujosModal" class="modal-papercraft">
+        <div class="modal-papercraft-content">
+            <span class="close-modal" onclick="toggleDibujosModal(false)">&times;</span>
+            <h2 class="section-title" style="margin-bottom: 20px;">Dibujos para Colorear</h2>
+            <p style="margin-bottom: 25px; color: var(--text-muted);">Explora, visualiza y descarga nuestras fichas educativas listas para imprimir y pintar.</p>
+            
+            <div class="grid-3" style="grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));">
+                <div class="papercraft-item-card">
+                    <img src="Ranas.jpeg" alt="Dibujo Ranas">
+                    <h4>Ranas</h4>
+                    <a href="Ranas.jpeg" download="Ranas.jpeg" class="btn-download"><i class="fa-solid fa-download"></i> Descargar</a>
+                </div>
+                <div class="papercraft-item-card">
+                    <img src="JTWYA.jpeg" alt="Dibujo JTWYA">
+                    <h4>JTWYA</h4>
+                    <a href="JTWYA.jpeg" download="JTWYA.jpeg" class="btn-download"><i class="fa-solid fa-download"></i> Descargar</a>
+                </div>
+                <div class="papercraft-item-card">
+                    <img src="Peces.jpeg" alt="Dibujo Peces">
+                    <h4>Peces</h4>
+                    <a href="Peces.jpeg" download="Peces.jpeg" class="btn-download"><i class="fa-solid fa-download"></i> Descargar</a>
+                </div>
+                <div class="papercraft-item-card">
+                    <img src="Campo.jpeg" alt="Dibujo Campo">
+                    <h4>Campo</h4>
+                    <a href="Campo.jpeg" download="Campo.jpeg" class="btn-download"><i class="fa-solid fa-download"></i> Descargar</a>
+                </div>
+                <div class="papercraft-item-card">
+                    <img src="Río.jpeg" alt="Dibujo Río">
+                    <h4>Río</h4>
+                    <a href="Río.jpeg" download="Río.jpeg" class="btn-download"><i class="fa-solid fa-download"></i> Descargar</a>
+                </div>
+                <div class="papercraft-item-card">
+                    <img src="Niño.jpeg" alt="Dibujo Niño">
+                    <h4>Niño</h4>
+                    <a href="Niño.jpeg" download="Niño.jpeg" class="btn-download"><i class="fa-solid fa-download"></i> Descargar</a>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <footer>
         <p>&copy; 2026 Ayllu Eco-Friendly. Impulsando la Conciencia e Impacto Ambiental en la Comunidad de Anta.</p>
@@ -1171,6 +1334,36 @@
             event.currentTarget.classList.add('active-tab');
         }
 
+        // Función para abrir / cerrar modal de Papercrafts
+        function togglePapercraftModal(show) {
+            const modal = document.getElementById('papercraftModal');
+            if (show) {
+                modal.style.display = 'block';
+            } else {
+                modal.style.display = 'none';
+            }
+        }
+
+        // Función para abrir / cerrar modal de Dibujos para colorear
+        function toggleDibujosModal(show) {
+            const modal = document.getElementById('dibujosModal');
+            if (show) {
+                modal.style.display = 'block';
+            } else {
+                modal.style.display = 'none';
+            }
+        }
+
+        // Función para expandir/colapsar Visor PDF en Entretenimiento
+        function togglePdfViewer(containerId) {
+            const container = document.getElementById(containerId);
+            if (container.style.display === 'block') {
+                container.style.display = 'none';
+            } else {
+                container.style.display = 'block';
+            }
+        }
+
         // 1. LÓGICA: CALCULADORA DE CARBONO MEJORADA
         function calcularHuellaCarbono() {
             const transporte = document.getElementById('carbonTransporte').value;
@@ -1183,7 +1376,6 @@
 
             let score = 0;
 
-            // Calcular según inputs
             if (transporte === 'auto') score += 40;
             else if (transporte === 'bus') score += 20;
             else score += 5;
@@ -1191,7 +1383,6 @@
             score += Math.min(dispositivos * 4, 30);
             score += Math.min(carne * 5, 30);
 
-            // Mostrar resultados
             resultBox.style.display = 'block';
             barFill.style.width = score + '%';
 
@@ -1351,7 +1542,6 @@
             const data = databaseQuiz[currentQuizIndex];
             const feedback = document.getElementById('quizFeedback');
             
-            // Deshabilitar clics en otras opciones
             const options = document.querySelectorAll('.quiz-option');
             options.forEach(opt => opt.onclick = null);
 
@@ -1371,14 +1561,12 @@
                 feedback.innerHTML = `<strong>❌ Incorrecto.</strong> ${data.explain}`;
             }
 
-            // Cambiar a la siguiente pregunta después de unos segundos
             setTimeout(() => {
                 currentQuizIndex = (currentQuizIndex + 1) % databaseQuiz.length;
                 loadQuizQuestion();
             }, 6000);
         }
 
-        // Inicializar la trivia al cargar la web
         loadQuizQuestion();
 
         // 6. LÓGICA: RULETA VERDE DE MISIONES DIARIAS
@@ -1427,7 +1615,7 @@
             addPoints(15);
         }
 
-        // Lógica de la calculadora de Compostaje (Preservada)
+        // Lógica de la calculadora de Compostaje
         function calcularCompost() {
             const kilos = parseFloat(document.getElementById('residuosKilos').value) || 0;
             const tieneEspacio = document.getElementById('composteraEspacio').value;
