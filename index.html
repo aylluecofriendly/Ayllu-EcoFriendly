@@ -32,6 +32,7 @@
             line-height: 1.6;
         }
 
+        /* HEADER & NAVBAR */
         header {
             background-color: var(--bg-black);
             border-bottom: 3px solid var(--natgeo-yellow);
@@ -105,6 +106,7 @@
             color: var(--natgeo-yellow);
         }
 
+        /* ESTRUCTURA PRINCIPAL */
         main {
             max-width: 1200px;
             margin: 40px auto;
@@ -269,6 +271,7 @@
             margin-bottom: 15px;
         }
 
+        /* ENTRETENIMIENTO Y JUEGOS */
         .game-card {
             background-color: var(--bg-dark-gray);
             border: 1px solid #2c2c2c;
@@ -321,6 +324,7 @@
             border-radius: 4px;
             transition: background 0.3s, transform 0.2s;
             margin-top: 10px;
+            cursor: pointer;
         }
 
         .btn-play:hover {
@@ -328,6 +332,7 @@
             transform: scale(1.02);
         }
 
+        /* GALERÍA */
         .gallery-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
@@ -371,6 +376,7 @@
             margin-bottom: 15px;
         }
 
+        /* BOTONES Y RECURSOS */
         .btn-download {
             background-color: transparent;
             border: 2px solid var(--text-light);
@@ -383,6 +389,7 @@
             text-transform: uppercase;
             margin-top: 15px;
             transition: all 0.3s;
+            cursor: pointer;
         }
 
         .btn-download:hover {
@@ -390,6 +397,7 @@
             color: var(--bg-black);
         }
 
+        /* PESTAÑAS Y AUDIOS (TAKIKUNA) */
         .subnav-tabs {
             display: flex;
             gap: 15px;
@@ -476,6 +484,7 @@
             background-color: #000;
         }
 
+        /* HERRAMIENTAS Y GAMIFICACIÓN */
         .eco-profile-panel {
             background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
             border-radius: 8px;
@@ -625,10 +634,10 @@
         }
 
         .timeline-item {
-            font-size: 28px;
+            font-size: 24px;
             cursor: pointer;
             transition: transform 0.2s;
-            opacity: 0.7;
+            opacity: 0.6;
         }
 
         .timeline-item:hover, .timeline-item.active {
@@ -675,43 +684,101 @@
             border: 1px solid #333;
         }
 
-        .roulette-display {
-            font-size: 18px;
-            font-weight: bold;
-            min-height: 60px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-color: #111;
+        .pdf-viewer-container {
+            display: none;
+            margin-top: 20px;
+            background: #1a1a1a;
+            border: 1px solid #333;
+            border-radius: 6px;
             padding: 15px;
-            border-radius: 4px;
-            margin-bottom: 15px;
-            border-left: 4px solid var(--eco-green);
         }
 
-        .completed-btn-wrapper {
-            margin-top: 10px;
+        .pdf-viewer-container iframe {
+            width: 100%;
+            height: 500px;
+            border: none;
+            border-radius: 4px;
+        }
+
+        /* MODALES PAPERCRAFT Y DIBUJOS */
+        .modal-papercraft {
             display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.85);
+            z-index: 2000;
+            overflow-y: auto;
+            padding: 40px 20px;
+        }
+
+        .modal-content-wrapper {
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: var(--bg-dark-gray);
+            border: 2px solid var(--natgeo-yellow);
+            border-radius: 8px;
+            padding: 30px;
+            position: relative;
+        }
+
+        .close-modal-btn {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 28px;
+            color: var(--text-light);
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+
+        .close-modal-btn:hover {
+            color: var(--natgeo-yellow);
+        }
+
+        .papercraft-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .papercraft-item-card {
+            background-color: var(--bg-black);
+            border: 1px solid #333;
+            border-radius: 6px;
+            padding: 15px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .papercraft-item-card img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 4px;
+            margin-bottom: 10px;
+        }
+
+        .papercraft-item-card h4 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 18px;
+            margin-bottom: 10px;
         }
 
         footer {
-            background-color: #000;
+            background-color: var(--bg-dark-gray);
             border-top: 1px solid #222;
-            padding: 40px 20px;
+            padding: 30px 20px;
             text-align: center;
-            font-size: 14px;
+            font-size: 13px;
             color: var(--text-muted);
             margin-top: 60px;
-        }
-
-        @media (max-width: 768px) {
-            .header-container {
-                flex-direction: column;
-                gap: 15px;
-            }
-            nav ul {
-                justify-content: center;
-            }
         }
     </style>
 </head>
@@ -719,16 +786,18 @@
 
     <header>
         <div class="header-container">
-            <a href="#" class="logo-area" onclick="switchSection('inicio')">
-                <span class="natgeo-box"></span>
-                <span class="logo-text">Ayllu <span class="green-txt">Eco</span><span class="blue-txt">Friendly</span></span>
+            <a href="#" onclick="switchSection('inicio')" class="logo-area">
+                <div class="natgeo-box"></div>
+                <div class="logo-text">
+                    AYLLU <span class="green-txt">ECO</span>-<span class="blue-txt">FRIENDLY</span>
+                </div>
             </a>
             <nav>
                 <ul>
                     <li><a onclick="switchSection('inicio')" id="nav-inicio" class="active">Inicio</a></li>
-                    <li><a onclick="switchSection('entretenimiento')" id="nav-entretenimiento">Entretenimiento</a></li>
-                    <li><a onclick="switchSection('podcasts')" id="nav-podcasts">Takikuna</a></li>
-                    <li><a onclick="switchSection('blog')" id="nav-blog">Noticias</a></li>
+                    <li><a onclick="switchSection('noticias')" id="nav-noticias">Noticias y problemática local</a></li>
+                    <li><a onclick="switchSection('entretenimiento')" id="nav-entretenimiento">Entretenimiento Verde</a></li>
+                    <li><a onclick="switchSection('takikuna')" id="nav-takikuna">Takikuna</a></li>
                     <li><a onclick="switchSection('galeria')" id="nav-galeria">Galería</a></li>
                     <li><a onclick="switchSection('herramientas')" id="nav-herramientas">Herramientas</a></li>
                     <li><a onclick="switchSection('recursos')" id="nav-recursos">Recursos</a></li>
@@ -739,13 +808,12 @@
     </header>
 
     <main>
-
         <section id="inicio" class="page-section active-section">
             <div class="hero">
                 <h1>Hacia un Futuro Sostenible en Anta</h1>
                 <p>Protegiendo nuestra biodiversidad andina frente a la contaminación por plásticos y la deforestación mediante acciones directas y educación ambiental comunitaria.</p>
             </div>
-            
+
             <h2 class="section-title">Novedades y Problemática Local</h2>
             <div class="grid-3">
                 <div class="card">
@@ -763,61 +831,96 @@
             </div>
         </section>
 
-        <section id="entretenimiento" class="page-section">
-            <h2 class="section-title">Entretenimiento Verde</h2>
-            <p style="margin-bottom: 25px;">Un espacio interactivo diseñado para aprender jugando a través de la literatura, retos interactivos y desafíos dinámicos.</p>
-            
-            <div class="grid-3">
-                <div class="game-card">
-                    <img src="Ranaaa.png" alt="Ecoconexiones: Desafío Ambiental">
-                    <div class="game-card-body">
-                        <h3>Ecoconexiones: Desafío Ambiental</h3>
-                        <a href="https://es.educaplay.com/recursos-educativos/29919461-ecoconexiones_desafio_ambiental.html" target="_blank" class="btn-play">Jugar <i class="fa-solid fa-gamepad"></i></a>
-                    </div>
+        <section id="noticias" class="page-section">
+            <h2 class="section-title">Noticias y Problemática Local</h2>
+            <div class="news-container">
+                <div>
+                    <article class="article-card">
+                        <div class="article-meta"><i class="fa-solid fa-newspaper"></i> Reporte Especial — Perú 2026</div>
+                        <h3 class="article-title">Los Desafíos Ambientales y Territoriales que Enfrentará el Próximo Gobierno Peruano</h3>
+                        <div class="article-content">
+                            <p>En el panorama político y social peruano actual, el inicio de una nueva gestión gubernamental tras las elecciones de 2026 supone la atención prioritaria de problemas estructurales graves en materia ambiental y territorial.</p>
+                            <p>La presencia de actividades ilícitas como la minería ilegal y el narcotráfico sigue extendiéndose por el país, consolidando economías paralelas en zonas donde la presencia del Estado es limitada.</p>
+                            <p>El impacto ambiental de estas actividades es devastador: la deforestación acelerada de la Amazonía y los andes genera la pérdida irreversible de biodiversidad y vulnera los derechos de defensores ambientales locales.</p>
+                        </div>
+                        <div class="article-references">
+                            <strong>Fuentes y Referencias:</strong> Radio Marañón (2026), Mongabay Latam (2026).
+                        </div>
+                    </article>
                 </div>
 
-                <div class="game-card">
-                    <img src="Memoria.png" alt="Conecta Contaminación y Medio Ambiente">
-                    <div class="game-card-body">
-                        <h3>Conecta Contaminación y Medio Ambiente</h3>
-                        <a href="https://es.educaplay.com/recursos-educativos/29919504-conecta_contaminacion_y_medio_ambiente.html" target="_blank" class="btn-play">Jugar <i class="fa-solid fa-gamepad"></i></a>
+                <aside class="sidebar-panel">
+                    <h3><i class="fa-solid fa-lightbulb"></i> ¿Sabías que?</h3>
+                    <div class="did-you-know-item">
+                        <strong>Microplásticos en ríos:</strong> Una botella plástica común puede demorar más de 450 años en descomponerse por completo.
                     </div>
-                </div>
-
-                <div class="game-card">
-                    <img src="Si o no.png" alt="Contaminación y Cuidado del Planeta">
-                    <div class="game-card-body">
-                        <h3>Contaminación y Cuidado del Planeta</h3>
-                        <a href="https://es.educaplay.com/recursos-educativos/29919562-contaminacion_y_cuidado_del_planeta.html" target="_blank" class="btn-play">Jugar <i class="fa-solid fa-gamepad"></i></a>
+                    <div class="did-you-know-item">
+                        <strong>Especies únicas:</strong> La región andina alberga especies endémicas de flora y fauna que no existen en ningún otro continente.
                     </div>
-                </div>
-            </div>
-
-            <div class="placeholder-box">
-                <i class="fa-solid fa-book-open"></i>
-                <h3>Cuentos, Cómics y Trivias Ecológicas</h3>
-                <p>Estamos preparando increíbles aventuras gráficas e historias inspiradas en la conservación de nuestros paisajes andinos. ¡Próximamente!</p>
+                    <div class="did-you-know-item">
+                        <strong>Reciclaje local:</strong> Reutilizar tapas plásticas para confeccionar artesanías reduce directamente la cantidad de basura acumulada en Izcuchaca.
+                    </div>
+                </aside>
             </div>
         </section>
 
-        <section id="podcasts" class="page-section">
-            <h2 class="section-title">Takikuna</h2>
-            <p>Nuestra biblioteca de audio ancestral y moderno. Elige entre nuestras producciones radiales e informativas o nuestra selección musical.</p>
-            
-            <div class="subnav-tabs">
-                <button class="tab-btn active-tab" onclick="switchTakikunaTab('taki-podcasts')">Podcasts</button>
-                <button class="tab-btn" onclick="switchTakikunaTab('taki-musica')">Música</button>
-            </div>
+        <section id="entretenimiento" class="page-section">
+            <h2 class="section-title">Entretenimiento Verde</h2>
+            <p style="margin-bottom: 25px;">Un espacio interactivo diseñado para aprender jugando a través de la literatura, retos interactivos y desafíos dinámicos.</p>
 
-            <div id="taki-podcasts" class="takikuna-subcontent active-subview">
-                <div class="placeholder-box" style="padding: 40px; border-style: dotted;">
-                    <i class="fa-solid fa-microphone-slash" style="font-size: 36px; color: var(--text-muted); margin-bottom: 15px;"></i>
-                    <h3>Podcasts no disponibles por el momento</h3>
-                    <p style="font-size: 14px; color: var(--text-muted); max-width: 600px; margin: 0 auto;">Estamos preparando los primeros episodios sobre el rescate de ecosistemas y leyendas de Izcuchaca. ¡Estarán listos muy pronto!</p>
+            <div class="grid-3">
+                <div class="game-card">
+                    <img src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=600&q=80" alt="Libro Interactivo">
+                    <div class="game-card-body">
+                        <div>
+                            <h3>Ecolibro Didáctico</h3>
+                            <p style="font-size: 13px; color: var(--text-muted);">Aprende sobre la preservación ambiental a través de esta guía interactiva ilustrada.</p>
+                        </div>
+                        <button class="btn-play" onclick="togglePdfViewer('pdfEcolibro')"><i class="fa-solid fa-book-open"></i> Abrir ecolibro</button>
+                    </div>
+                </div>
+
+                <div class="game-card">
+                    <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=600&q=80" alt="Guía Interactiva">
+                    <div class="game-card-body">
+                        <div>
+                            <h3>Guía de la Sostenibilidad</h3>
+                            <p style="font-size: 13px; color: var(--text-muted);">Revisa las mejores prácticas de reciclaje y cuidado del medio ambiente.</p>
+                        </div>
+                        <button class="btn-play" onclick="togglePdfViewer('pdfGuia')"><i class="fa-solid fa-file-pdf"></i> Ver Guía</button>
+                    </div>
+                </div>
+
+                <div class="game-card">
+                    <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=600&q=80" alt="Retos y Trivia">
+                    <div class="game-card-body">
+                        <div>
+                            <h3>Quiz & Retos Verdes</h3>
+                            <p style="font-size: 13px; color: var(--text-muted);">Pon a prueba tus conocimientos en la sección de Herramientas Gamificadas.</p>
+                        </div>
+                        <a onclick="switchSection('herramientas')" class="btn-play"><i class="fa-solid fa-gamepad"></i> Ir a Retos</a>
+                    </div>
                 </div>
             </div>
 
-            <div id="taki-musica" class="takikuna-subcontent">
+            <div id="pdfEcolibro" class="pdf-viewer-container">
+                <h3 style="margin-bottom: 15px; font-family: 'Oswald', sans-serif;">Lectura: Ecolibro Didáctico</h3>
+                <iframe src="ecolibro.pdf"></iframe>
+            </div>
+
+            <div id="pdfGuia" class="pdf-viewer-container">
+                <h3 style="margin-bottom: 15px; font-family: 'Oswald', sans-serif;">Lectura: Guía de la Sostenibilidad</h3>
+                <iframe src="guia_sostenibilidad.pdf"></iframe>
+            </div>
+        </section>
+
+        <section id="takikuna" class="page-section">
+            <h2 class="section-title">Takikuna (Voces y Sonidos)</h2>
+            <div class="subnav-tabs">
+                <button class="tab-btn active-tab" onclick="switchTakikunaTab('audios', this)">Pistas de Audio</button>
+            </div>
+
+            <div id="takikuna-audios" class="takikuna-subcontent active-subview">
                 <div class="media-link-card">
                     <div>
                         <span class="badge">Audio 1</span>
@@ -885,58 +988,6 @@
             </div>
         </section>
 
-        <section id="blog" class="page-section">
-            <h2 class="section-title">Eco-Noticias</h2>
-            
-            <div class="news-container">
-                <article class="article-card">
-                    <div class="article-meta">
-                        📰 Crónica Ambiental 2026 | Nacional / Política &bull; Fecha: 15 de julio de 2026
-                    </div>
-                    <h3 class="article-title">Tras las urnas, una crisis pendiente: el nuevo gobierno hereda un país marcado por economías ilegales y deterioro ambiental</h3>
-                    
-                    <div class="article-content">
-                        <p><strong>Con un presidente ya electo, el Perú entra en una etapa de transición donde las promesas de campaña enfrentan una realidad dominada por la minería ilegal, el narcotráfico y la violencia territorial.</strong></p>
-                        
-                        <p><strong>Lima. —</strong> A pocas semanas de la toma de mando, el Perú atraviesa un momento de aparente calma política que contrasta con la profundidad de los desafíos que el nuevo gobierno deberá enfrentar. Las elecciones han concluido, pero los problemas que definieron el debate público —la expansión de economías ilegales y el deterioro ambiental— no solo persisten, sino que se intensifican en diversas regiones del país.</p>
-                        
-                        <p>Entre ellos, la minería ilegal se mantiene como uno de los principales focos de inestabilidad. En zonas de la Amazonía, esta actividad ha evolucionado hacia sistemas organizados que operan con redes propias de transporte, financiamiento y protección armada. El futuro del Registro Integral de Formalización Minera (Reinfo), tema recurrente durante la campaña, se perfila ahora como una de las primeras decisiones críticas del gobierno entrante, especialmente ante el riesgo de que continúe funcionando como un mecanismo que diluye la frontera entre legalidad e ilegalidad (Mongabay Latam, 2026).</p>
-                        
-                        <p>A este escenario se suma el narcotráfico, cuya expansión sigue evidenciándose en las aproximadamente 89,000 hectáreas de cultivos de coca ilegal registradas en el país. Más allá de la cifra, el fenómeno refleja una realidad más compleja: la consolidación de economías paralelas en territorios donde la presencia del Estado es limitada o intermitente. En estos espacios, el crimen organizado no solo produce, sino que también regula y ejerce control social (Radio Marañón, 2026).</p>
-                        
-                        <p>El impacto ambiental de estas actividades es significativo. La deforestación en la Amazonía peruana continúa advancing, impulsada por la minería ilegal y la tala clandestina, generando la pérdida acelerada de biodiversidad y afectando ecosistemas clave para el equilibrio climático. Estas transformaciones no solo tienen consecuencias ecológicas, sino también sociales, al comprometer los medios de vida de comunidades indígenas (Mongabay Latam, 2026).</p>
-                        
-                        <p>En paralelo, los defensores ambientales siguen enfrentando altos niveles de riesgo. Las amenazas de muerte, los ataques selectivos y la falta de protección efectiva evidencian una situación de vulnerabilidad persistente. La implementación pendiente de instrumentos como el Acuerdo de Escazú continúa siendo una de las principales deudas del Estado en materia de derechos y protección territorial (Radio Marañón, 2026).</p>
-                        
-                        <p>A nivel internacional, el nuevo gobierno también deberá responder a crecientes exigencias. Normativas como la ley europea de “cero deforestación” imponen estándares más estrictos que podrían afectar las exportaciones si no se desarrollan políticas de adaptación adecuadas (Mongabay Latam, 2026).</p>
-                        
-                        <p>En este contexto, el periodo entre la elección y la asunción presidencial se convierte en un espacio clave no solo para la planificación política, sino para definir prioridades reales. La ciudadanía ya ha votado; ahora, la expectativa se centra en si el nuevo liderazgo será capaz de traducir sus propuestas en estrategias concretas frente a una crisis que no admite postergaciones.</p>
-                        
-                        <p><strong>Porque en el Perú de hoy, ganar una elección no significa resolver los problemas, sino comenzar a enfrentarlos.</strong></p>
-                    </div>
-
-                    <div class="article-references">
-                        <strong>Referencias:</strong><br>
-                        • Mongabay Latam. (2026). Desafíos ambientales de Perú en 2026.<br>
-                        • Radio Marañón. (2026). ¿Cuáles son los siete desafíos ambientales en el Perú?
-                    </div>
-                </article>
-
-                <aside class="sidebar-panel">
-                    <h3>¿Sabías que?</h3>
-                    <div class="did-you-know-item">
-                        <strong>Plásticos eternos:</strong> Una sola botella plástica tarda un promedio de 450 años en descomponerse por completo en los ecosistemas andinos.
-                    </div>
-                    <div class="did-you-know-item">
-                        <strong>Especies únicas:</strong> La región de Anta alberga aves y plantas medicinales nativas que no existen en ningún otro continente.
-                    </div>
-                    <div class="did-you-know-item">
-                        <strong>Reciclaje local:</strong> Reutilizar tapas plásticas para confeccionar artesanías reduce directamente la cantidad de basura acumulada en Izcuchaca.
-                    </div>
-                </aside>
-            </div>
-        </section>
-
         <section id="galeria" class="page-section">
             <h2 class="section-title">Galería de Fotos</h2>
             <p>Un espacio visual para documentar nuestros logros ambientales, jornadas de reforestación y talleres de reciclaje.</p>
@@ -949,50 +1000,6 @@
                 <div class="gallery-item"><img src="1781711444359.jpg" alt="Galería Ayllu Eco-Friendly"></div>
                 <div class="gallery-item"><img src="1781711444376.jpg" alt="Galería Ayllu Eco-Friendly"></div>
                 <div class="gallery-item"><img src="1781711444391.jpg" alt="Galería Ayllu Eco-Friendly"></div>
-                <div class="gallery-item"><img src="1781711444408.jpg" alt="Galería Ayllu Eco-Friendly"></div>
-                <div class="gallery-item"><img src="1781711444425.jpg" alt="Galería Ayllu Eco-Friendly"></div>
-                <div class="gallery-item"><img src="1781711444442.jpg" alt="Galería Ayllu Eco-Friendly"></div>
-                <div class="gallery-item"><img src="1781711444459.jpg" alt="Galería Ayllu Eco-Friendly"></div>
-                <div class="gallery-item"><img src="1781711444477.jpg" alt="Galería Ayllu Eco-Friendly"></div>
-                <div class="gallery-item"><img src="1781711444492.jpg" alt="Galería Ayllu Eco-Friendly"></div>
-                <div class="gallery-item"><img src="1781711444507.jpg" alt="Galería Ayllu Eco-Friendly"></div>
-                <div class="gallery-item"><img src="1781711444525.jpg" alt="Galería Ayllu Eco-Friendly"></div>
-                <div class="gallery-item"><img src="1781711444544.jpg" alt="Galería Ayllu Eco-Friendly"></div>
-                <div class="gallery-item"><img src="1781711444559.jpg" alt="Galería Ayllu Eco-Friendly"></div>
-                <div class="gallery-item"><img src="1781711444577.jpg" alt="Galería Ayllu Eco-Friendly"></div>
-                <div class="gallery-item"><img src="1781711619793.jpg" alt="Galería Ayllu Eco-Friendly"></div>
-                <div class="gallery-item"><img src="1781711619845.jpg" alt="Galería Ayllu Eco-Friendly"></div>
-                <div class="gallery-item"><img src="1781711619894.jpg" alt="Galería Ayllu Eco-Friendly"></div>
-                <div class="gallery-item"><img src="1781711619923.jpg" alt="Galería Ayllu Eco-Friendly"></div>
-                <div class="gallery-item"><img src="1781711619949.jpg" alt="Galería Ayllu Eco-Friendly"></div>
-                <div class="gallery-item"><img src="1781711619980.jpg" alt="Galería Ayllu Eco-Friendly"></div>
-                <div class="gallery-item"><img src="1781711620012.jpg" alt="Galería Ayllu Eco-Friendly"></div>
-                <div class="gallery-item"><img src="1781711620047.jpg" alt="Galería Ayllu Eco-Friendly"></div>
-                <div class="gallery-item"><img src="1781711620078.jpg" alt="Galería Ayllu Eco-Friendly"></div>
-                <div class="gallery-item"><img src="1781711620111.jpg" alt="Galería Ayllu Eco-Friendly"></div>
-                <div class="gallery-item"><img src="1781711620140.jpg" alt="Galería Ayllu Eco-Friendly"></div>
-                <div class="gallery-item"><img src="1781711620167.jpg" alt="Galería Ayllu Eco-Friendly"></div>
-                <div class="gallery-item"><img src="1781711620184.jpg" alt="Galería Ayllu Eco-Friendly"></div>
-                <div class="gallery-item"><img src="1781711620205.jpg" alt="Galería Ayllu Eco-Friendly"></div>
-                <div class="gallery-item"><img src="1781712628008.jpg" alt="Galería Ayllu Eco-Friendly"></div>
-                <div class="gallery-item"><img src="1781712628028.jpg" alt="Galería Ayllu Eco-Friendly"></div>
-                <div class="gallery-item"><img src="1781712628045.jpg" alt="Galería Ayllu Eco-Friendly"></div>
-                <div class="gallery-item"><img src="1781712628062.jpg" alt="Galería Ayllu Eco-Friendly"></div>
-                <div class="gallery-item"><img src="1781712628082.jpg" alt="Galería Ayllu Eco-Friendly"></div>
-                <div class="gallery-item"><img src="1781712628096.jpg" alt="Galería Ayllu Eco-Friendly"></div>
-                <div class="gallery-item"><img src="1781712628111.jpg" alt="Galería Ayllu Eco-Friendly"></div>
-                <div class="gallery-item"><img src="1781712628128.jpg" alt="Galería Ayllu Eco-Friendly"></div>
-                <div class="gallery-item"><img src="1781712628143.jpg" alt="Galería Ayllu Eco-Friendly"></div>
-                <div class="gallery-item"><img src="1781712628158.jpg" alt="Galería Ayllu Eco-Friendly"></div>
-                <div class="gallery-item"><img src="1781712628175.jpg" alt="Galería Ayllu Eco-Friendly"></div>
-                <div class="gallery-item"><img src="1781712628193.jpg" alt="Galería Ayllu Eco-Friendly"></div>
-                <div class="gallery-item"><img src="1781712628210.jpg" alt="Galería Ayllu Eco-Friendly"></div>
-                <div class="gallery-item"><img src="1781712628231.jpg" alt="Galería Ayllu Eco-Friendly"></div>
-                <div class="gallery-item"><img src="1781712628261.jpg" alt="Galería Ayllu Eco-Friendly"></div>
-                <div class="gallery-item"><img src="1781712628281.jpg" alt="Galería Ayllu Eco-Friendly"></div>
-                <div class="gallery-item"><img src="1781712628303.jpg" alt="Galería Ayllu Eco-Friendly"></div>
-                <div class="gallery-item"><img src="1781712628323.jpg" alt="Galería Ayllu Eco-Friendly"></div>
-                <div class="gallery-item"><img src="1781712628337.jpg" alt="Galería Ayllu Eco-Friendly"></div>
                 <div class="gallery-item"><img src="1781712628350.jpg" alt="Galería Ayllu Eco-Friendly"></div>
                 <div class="gallery-item"><img src="1781712628375.jpg" alt="Galería Ayllu Eco-Friendly"></div>
                 <div class="gallery-item"><img src="1781712628397.jpg" alt="Galería Ayllu Eco-Friendly"></div>
@@ -1003,36 +1010,6 @@
                 <div class="gallery-item"><img src="1781712628498.jpg" alt="Galería Ayllu Eco-Friendly"></div>
                 <div class="gallery-item"><img src="1781712628512.jpg" alt="Galería Ayllu Eco-Friendly"></div>
                 <div class="gallery-item"><img src="1781712628531.jpg" alt="Galería Ayllu Eco-Friendly"></div>
-                <div class="gallery-item"><img src="1781712628546.jpg" alt="Galería Ayllu Eco-Friendly"></div>
-                <div class="gallery-item"><img src="1781712628568.jpg" alt="Galería Ayllu Eco-Friendly"></div>
-                <div class="gallery-item"><img src="1781712628585.jpg" alt="Galería Ayllu Eco-Friendly"></div>
-                <div class="gallery-item"><img src="1781712628604.jpg" alt="Galería Ayllu Eco-Friendly"></div>
-                <div class="gallery-item"><img src="1781712628623.jpg" alt="Galería Ayllu Eco-Friendly"></div>
-                <div class="gallery-item"><img src="1781712628641.jpg" alt="Galería Ayllu Eco-Friendly"></div>
-                <div class="gallery-item"><img src="1781712628656.jpg" alt="Galería Ayllu Eco-Friendly"></div>
-                <div class="gallery-item"><img src="1781712628674.jpg" alt="Galería Ayllu Eco-Friendly"></div>
-                <div class="gallery-item"><img src="1781712628703.jpg" alt="Galería Ayllu Eco-Friendly"></div>
-                <div class="gallery-item"><img src="1781712628724.jpg" alt="Galería Ayllu Eco-Friendly"></div>
-                <div class="gallery-item"><img src="1781712628740.jpg" alt="Galería Ayllu Eco-Friendly"></div>
-                <div class="gallery-item"><img src="1781712628758.jpg" alt="Galería Ayllu Eco-Friendly"></div>
-                <div class="gallery-item"><img src="1781712628776.jpg" alt="Galería Ayllu Eco-Friendly"></div>
-                <div class="gallery-item"><img src="1781712628790.jpg" alt="Galería Ayllu Eco-Friendly"></div>
-                <div class="gallery-item"><img src="1781712628807.jpg" alt="Galería Ayllu Eco-Friendly"></div>
-                <div class="gallery-item"><img src="1781712628822.jpg" alt="Galería Ayllu Eco-Friendly"></div>
-                <div class="gallery-item"><img src="1781712628837.jpg" alt="Galería Ayllu Eco-Friendly"></div>
-                <div class="gallery-item"><img src="1781712628853.jpg" alt="Galería Ayllu Eco-Friendly"></div>
-                <div class="gallery-item"><img src="1781712628868.jpg" alt="Galería Ayllu Eco-Friendly"></div>
-                <div class="gallery-item"><img src="1781712628882.jpg" alt="Galería Ayllu Eco-Friendly"></div>
-                <div class="gallery-item"><img src="1781712628899.jpg" alt="Galería Ayllu Eco-Friendly"></div>
-                <div class="gallery-item"><img src="1781713135399.jpg" alt="Galería Ayllu Eco-Friendly"></div>
-                <div class="gallery-item"><img src="1781713135424.jpg" alt="Galería Ayllu Eco-Friendly"></div>
-                <div class="gallery-item"><img src="1781713135450.jpg" alt="Galería Ayllu Eco-Friendly"></div>
-                <div class="gallery-item"><img src="1781713135478.jpg" alt="Galería Ayllu Eco-Friendly"></div>
-                <div class="gallery-item"><img src="1781713135507.jpg" alt="Galería Ayllu Eco-Friendly"></div>
-                <div class="gallery-item"><img src="1781713135536.jpg" alt="Galería Ayllu Eco-Friendly"></div>
-                <div class="gallery-item"><img src="1781713135566.jpg" alt="Galería Ayllu Eco-Friendly"></div>
-                <div class="gallery-item"><img src="1781713135596.jpg" alt="Galería Ayllu Eco-Friendly"></div>
-                <div class="gallery-item"><img src="1781713182278.jpg" alt="Galería Ayllu Eco-Friendly"></div>
             </div>
         </section>
 
@@ -1046,177 +1023,156 @@
                     <p style="font-size:14px; opacity:0.9; margin-bottom:15px;">Usa las herramientas para subir tu puntuación y sanar el planeta virtual.</p>
                     <div style="display: flex; gap: 15px;">
                         <div class="profile-stat" style="flex:1;">
-                            <span style="font-size:11px; text-transform:uppercase; color:var(--text-muted);">EcoPuntos</span>
+                            <div style="font-size:11px; text-transform:uppercase; color:var(--text-muted);">Puntos Acumulados</div>
                             <div class="stat-value" id="userPoints">0</div>
                         </div>
                         <div class="profile-stat" style="flex:1;">
-                            <span style="font-size:11px; text-transform:uppercase; color:var(--text-muted);">Rango</span>
-                            <div class="stat-value" id="userRange" style="font-size:18px; margin-top:10px; color:var(--eco-green);">🌱 Semilla</div>
+                            <div style="font-size:11px; text-transform:uppercase; color:var(--text-muted);">Rango Ecológico</div>
+                            <div style="font-size: 16px; font-weight: bold; margin-top: 8px; color: var(--natgeo-yellow);" id="userRange">Semilla Consciente</div>
                         </div>
                     </div>
                 </div>
                 <div class="planet-visualizer" id="planetVisual">
                     <i class="fa-solid fa-earth-americas planet-icon"></i>
-                    <h4 style="font-family:'Oswald', sans-serif; text-transform:uppercase; margin-top:10px;">Estado de tu Planeta</h4>
-                    <span id="planetStatusText" style="color:#e74c3c; font-weight:bold; font-size:14px;">Crítico (🔴 Alerta Ambiental)</span>
+                    <p style="font-size:13px; margin-top:10px; font-weight:bold;" id="planetStatusText">Estado del Planeta: Crítico 🔴</p>
                 </div>
             </div>
 
-            <div class="grid-3">
-                <div class="calc-container">
-                    <h3><i class="fa-solid fa-cloud" style="color: var(--text-muted);"></i> Huella de Carbono Personal</h3>
-                    <p style="font-size: 12px; color:var(--text-muted); margin-bottom: 15px;">Estima tu huella según tus hábitos cotidianos de transporte y energía.</p>
-                    
-                    <div class="form-group">
-                        <label>¿Cómo te trasladas habitualmente?</label>
-                        <select id="carbonTransporte">
-                            <option value="bici">🚶 Caminando o en Bicicleta</option>
-                            <option value="bus">🚌 Autobús de Servicio Público</option>
-                            <option value="auto">🚗 Automóvil Particular</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label>Uso diario de dispositivos electrónicos (horas):</label>
-                        <input type="number" id="carbonDispositivos" placeholder="Ej. 6" min="0">
-                    </div>
-                    <div class="form-group">
-                        <label>Consumo de carne a la semana (veces):</label>
-                        <input type="number" id="carbonCarne" placeholder="Ej. 3" min="0">
-                    </div>
-                    <button class="btn" onclick="calcularHuellaCarbono()">Estimar Huella</button>
-                    
-                    <div id="resultadoCarbono" class="calc-result" style="background-color: rgba(22, 22, 22, 0.9); border: 1px solid #333;">
-                        <div style="font-family:'Oswald'; text-transform:uppercase; font-size: 18px;" id="carbonStatusTitle">Análisis:</div>
-                        <div class="carbon-bar-bg">
-                            <div class="carbon-bar-fill" id="carbonBarFill"></div>
-                        </div>
-                        <p id="carbonDetails" style="font-size: 13px; color:var(--text-light);"></p>
-                    </div>
-                </div>
-
-                <div class="calc-container">
-                    <h3><i class="fa-solid fa-droplet" style="color: var(--friendly-blue);"></i> Calculadora de Agua Pro</h3>
-                    <p style="font-size: 12px; color:var(--text-muted); margin-bottom: 15px;">Calcula tu consumo real aproximado de agua sumando actividades básicas.</p>
-                    
-                    <div class="form-group">
-                        <label>Tiempo en la ducha diario (minutos):</label>
-                        <input type="number" id="waterShower" placeholder="Ej. 10" min="0">
-                    </div>
-                    <div class="form-group">
-                        <label>Frecuencia de lavado de ropa (veces/semana):</label>
-                        <input type="number" id="waterLaundry" placeholder="Ej. 2" min="0">
-                    </div>
-                    <div class="form-group">
-                        <label>¿Lavas los platos con el grifo abierto?</label>
-                        <select id="waterDishes">
-                            <option value="no">Cierro el grifo al enjabonar</option>
-                            <option value="si">Dejo correr el agua siempre</option>
-                        </select>
-                    </div>
-                    <button class="btn" onclick="calcularAguaCompleto()">Verificar Litros</button>
-                    
-                    <div id="resultadoAguaCompleto" class="calc-result" style="background-color: rgba(52, 152, 219, 0.15); border-left: 4px solid var(--friendly-blue);">
-                        <p id="waterResultText" style="font-size: 14px;"></p>
-                    </div>
-                </div>
-
-                <div class="calc-container">
-                    <h3><i class="fa-solid fa-recycle" style="color: var(--eco-green);"></i> ¿Qué Basura Soy?</h3>
-                    <p style="font-size: 12px; color:var(--text-muted); margin-bottom: 15px;">Escribe un residuo común (ej. "botella", "pila", "manzana", "carton") para clasificarlo.</p>
-                    
-                    <div class="form-group classifier-input-box">
-                        <input type="text" id="trashQuery" placeholder="Escribe un objeto...">
-                        <button class="btn" style="width: auto; padding: 10px 15px;" onclick="clasificarResiduo()"><i class="fa-solid fa-magnifying-glass"></i></button>
-                    </div>
-                    
-                    <div id="resultadoClasificador" class="calc-result" style="background-color: rgba(46, 204, 113, 0.15); border-left: 4px solid var(--eco-green);">
-                        <p id="trashResultText" style="font-size: 14px;"></p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="grid-3">
-                <div class="calc-container">
-                    <h3><i class="fa-solid fa-hourglass-half" style="color: var(--natgeo-yellow);"></i> ¿Cuánto Tarda en Degradarse?</h3>
-                    <p style="font-size: 12px; color:var(--text-muted); margin-bottom: 15px;">Haz clic en los siguientes elementos para revelar su ciclo de descomposición en la naturaleza:</p>
-                    
-                    <div class="timeline-container">
-                        <div class="timeline-item" onclick="mostrarDegradacion('platano', this)">🍌</div>
-                        <div class="timeline-item" onclick="mostrarDegradacion('papel', this)">📄</div>
-                        <div class="timeline-item" onclick="mostrarDegradacion('botella', this)">🥤</div>
-                        <div class="timeline-item" onclick="mostrarDegradacion('pila', this)">🪫</div>
-                    </div>
-
-                    <div id="resultadoDegradacion" class="calc-result" style="background-color: #1c1c1c; border: 1px dashed var(--natgeo-yellow); display: block; margin-top: 15px; padding: 15px;">
-                        <h4 id="degLabel" style="font-family:'Oswald'; color:var(--natgeo-yellow); text-transform:uppercase;">Selecciona un objeto de arriba</h4>
-                        <p id="degDesc" style="font-size: 13px; color:var(--text-muted); margin-top: 5px;">Aprende cómo afecta cada residuo si termina abandonado en nuestro entorno andino.</p>
-                    </div>
-                </div>
-
-                <div class="calc-container">
-                    <h3><i class="fa-solid fa-circle-question" style="color: var(--eco-green);"></i> Trivia Ambiental</h3>
-                    <p style="font-size: 12px; color:var(--text-muted); margin-bottom: 15px;">Pon a prueba tus conocimientos sobre reciclaje y conservación y acumula puntos.</p>
-                    
-                    <div class="quiz-box">
-                        <div id="quizQuestion" style="font-weight: bold; font-size: 14px; margin-bottom: 10px;">¿Cargando pregunta?</div>
-                        <div id="quizOptions"></div>
-                        <div id="quizFeedback" style="margin-top: 15px; font-size: 13px; display: none; padding: 8px; border-radius: 4px;"></div>
-                    </div>
-                </div>
-
-                <div class="calc-container">
-                    <h3><i class="fa-solid fa-dice" style="color: var(--natgeo-yellow);"></i> Ruleta de Misiones Verdes</h3>
-                    <p style="font-size: 12px; color:var(--text-muted); margin-bottom: 15px;">Gira la ruleta y asume un reto de impacto directo para tu día a día.</p>
-                    
-                    <div class="roulette-container">
-                        <div class="roulette-display" id="missionText">¡Haz girar la ruleta para obtener tu misión diaria!</div>
-                        <button class="btn" id="btnGirarRuleta" onclick="girarRuleta()">Girar Ruleta 🎲</button>
-                        
-                        <div class="completed-btn-wrapper" id="missionCompleteWrapper">
-                            <button class="btn" style="background-color: var(--eco-green); color: black;" onclick="completarMision()">¡Completado! (+15 EcoPuntos)</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="calc-container" style="max-width: 500px; margin: 0 auto;">
-                <h3><i class="fa-solid fa-seedling" style="color: var(--eco-green);"></i> Potencial de Compostaje</h3>
+            <div class="calc-container">
+                <h3><i class="fa-solid fa-cloud" style="color: var(--text-muted);"></i> Huella de Carbono Personal</h3>
+                <p style="font-size: 12px; color:var(--text-muted); margin-bottom: 15px;">Estima tu huella según tus hábitos cotidianos de transporte y energía.</p>
+                
                 <div class="form-group">
-                    <label>Residuos de cocina generados al día (en kg aprox):</label>
-                    <input type="number" id="residuosKilos" placeholder="Ej. 1.5" step="0.1" min="0">
-                </div>
-                <div class="form-group">
-                    <label>¿Tienes espacio para una compostera pequeña?</label>
-                    <select id="composteraEspacio">
-                        <option value="si">Sí, jardín o maceta</option>
-                        <option value="no">No tengo espacio disponible</option>
+                    <label>¿Cómo te trasladas habitualmente?</label>
+                    <select id="carbonTransporte">
+                        <option value="bici">🚶 Caminando o en Bicicleta</option>
+                        <option value="bus">🚌 Autobús de Servicio Público</option>
+                        <option value="auto">🚗 Automóvil Particular</option>
                     </select>
                 </div>
-                <button class="btn" onclick="calcularCompost()">Calcular Abono</button>
-                <div id="resultadoCompost" class="calc-result"></div>
+                <div class="form-group">
+                    <label>Uso diario de dispositivos electrónicos (horas):</label>
+                    <input type="number" id="carbonDispositivos" placeholder="Ej. 6" min="0">
+                </div>
+                <div class="form-group">
+                    <label>Consumo de carne a la semana (veces):</label>
+                    <input type="number" id="carbonCarne" placeholder="Ej. 3" min="0">
+                </div>
+                <button class="btn" onclick="calcularHuellaCarbono()">Estimar Huella</button>
+
+                <div id="resultadoCarbono" class="calc-result" style="background-color: rgba(22, 22, 22, 0.9); border: 1px solid #444;">
+                    <h4 id="carbonStatusTitle" style="font-family:'Oswald', sans-serif;"></h4>
+                    <div class="carbon-bar-bg"><div id="carbonBarFill" class="carbon-bar-fill"></div></div>
+                    <p id="carbonDetails" style="font-size: 13px; color:#ddd;"></p>
+                </div>
             </div>
 
+            <div class="calc-container">
+                <h3><i class="fa-solid fa-droplet" style="color: var(--friendly-blue);"></i> Calculadora de Consumo de Agua</h3>
+                <p style="font-size: 12px; color:var(--text-muted); margin-bottom: 15px;">Mide tu huella hídrica diaria promedio.</p>
+                <div class="form-group">
+                    <label>Duración promedio de duchas (minutos):</label>
+                    <input type="number" id="waterShower" placeholder="Ej. 10" min="0">
+                </div>
+                <div class="form-group">
+                    <label>¿Dejas el caño abierto al cepillarte los dientes?</label>
+                    <select id="waterTap">
+                        <option value="no">No, uso un vaso / Cierro la llave</option>
+                        <option value="si">Sí, lo dejo corriendo</option>
+                    </select>
+                </div>
+                <button class="btn" onclick="calcularAguaCompleto()">Calcular Litros</button>
+                <div id="resultadoAgua" class="calc-result" style="background-color: rgba(52, 152, 219, 0.15); border-left: 4px solid var(--friendly-blue);">
+                    <p id="waterResultText" style="font-size: 14px;"></p>
+                </div>
+            </div>
+
+            <div class="calc-container">
+                <h3><i class="fa-solid fa-recycle" style="color: var(--eco-green);"></i> ¿Qué Basura Soy?</h3>
+                <p style="font-size: 12px; color:var(--text-muted); margin-bottom: 15px;">Escribe un residuo común (ej. "botella", "pila", "manzana", "carton") para clasificarlo.</p>
+                <div class="form-group classifier-input-box">
+                    <input type="text" id="trashQuery" placeholder="Escribe un objeto...">
+                    <button class="btn" style="width: auto; padding: 10px 15px;" onclick="clasificarResiduo()"><i class="fa-solid fa-magnifying-glass"></i></button>
+                </div>
+                <div id="resultadoClasificador" class="calc-result" style="background-color: rgba(46, 204, 113, 0.15); border-left: 4px solid var(--eco-green);">
+                    <p id="trashResultText" style="font-size: 14px;"></p>
+                </div>
+            </div>
+
+            <div class="calc-container">
+                <h3><i class="fa-solid fa-clock-rotate-left" style="color: var(--natgeo-yellow);"></i> Línea de Tiempo de Degradación</h3>
+                <p style="font-size: 12px; color:var(--text-muted); margin-bottom: 10px;">Haz clic en cada objeto para conocer su impacto:</p>
+                <div class="timeline-container">
+                    <div class="timeline-item" onclick="mostrarDegradacion('manzana', this)">🍎</div>
+                    <div class="timeline-item" onclick="mostrarDegradacion('papel', this)">📄</div>
+                    <div class="timeline-item" onclick="mostrarDegradacion('botella', this)">🥤</div>
+                    <div class="timeline-item" onclick="mostrarDegradacion('pila', this)">🪫</div>
+                </div>
+                <div id="degResult" style="margin-top:15px; padding: 12px; background:#1c1c1c; border-radius:4px;">
+                    <h4 id="degTitle" style="color: var(--natgeo-yellow); font-size:15px;">Selecciona un objeto arriba</h4>
+                    <p id="degTime" style="font-size: 13px; font-weight: bold; margin-top:3px;"></p>
+                    <p id="degDesc" style="font-size: 13px; color:var(--text-muted); margin-top: 5px;">Aprende cómo afecta cada residuo si termina abandonado en nuestro entorno andino.</p>
+                </div>
+            </div>
+
+            <div class="calc-container">
+                <h3><i class="fa-solid fa-circle-question" style="color: var(--eco-green);"></i> Trivia Ambiental</h3>
+                <p style="font-size: 12px; color:var(--text-muted); margin-bottom: 15px;">Pon a prueba tus conocimientos sobre reciclaje y conservación y acumula puntos.</p>
+                <div class="quiz-box">
+                    <div id="quizQuestion" style="font-weight: bold; font-size: 14px; margin-bottom: 10px;">¿Cargando pregunta?</div>
+                    <div id="quizOptions"></div>
+                    <div id="quizFeedback" style="margin-top: 15px; font-size: 13px; display: none; padding: 8px; border-radius: 4px;"></div>
+                </div>
+            </div>
+
+            <div class="calc-container">
+                <h3><i class="fa-solid fa-dice" style="color: var(--natgeo-yellow);"></i> Ruleta de Misiones Verdes</h3>
+                <p style="font-size: 12px; color:var(--text-muted); margin-bottom: 15px;">Obtén una misión ecológica aleatoria para realizar en tu hogar o comunidad.</p>
+                <div class="roulette-container">
+                    <div id="missionDisplay" style="font-size: 16px; margin-bottom: 20px; font-weight: bold; color: var(--natgeo-yellow); min-height: 50px; display: flex; align-items: center; justify-content: center;">
+                        ¡Haz clic en el botón para girar la ruleta!
+                    </div>
+                    <button class="btn" id="btnGirarRuleta" onclick="spinRoulette()">🎲 Girar Ruleta</button>
+                    <div id="completeMissionWrapper" style="display:none; margin-top: 15px;">
+                        <button class="btn" style="background-color: var(--eco-green); color: black;" onclick="completarMision()">✅ ¡Misión Cumplida! (+15 Puntos)</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="calc-container">
+                <h3><i class="fa-solid fa-seedling" style="color: var(--eco-green);"></i> Calculadora de Compostaje</h3>
+                <p style="font-size: 12px; color:var(--text-muted); margin-bottom: 15px;">Calcula cuántos kilogramos de abono orgánico puedes producir en un año con tus residuos orgánicos cotidianos.</p>
+                <div class="form-group">
+                    <label>Residuos orgánicos generados al día (en kg aprox.):</label>
+                    <input type="number" id="residuosKilos" placeholder="Ej. 0.5" step="0.1" min="0">
+                </div>
+                <div class="form-group">
+                    <label>¿Dispones de jardín, huerto o patio en casa?</label>
+                    <select id="composteraEspacio">
+                        <option value="si">Sí, tengo espacio al aire libre</option>
+                        <option value="no">No, vivo en departamento o espacio reducido</option>
+                    </select>
+                </div>
+                <button class="btn" onclick="calcularCompost()">Calcular Potencial de Compost</button>
+                <div id="resultadoCompost" class="calc-result" style="background-color: rgba(46, 204, 113, 0.15); border-left: 4px solid var(--eco-green);">
+                </div>
+            </div>
         </section>
 
         <section id="recursos" class="page-section">
             <h2 class="section-title">Recursos Descargables</h2>
             <p>Material pedagógico libre y gratuito para profesores, activistas, niños y público en general.</p>
-            
+
             <div class="grid-3" style="margin-top: 20px;">
                 <div class="card">
                     <h3>Papercraft</h3>
-                    <p>Plantillas imprimibles para armar figuras de papel</p>
-                    <a href="#" class="btn-download"><i class="fa-solid fa-file-pdf"></i> Descargar PDF</a>
+                    <p>Plantillas imprimibles para armar figuras de papel de animales y fauna.</p>
+                    <button onclick="togglePapercraftModal(true)" class="btn-download"><i class="fa-solid fa-eye"></i> Ver Papercrafts</button>
                 </div>
                 <div class="card card-yellow">
-                    <h3>Dibujos para Colorear: Flora Andina</h3>
-                    <p>Fichas didácticas infantiles para dar vida y reconocer los árboles y plantas nativas de nuestra región.</p>
-                    <a href="#" class="btn-download"><i class="fa-solid fa-image"></i> Descargar Pack</a>
-                </div>
-                <div class="card">
-                    <h3>Guía Comunitaria de las 3R</h3>
-                    <p>Manual técnico simplificado para el correcto diseño de artesanías estables con botellas y tapas descartables.</p>
-                    <a href="#" class="btn-download"><i class="fa-solid fa-file-pdf"></i> Descargar Manual</a>
+                    <h3>Dibujos para Colorear: Flora y Fauna</h3>
+                    <p>Fichas didácticas infantiles para dar vida y reconocer los animales, ríos y paisajes nativos de nuestra región.</p>
+                    <button onclick="toggleDibujosModal(true)" class="btn-download"><i class="fa-solid fa-eye"></i> Ver Dibujos</button>
                 </div>
             </div>
         </section>
@@ -1224,9 +1180,9 @@
         <section id="colaboraciones" class="page-section">
             <h2 class="section-title">Nuestras Colaboraciones</h2>
             <p style="margin-bottom: 20px;">Agradecemos profundamente a las personas, colectivos y marcas aliadas que se suman a la causa para impulsar un impacto ambiental real en nuestra comunidad.</p>
-            
-            <div class="grid-3" style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));">
-                <div class="card" style="border-top: 3px solid var(--eco-green); text-align: center;">
+
+            <div class="grid-3">
+                <div class="card" style="border-top: 3px solid var(--natgeo-yellow); text-align: center;">
                     <div style="width: 80px; height: 80px; background-color: #333; border-radius: 50%; margin: 0 auto 15px auto; display: flex; align-items: center; justify-content: center;">
                         <i class="fa-solid fa-user" style="font-size: 32px; color: var(--eco-green);"></i>
                     </div>
@@ -1240,23 +1196,17 @@
                         <i class="fa-solid fa-headset" style="font-size: 32px; color: var(--friendly-blue);"></i>
                     </div>
                     <h3>valde2w</h3>
-                    <span style="font-size: 12px; color: var(--natgeo-yellow); font-weight: bold; text-transform: uppercase;">Streamer / Creador de Contenido</span>
-                    <p style="font-size: 13px; color: var(--text-muted); margin-top: 10px;">Nos apoya impulsando la conciencia ambiental en las plataformas digitales.</p>
+                    <span style="font-size: 12px; color: var(--friendly-blue); font-weight: bold; text-transform: uppercase;">Colaborador de Medios Audiovisuales</span>
+                    <p style="font-size: 13px; color: var(--text-muted); margin-top: 10px;">Colabora en la producción visual y edición del proyecto.</p>
                 </div>
 
-                <div class="card" style="border-top: 3px solid var(--natgeo-yellow); text-align: center;">
-                    <div style="width: 80px; height: 80px; background-color: #333; border-radius: 50%; margin: 0 auto 15px auto; display: flex; align-items: center; justify-content: center;">
-                        <i class="fa-solid fa-users" style="font-size: 32px; color: var(--natgeo-yellow);"></i>
+                <div class="card" style="border-top: 3px solid #555; text-align: center; opacity: 0.7;">
+                    <div style="width: 80px; height: 80px; background-color: #222; border-radius: 50%; margin: 0 auto 15px auto; display: flex; align-items: center; justify-content: center;">
+                        <i class="fa-solid fa-handshake-angle" style="font-size: 32px; color: #777;"></i>
                     </div>
-                    <h3>LaEsquinaOficial</h3>
-                    <span style="font-size: 12px; color: var(--eco-green); font-weight: bold; text-transform: uppercase;">Streamer / Colectivo Aliado</span>
-                    <p style="font-size: 13px; color: var(--text-muted); margin-top: 10px;">Colabora difundiendo las acciones comunitarias de reciclaje y reforestación.</p>
-                </div>
-
-                <div class="placeholder-box" style="margin-top: 0; padding: 25px; display: flex; flex-direction: column; justify-content: center;">
-                    <i class="fa-solid fa-user-plus" style="font-size: 28px; color: var(--text-muted);"></i>
-                    <h3 style="font-size: 18px; font-family: 'Oswald', sans-serif; margin-bottom: 5px;">¿Quieres colaborar?</h3>
-                    <p style="font-size: 12px; color: var(--text-muted);">Espacio reservado para nuevas marcas, emprendimientos u organizaciones eco-friendly que deseen unirse.</p>
+                    <h3>¡Tu Marca Aquí!</h3>
+                    <span style="font-size: 12px; color: #aaa; font-weight: bold; text-transform: uppercase;">Únete como Aliado Eco</span>
+                    <p style="font-size: 13px; color: var(--text-muted); margin-top: 10px;">Espacio reservado para nuevas marcas, emprendimientos u organizaciones eco-friendly que deseen unirse.</p>
                 </div>
             </div>
 
@@ -1277,7 +1227,7 @@
                 </video>
             </div>
 
-            <h3 style="font-family: 'Oswald', sans-serif; font-size: 24px; text-transform: uppercase; margin-top: 30px; border-bottom: 2px solid var(--natgeo-yellow); padding-bottom: 5px;">Video proporcionado por LaEsquinaOficial</h3>
+            <h3 style="font-family: 'Oswald', sans-serif; font-size: 24px; text-transform: uppercase; margin-top: 30px; border-bottom: 2px solid var(--natgeo-yellow); padding-bottom: 5px;">Video Institucional</h3>
             <div class="video-wrapper">
                 <video controls preload="metadata">
                     <source src="Video for the web (2).mov" type="video/quicktime">
@@ -1286,8 +1236,74 @@
                 </video>
             </div>
         </section>
-
     </main>
+
+    <div id="modalPapercraft" class="modal-papercraft">
+        <div class="modal-content-wrapper">
+            <span class="close-modal-btn" onclick="togglePapercraftModal(false)">&times;</span>
+            <h2 style="font-family: 'Oswald', sans-serif; font-size: 28px; border-left: 4px solid var(--natgeo-yellow); padding-left: 10px; margin-bottom: 10px;">Plantillas Papercraft</h2>
+            <p style="font-size: 14px; color: var(--text-muted); margin-bottom: 20px;">Descarga e imprime estas plantillas para armar tus propias figuras en 3D de la fauna local.</p>
+            
+            <div class="papercraft-grid">
+                <div class="papercraft-item-card">
+                    <img src="Gato.jpeg" alt="Papercraft Gato">
+                    <h4>Gato Andino</h4>
+                    <a href="Gato.pdf" download="Gato.pdf" class="btn-download"><i class="fa-solid fa-download"></i> Descargar PDF</a>
+                </div>
+                <div class="papercraft-item-card">
+                    <img src="Llama.jpeg" alt="Papercraft Llama">
+                    <h4>Llama</h4>
+                    <a href="Llama.pdf" download="Llama.pdf" class="btn-download"><i class="fa-solid fa-download"></i> Descargar PDF</a>
+                </div>
+                <div class="papercraft-item-card">
+                    <img src="Cóndor.jpeg" alt="Papercraft Cóndor">
+                    <h4>Cóndor Andino</h4>
+                    <a href="Cóndor.pdf" download="Cóndor.pdf" class="btn-download"><i class="fa-solid fa-download"></i> Descargar PDF</a>
+                </div>
+                <div class="papercraft-item-card">
+                    <img src="Oso de Anteojos.jpeg" alt="Papercraft Oso de Anteojos">
+                    <h4>Oso de Anteojos</h4>
+                    <a href="Oso de Anteojos.pdf" download="Oso de Anteojos.pdf" class="btn-download"><i class="fa-solid fa-download"></i> Descargar PDF</a>
+                </div>
+                <div class="papercraft-item-card">
+                    <img src="Zorro.jpeg" alt="Papercraft Zorro">
+                    <h4>Zorro Andino</h4>
+                    <a href="Zorro.pdf" download="Zorro.pdf" class="btn-download"><i class="fa-solid fa-download"></i> Descargar PDF</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="modalDibujos" class="modal-papercraft">
+        <div class="modal-content-wrapper">
+            <span class="close-modal-btn" onclick="toggleDibujosModal(false)">&times;</span>
+            <h2 style="font-family: 'Oswald', sans-serif; font-size: 28px; border-left: 4px solid var(--natgeo-yellow); padding-left: 10px; margin-bottom: 10px;">Dibujos para Colorear</h2>
+            <p style="font-size: 14px; color: var(--text-muted); margin-bottom: 20px;">Descarga e imprime estas láminas didácticas para colorear y aprender sobre la biodiversidad.</p>
+
+            <div class="papercraft-grid">
+                <div class="papercraft-item-card">
+                    <img src="Peces.jpeg" alt="Dibujo Peces">
+                    <h4>Peces</h4>
+                    <a href="Peces.jpeg" download="Peces.jpeg" class="btn-download"><i class="fa-solid fa-download"></i> Descargar</a>
+                </div>
+                <div class="papercraft-item-card">
+                    <img src="Campo.jpeg" alt="Dibujo Campo">
+                    <h4>Campo</h4>
+                    <a href="Campo.jpeg" download="Campo.jpeg" class="btn-download"><i class="fa-solid fa-download"></i> Descargar</a>
+                </div>
+                <div class="papercraft-item-card">
+                    <img src="Río.jpeg" alt="Dibujo Río">
+                    <h4>Río</h4>
+                    <a href="Río.jpeg" download="Río.jpeg" class="btn-download"><i class="fa-solid fa-download"></i> Descargar</a>
+                </div>
+                <div class="papercraft-item-card">
+                    <img src="Niño.jpeg" alt="Dibujo Niño">
+                    <h4>Niño</h4>
+                    <a href="Niño.jpeg" download="Niño.jpeg" class="btn-download"><i class="fa-solid fa-download"></i> Descargar</a>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <footer>
         <p>&copy; 2026 Ayllu Eco-Friendly. Impulsando la Conciencia e Impacto Ambiental en la Comunidad de Anta.</p>
@@ -1295,6 +1311,7 @@
     </footer>
 
     <script>
+        // ECO PUNTOS Y GAMIFICACIÓN
         let ecoPoints = 0;
 
         function addPoints(pts) {
@@ -1307,65 +1324,76 @@
             const rangeEl = document.getElementById('userRange');
             const planetVisualEl = document.getElementById('planetVisual');
             const planetStatusText = document.getElementById('planetStatusText');
-            
+
             if (ecoPoints >= 80) {
-                rangeEl.innerText = "🏆 Eco-Héroe";
-                rangeEl.style.color = "var(--natgeo-yellow)";
+                rangeEl.innerText = "Guardián de Anta 🌳";
                 planetVisualEl.className = "planet-visualizer healthy";
-                planetStatusText.innerHTML = "Sano (🟢 Ecosistema Protegido)";
+                planetStatusText.innerText = "Estado del Planeta: Próspero y Sostenible 🟢";
             } else if (ecoPoints >= 40) {
-                rangeEl.innerText = "🌳 Árbol";
-                rangeEl.style.color = "var(--friendly-blue)";
+                rangeEl.innerText = "Protector Local 🌿";
                 planetVisualEl.className = "planet-visualizer moderate";
-                planetStatusText.innerHTML = "Estable (🟡 Bajo Recuperación)";
-            } else if (ecoPoints >= 15) {
-                rangeEl.innerText = "🌿 Brote";
-                rangeEl.style.color = "#a3e4d7";
-                planetVisualEl.className = "planet-visualizer moderate";
-                planetStatusText.innerHTML = "Estable (🟡 Bajo Recuperación)";
+                planetStatusText.innerText = "Estado del Planeta: En Recuperación 🟡";
             } else {
-                rangeEl.innerText = "🌱 Semilla";
-                rangeEl.style.color = "var(--eco-green)";
+                rangeEl.innerText = "Semilla Consciente 🌱";
                 planetVisualEl.className = "planet-visualizer";
-                planetStatusText.innerHTML = "Crítico (🔴 Alerta Ambiental)";
+                planetStatusText.innerText = "Estado del Planeta: Crítico 🔴";
             }
         }
 
+        // NAVEGACIÓN ENTRE SECCIONES
         function switchSection(sectionId) {
-            const sections = document.querySelectorAll('.page-section');
-            sections.forEach(sec => sec.classList.remove('active-section'));
-            
-            const navLinks = document.querySelectorAll('nav a');
-            navLinks.forEach(link => link.classList.remove('active'));
-            
-            const targetSection = document.getElementById(sectionId);
-            if(targetSection) {
-                targetSection.classList.add('active-section');
-            }
-            
-            const targetLink = document.getElementById('nav-' + sectionId);
-            if(targetLink) {
-                targetLink.classList.add('active');
+            document.querySelectorAll('.page-section').forEach(sec => sec.classList.remove('active-section'));
+            document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
+
+            const activeSection = document.getElementById(sectionId);
+            if (activeSection) {
+                activeSection.classList.add('active-section');
             }
 
-            window.scrollTo({top: 0, behavior: 'smooth'});
+            const activeNav = document.getElementById('nav-' + sectionId);
+            if (activeNav) {
+                activeNav.classList.add('active');
+            }
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        function switchTakikunaTab(subviewId) {
-            const contents = document.querySelectorAll('.takikuna-subcontent');
-            contents.forEach(c => c.classList.remove('active-subview'));
+        // PESTAÑAS EN TAKIKUNA
+        function switchTakikunaTab(tabId, btn) {
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active-tab'));
+            btn.classList.add('active-tab');
 
-            const buttons = document.querySelectorAll('.subnav-tabs .tab-btn');
-            buttons.forEach(b => b.classList.remove('active-tab'));
-
-            document.getElementById(subviewId).classList.add('active-subview');
-            event.currentTarget.classList.add('active-tab');
+            document.querySelectorAll('.takikuna-subcontent').forEach(c => c.classList.remove('active-subview'));
+            document.getElementById('takikuna-' + tabId).classList.add('active-subview');
         }
 
+        // MODALES PAPERCRAFT Y DIBUJOS
+        function togglePapercraftModal(show) {
+            const modal = document.getElementById('modalPapercraft');
+            modal.style.display = show ? 'block' : 'none';
+        }
+
+        function toggleDibujosModal(show) {
+            const modal = document.getElementById('modalDibujos');
+            modal.style.display = show ? 'block' : 'none';
+        }
+
+        // VISOR PDF
+        function togglePdfViewer(containerId) {
+            const container = document.getElementById(containerId);
+            if (container.style.display === 'block') {
+                container.style.display = 'none';
+            } else {
+                container.style.display = 'block';
+            }
+        }
+
+        // HUELLA DE CARBONO
         function calcularHuellaCarbono() {
             const transporte = document.getElementById('carbonTransporte').value;
             const dispositivos = parseFloat(document.getElementById('carbonDispositivos').value) || 0;
             const carne = parseFloat(document.getElementById('carbonCarne').value) || 0;
+
             const resultBox = document.getElementById('resultadoCarbono');
             const barFill = document.getElementById('carbonBarFill');
             const statusTitle = document.getElementById('carbonStatusTitle');
@@ -1383,11 +1411,11 @@
             resultBox.style.display = 'block';
             barFill.style.width = score + '%';
 
-            if (score <= 30) {
+            if (score <= 35) {
                 barFill.style.backgroundColor = 'var(--eco-green)';
-                statusTitle.innerText = "🟢 Huella muy Baja";
+                statusTitle.innerText = "🟢 Huella Baja y Sostenible";
                 statusTitle.style.color = "var(--eco-green)";
-                details.innerText = `¡Espectacular! Tu impacto ambiental es mínimo (${score}/100 puntos). Tus hábitos son sumamente amigables con los ecosistemas de Anta.`;
+                details.innerText = `¡Felicitaciones! Tu puntaje es de ${score}/100 (muy bajo en emisiones). Tus hábitos son sumamente amigables con los ecosistemas de Anta.`;
             } else if (score <= 65) {
                 barFill.style.backgroundColor = 'var(--natgeo-yellow)';
                 statusTitle.innerText = "🟡 Huella Moderada";
@@ -1403,39 +1431,37 @@
             addPoints(5);
         }
 
+        // CALCULADORA DE AGUA
         function calcularAguaCompleto() {
             const shower = parseFloat(document.getElementById('waterShower').value) || 0;
-            const laundry = parseFloat(document.getElementById('waterLaundry').value) || 0;
-            const dishes = document.getElementById('waterDishes').value;
-            const resultBox = document.getElementById('resultadoAguaCompleto');
-            const textEl = document.getElementById('waterResultText');
+            const tapOpen = document.getElementById('waterTap').value;
+            const resultBox = document.getElementById('resultadoAgua');
+            const resultText = document.getElementById('waterResultText');
 
-            let totalLitros = (shower * 12) + ((laundry * 100) / 7);
-            if (dishes === 'si') totalLitros += 30;
-            else totalLitros += 10;
-
-            totalLitros = Math.round(totalLitros);
-            
-            const equivalenciaDuchas = Math.round(totalLitros / 15);
-            const equivalenciaBotellas = Math.round(totalLitros / 0.5);
+            let aguaDucha = shower * 12; 
+            let aguaDientes = (tapOpen === 'si') ? 12 : 1; 
+            let totalDiario = aguaDucha + aguaDientes;
 
             resultBox.style.display = 'block';
-            textEl.innerHTML = `<strong>Consumes aprox:</strong> <span style="font-size:20px; color:var(--friendly-blue); font-weight:bold;">${totalLitros} litros al día.</span><br><br>
-            Eso equivale aproximadamente a:<br>
-            🚿 <strong>${equivalenciaDuchas} duchas cortas</strong> de 1.5 minutos.<br>
-            🥤 <strong>${equivalenciaBotellas} botellas plásticas</strong> de 500ml llenas.`;
+
+            if (totalDiario <= 60) {
+                resultText.innerHTML = `💧 <strong>Consumo diario estimado: ${totalDiario} Litros.</strong><br>¡Excelente uso responsable del agua en tus actividades diarias!`;
+            } else {
+                resultText.innerHTML = `⚠️ <strong>Consumo diario estimado: ${totalDiario} Litros.</strong><br>Podrías ahorrar más agua cerrando el caño durante el cepillado o acortando el tiempo en la ducha.`;
+            }
 
             addPoints(5);
         }
 
+        // CLASIFICADOR DE RESIDUOS
         const databaseResiduos = {
             "botella": { contenedor: "Amarillo (Plásticos)", degradacion: "450 años", dato: "Reutilizándolas puedes crear hermosos maceteros o manualidades para tu hogar." },
             "pila": { contenedor: "Contenedor de Pilas / Residuos Peligrosos", degradacion: "1000 años", dato: "Contienen metales pesados altamente tóxicos. ¡Nunca las mezcles con tu basura común!" },
             "bateria": { contenedor: "Contenedor de Pilas / Residuos Peligrosos", degradacion: "1000 años", dato: "Contienen metales pesados altamente tóxicos. ¡Nunca las mezcles con tu basura común!" },
             "carton": { contenedor: "Azul (Papel y Cartón)", degradacion: "1 año", dato: "Si se moja o se llena de grasa (como las cajas de pizza) ya no se puede reciclar." },
-            "papel": { contenedor: "Azul (Papel y Cartón)", degradacion: "1 año", dato: "Si se moja o se llena de grasa ya no se puede reciclar." },
+            "papel": { contenedor: "Azul (Papel y Cartón)", degradacion: "1 año", dato: "Reciclar 1 tonelada de papel salva aproximadamente 17 árboles adultos." },
             "manzana": { contenedor: "Marrón (Orgánico)", degradacion: "2 meses", dato: "Es ideal para transformarlo en abono de alta calidad (compost) para tus plantas." },
-            "platano": { contenedor: "Marrón (Orgánico)", degradacion: "2 meses", dato: "Es ideal para transformarlo en abono de alta calidad (compost) para tus plantas." },
+            "fruta": { contenedor: "Marrón (Orgánico)", degradacion: "2 meses", dato: "Es ideal para transformarlo en abono de alta calidad (compost) para tus plantas." },
             "organico": { contenedor: "Marrón (Orgánico)", degradacion: "2 meses", dato: "Es ideal para transformarlo en abono de alta calidad (compost) para tus plantas." },
             "vidrio": { contenedor: "Verde (Vidrio)", degradacion: "4000 años", dato: "El vidrio es 100% reciclable de forma infinita sin perder calidad." }
         };
@@ -1462,17 +1488,18 @@
 
             resultBox.style.display = 'block';
             if (found) {
-                resultText.innerHTML = `♻️ <strong>Va en:</strong> Contenedor <span style="color:var(--eco-green); font-weight:bold;">${found.contenedor}</span>.<br><br>
-                ⏳ <strong>Tiempo de degradación:</strong> ${found.degradacion}.<br><br>
-                💡 <strong>Dato curioso:</strong> ${found.dato}`;
+                resultBox.style.borderColor = 'var(--eco-green)';
+                resultText.innerHTML = `<strong>Contenedor sugerido:</strong> ${found.contenedor}<br><strong>Tiempo de degradación:</strong> ${found.degradacion}<br>💡 <em>${found.dato}</em>`;
                 addPoints(5);
             } else {
-                resultText.innerHTML = `❌ No encontramos ese desecho específico en nuestra base de datos rápida, pero recuerda la regla general: <strong>Orgánico va a composta, papeles limpios en azul y plásticos duros en amarillo</strong>.`;
+                resultBox.style.borderColor = 'var(--natgeo-yellow)';
+                resultText.innerHTML = `No tenemos ese residuo registrado específicamente, pero recuerda: <strong>Plásticos</strong> (Amarillo), <strong>Papel/Cartón</strong> (Azul), <strong>Orgánicos</strong> (Marrón) y <strong>General/No Reciclable</strong> (Negro).`;
             }
         }
 
-        const dataDegradacion = {
-            platano: { titulo: "Cáscara de Plátano 🍌", tiempo: "2 meses", desc: "Aunque es de origen orgánico y se composta fácil, tirarlo en asfalto tarda semanas y puede atraer plagas indeseadas." },
+        // LÍNEA DE TIEMPO
+        const infoDegradacion = {
+            manzana: { titulo: "Restos de Manzana 🍎", tiempo: "2 meses", desc: "Aunque es de origen orgánico y se composta fácil, tirarlo en asfalto tarda semanas y puede atraer plagas indeseadas." },
             papel: { titulo: "Papel o Cartón 📄", tiempo: "1 año", desc: "Se biodegrada rápido si hay humedad, pero si se compacta en vertederos sin oxígeno puede tardar mucho más." },
             botella: { titulo: "Botella de Plástico 🥤", tiempo: "450 años", desc: "No se descompone, solo se fragmenta en partículas diminutas llamadas microplásticos que contaminan el agua de nuestros ríos." },
             pila: { titulo: "Baterías / Pilas 🪫", tiempo: "1,000 años", desc: "El material externo de metal se oxida lentamente, pero los químicos tóxicos de su interior nunca dejan de contaminar la tierra." }
@@ -1482,64 +1509,46 @@
             document.querySelectorAll('.timeline-item').forEach(i => i.classList.remove('active'));
             element.classList.add('active');
 
-            const info = dataDegradacion[item];
-            document.getElementById('degLabel').innerHTML = `${info.titulo} &bull; <span style="color:var(--natgeo-yellow);">${info.tiempo}</span>`;
-            document.getElementById('degDesc').innerText = info.desc;
-
-            addPoints(2);
+            const data = infoDegradacion[item];
+            document.getElementById('degTitle').innerText = data.titulo;
+            document.getElementById('degTime').innerText = `Tiempo estimado: ${data.tiempo}`;
+            document.getElementById('degDesc').innerText = data.desc;
         }
 
-        const databaseQuiz = [
-            {
-                q: "¿Cuánto tarda una botella de plástico común en degradarse?",
-                options: ["20 años", "100 años", "450 años", "1000 años"],
-                correct: 2,
-                explain: "Las botellas plásticas tardan una media de 450 años en degradarse, fragmentándose en microplásticos dañinos."
-            },
-            {
-                q: "¿Qué residuo NUNCA se debe echar en el compost?",
-                options: ["Restos de fruta", "Hojas secas", "Plásticos reciclables", "Cáscaras de huevo"],
-                correct: 2,
-                explain: "Los plásticos no son de origen orgánico y no se descomponen en el compost; contaminarían la mezcla."
-            },
-            {
-                q: "¿Cuál es la forma más efectiva de reducir tu impacto de plásticos?",
-                options: ["Reciclar botellas", "Reutilizar bolsas", "Reducir la compra de envases descartables", "Quemarlos"],
-                correct: 2,
-                explain: "Reducir es el paso más importante de las 3R. Evitar el residuo en origen es siempre la mejor opción."
-            }
+        // TRIVIA AMBIENTAL
+        const quizData = [
+            { q: "¿Cuánto tarda aproximadamente una botella de plástico en degradarse en la naturaleza?", options: ["5 años", "50 años", "450 años", "Nunca se degrada"], correct: 2, explain: "Así es, tarda unos 450 años en degradarse, fragmentándose en microplásticos dañinos." },
+            { q: "¿Qué residuo NUNCA se debe echar en el compost?", options: ["Restos de fruta", "Hojas secas", "Plásticos reciclables", "Cáscaras de huevo"], correct: 2, explain: "Los plásticos no son de origen orgánico y no se descomponen en el compost; contaminarían la mezcla." },
+            { q: "¿Cuál es la forma más efectiva de reducir tu impacto de plásticos?", options: ["Reciclar botellas", "Reutilizar bolsas", "Reducir la compra de envases descartables", "Quemarlos"], correct: 2, explain: "Reducir es el paso más importante de las 3R. Evitar el residuo en origen es siempre la mejor opción." }
         ];
 
         let currentQuizIndex = 0;
 
         function loadQuizQuestion() {
-            const data = databaseQuiz[currentQuizIndex];
-            document.getElementById('quizQuestion').innerText = data.q;
-            
-            const optionsEl = document.getElementById('quizOptions');
-            optionsEl.innerHTML = "";
-            
+            const data = quizData[currentQuizIndex];
+            document.getElementById('quizQuestion').innerText = `Pregunta ${currentQuizIndex + 1}: ${data.q}`;
+
+            const optionsContainer = document.getElementById('quizOptions');
+            optionsContainer.innerHTML = '';
+            document.getElementById('quizFeedback').style.display = 'none';
+
             data.options.forEach((opt, index) => {
                 const btn = document.createElement('div');
-                btn.className = "quiz-option";
+                btn.className = 'quiz-option';
                 btn.innerText = opt;
-                btn.onclick = () => selectQuizAnswer(index, btn);
-                optionsEl.appendChild(btn);
+                btn.onclick = () => checkQuizAnswer(index, btn);
+                optionsContainer.appendChild(btn);
             });
-
-            const feedback = document.getElementById('quizFeedback');
-            feedback.style.display = "none";
         }
 
-        function selectQuizAnswer(selectedIndex, clickedElement) {
-            const data = databaseQuiz[currentQuizIndex];
+        function checkQuizAnswer(selectedIndex, clickedElement) {
+            const data = quizData[currentQuizIndex];
             const feedback = document.getElementById('quizFeedback');
-            
             const options = document.querySelectorAll('.quiz-option');
-            options.forEach(opt => opt.onclick = null);
 
-            feedback.style.display = "block";
+            options.forEach(opt => opt.onclick = null); // Deshabilitar clics posteriores
 
+            feedback.style.display = 'block';
             if (selectedIndex === data.correct) {
                 clickedElement.classList.add('correct');
                 feedback.style.backgroundColor = "rgba(46, 204, 113, 0.15)";
@@ -1555,58 +1564,56 @@
             }
 
             setTimeout(() => {
-                currentQuizIndex = (currentQuizIndex + 1) % databaseQuiz.length;
+                currentQuizIndex = (currentQuizIndex + 1) % quizData.length;
                 loadQuizQuestion();
-            }, 6000);
+            }, 4000);
         }
 
-        loadQuizQuestion();
-
-        const misionesRuleta = [
-            "Lleva hoy tu propia botella reutilizable y evita comprar una descartable.",
-            "Desconecta todos los cargadores de tu habitación que no estés utilizando ahora.",
-            "Separa y limpia al menos 3 botellas de plástico para tu caja de reciclaje.",
-            "Apaga las luces de las habitaciones de tu casa que estén vacías.",
-            "Ahorra agua lavándote los dientes usando solo un vaso con agua."
+        // RULETA DE MISIONES
+        const misionesVerdes = [
+            "Lleva tu propia bolsa de tela cuando vayas a comprar al mercado.",
+            "Desconecta todos los cargadores de celular y aparatos que no estés usando.",
+            "Recoge 3 botellas plásticas tiradas en la calle y deposítalas en el contenedor amarillo.",
+            "Usa un vaso con agua para lavarte los dientes hoy en lugar de dejar el caño abierto.",
+            "Separa los restos orgánicos de tu cocina para iniciar compostaje casero."
         ];
 
-        let misionSeleccionada = "";
-
-        function girarRuleta() {
-            const missionTextEl = document.getElementById('missionText');
+        function spinRoulette() {
+            const display = document.getElementById('missionDisplay');
             const btnGirar = document.getElementById('btnGirarRuleta');
-            const completeWrapper = document.getElementById('missionCompleteWrapper');
+            const completeWrapper = document.getElementById('completeMissionWrapper');
 
-            completeWrapper.style.display = "none";
             btnGirar.disabled = true;
-            btnGirar.innerText = "Girando... 🔄";
+            btnGirar.innerText = "Girando...";
+            completeWrapper.style.display = "none";
 
-            let ticks = 0;
+            let counter = 0;
             const interval = setInterval(() => {
-                const tempIndex = Math.floor(Math.random() * misionesRuleta.length);
-                missionTextEl.innerText = misionesRuleta[tempIndex];
-                ticks++;
+                const randIndex = Math.floor(Math.random() * misionesVerdes.length);
+                display.innerText = misionesVerdes[randIndex];
+                counter++;
 
-                if (ticks >= 10) {
+                if (counter > 10) {
                     clearInterval(interval);
-                    misionSeleccionada = misionesRuleta[Math.floor(Math.random() * misionesRuleta.length)];
-                    missionTextEl.innerHTML = `🌟 <strong>TU MISIÓN:</strong><br>${misionSeleccionada}`;
+                    const misionSeleccionada = misionesVerdes[Math.floor(Math.random() * misionesVerdes.length)];
+                    display.innerHTML = `🎉 <strong>TU MISIÓN:</strong><br>${misionSeleccionada}`;
                     btnGirar.disabled = false;
                     btnGirar.innerText = "Girar de Nuevo 🎲";
                     completeWrapper.style.display = "block";
                 }
-            }, 150);
+            }, 100);
         }
 
         function completarMision() {
-            const completeWrapper = document.getElementById('missionCompleteWrapper');
-            const missionTextEl = document.getElementById('missionText');
+            const completeWrapper = document.getElementById('completeMissionWrapper');
+            const missionTextEl = document.getElementById('missionDisplay');
 
             completeWrapper.style.display = "none";
             missionTextEl.innerHTML = "🎉 <strong>¡Misión completada con éxito!</strong><br>Gracias por contribuir directamente con el cuidado de Anta.";
             addPoints(15);
         }
 
+        // CALCULADORA DE COMPOSTAJE
         function calcularCompost() {
             const kilos = parseFloat(document.getElementById('residuosKilos').value) || 0;
             const tieneEspacio = document.getElementById('composteraEspacio').value;
@@ -1629,6 +1636,11 @@
             resultBox.innerHTML = `<strong>Resultado:</strong> Evitando tirar estos residuos podrías generar cerca de <strong>${compostAnual.toFixed(1)} kg de abono natural</strong> al año.<br><br>💡 <em>${sugerencia}</em>`;
             addPoints(5);
         }
+
+        // Inicialización
+        window.onload = function() {
+            loadQuizQuestion();
+        };
     </script>
 </body>
 </html>
