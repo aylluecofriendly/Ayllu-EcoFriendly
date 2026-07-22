@@ -15,8 +15,8 @@
             --bg-card: #222222;
             --text-light: #FFFFFF;
             --text-muted: #B3B3B3;
-            --eco-green: #2ecc71; /* Verde más vivo, familiar y llamativo */
-            --friendly-blue: #3498db; /* Azul para la palabra FRIENDLY */
+            --eco-green: #2ecc71;
+            --friendly-blue: #3498db;
         }
 
         * {
@@ -184,6 +184,54 @@
             }
         }
 
+        .news-article {
+            background-color: var(--bg-dark-gray);
+            border: 1px solid #2c2c2c;
+            border-top: 3px solid var(--natgeo-yellow);
+            padding: 30px;
+            border-radius: 4px;
+        }
+
+        .news-article h3 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 28px;
+            color: var(--text-light);
+            margin-bottom: 8px;
+            line-height: 1.3;
+        }
+
+        .news-article .news-meta {
+            font-size: 13px;
+            color: var(--natgeo-yellow);
+            font-weight: bold;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        .news-article .news-subtitle {
+            font-weight: bold;
+            font-size: 16px;
+            color: var(--text-light);
+            margin-bottom: 15px;
+            border-left: 3px solid var(--eco-green);
+            padding-left: 10px;
+        }
+
+        .news-article p {
+            margin-bottom: 15px;
+            color: #d1d1d1;
+            font-size: 15px;
+            text-align: justify;
+        }
+
+        .news-article .references {
+            margin-top: 25px;
+            padding-top: 15px;
+            border-top: 1px solid #333;
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+
         .sidebar-panel {
             background-color: var(--bg-dark-gray);
             border: 1px solid #2c2c2c;
@@ -247,7 +295,6 @@
             text-transform: uppercase;
             margin-top: 15px;
             transition: all 0.3s;
-            cursor: pointer;
         }
 
         .btn-download:hover {
@@ -329,29 +376,97 @@
         /* GALLERY SECTION */
         .gallery-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 15px;
             margin-top: 20px;
         }
 
-        .gallery-placeholder-item {
+        .gallery-img-item {
             background-color: var(--bg-dark-gray);
-            border: 2px dashed #444;
+            border: 1px solid #333;
             border-radius: 6px;
+            overflow: hidden;
             aspect-ratio: 4 / 3;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            color: var(--text-muted);
-            padding: 15px;
-            text-align: center;
+            transition: transform 0.3s, border-color 0.3s;
         }
 
-        .gallery-placeholder-item i {
-            font-size: 28px;
+        .gallery-img-item:hover {
+            transform: scale(1.03);
+            border-color: var(--natgeo-yellow);
+        }
+
+        .gallery-img-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* GAMES SECTION (ENTRETENIMIENTO) */
+        .games-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 25px;
+        }
+
+        .game-card {
+            background-color: var(--bg-dark-gray);
+            border: 1px solid #2c2c2c;
+            border-top: 3px solid var(--eco-green);
+            border-radius: 6px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: transform 0.3s;
+        }
+
+        .game-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .game-card-img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            background-color: #000;
+        }
+
+        .game-card-body {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+            justify-content: space-between;
+        }
+
+        .game-card-title {
+            font-family: 'Oswald', sans-serif;
+            font-size: 20px;
             margin-bottom: 10px;
-            color: var(--eco-green);
+            color: var(--text-light);
+        }
+
+        .btn-play {
+            background-color: var(--natgeo-yellow);
+            color: var(--bg-black);
+            font-family: 'Oswald', sans-serif;
+            font-size: 16px;
+            font-weight: bold;
+            text-align: center;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            text-transform: uppercase;
+            display: inline-block;
+            margin-top: 15px;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        .btn-play:hover {
+            background-color: #e6b800;
+            transform: scale(1.02);
         }
 
         /* VIDEO RESPONSIVE EMBED */
@@ -372,7 +487,7 @@
             background-color: #000;
         }
 
-        /* ESTILOS DE LA NUEVA SECCIÓN HERRAMIENTAS GAMIFICADAS */
+        /* HERRAMIENTAS GAMIFICADAS */
         .eco-profile-panel {
             background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
             border-radius: 8px;
@@ -424,7 +539,6 @@
             transform: scale(1.1);
         }
 
-        /* CALCULADORAS INTERACTIVAS MEJORADAS */
         .calc-container {
             background-color: var(--bg-dark-gray);
             padding: 25px;
@@ -482,7 +596,6 @@
             animation: fadeIn 0.3s ease-in-out;
         }
 
-        /* BARRA DE COLOR DE HUELLA DE CARBONO */
         .carbon-bar-bg {
             width: 100%;
             height: 12px;
@@ -500,7 +613,6 @@
             transition: width 1s ease-in-out, background-color 1s;
         }
 
-        /* CLASIFICADOR DE RESIDUOS */
         .classifier-input-box {
             display: flex;
             gap: 10px;
@@ -515,7 +627,6 @@
             border-radius: 4px;
         }
 
-        /* TIMELINE DE DEGRADACIÓN */
         .timeline-container {
             display: flex;
             justify-content: space-around;
@@ -537,7 +648,6 @@
             opacity: 1;
         }
 
-        /* QUIZ AMBIENTAL */
         .quiz-box {
             background: #1c1c1c;
             padding: 20px;
@@ -569,7 +679,6 @@
             border-color: #e74c3c !important;
         }
 
-        /* RULETA DIARIA */
         .roulette-container {
             text-align: center;
             background: #1c1c1c;
@@ -595,89 +704,6 @@
         .completed-btn-wrapper {
             margin-top: 10px;
             display: none;
-        }
-
-        /* MODALES PAPERCRAFTS Y DIBUJOS */
-        .modal-papercraft {
-            display: none;
-            position: fixed;
-            z-index: 2000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.85);
-            backdrop-filter: blur(5px);
-            overflow-y: auto;
-            padding: 40px 20px;
-        }
-
-        .modal-papercraft-content {
-            background-color: var(--bg-dark-gray);
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 30px;
-            border-radius: 8px;
-            border: 2px solid var(--natgeo-yellow);
-            position: relative;
-        }
-
-        .close-modal {
-            position: absolute;
-            top: 15px;
-            right: 20px;
-            font-size: 28px;
-            color: var(--text-light);
-            cursor: pointer;
-            transition: color 0.2s;
-        }
-
-        .close-modal:hover {
-            color: var(--natgeo-yellow);
-        }
-
-        .papercraft-item-card {
-            background-color: #111;
-            border: 1px solid #333;
-            border-radius: 6px;
-            padding: 15px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-        }
-
-        .papercraft-item-card img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            border-radius: 4px;
-            margin-bottom: 15px;
-            border: 1px solid #2c2c2c;
-        }
-
-        .papercraft-item-card h4 {
-            font-family: 'Oswald', sans-serif;
-            font-size: 20px;
-            margin-bottom: 10px;
-            color: var(--eco-green);
-        }
-
-        /* EMBED VISOR PDF EN ENTRETENIMIENTO */
-        .pdf-viewer-container {
-            display: none;
-            margin-top: 20px;
-            background-color: #111;
-            border: 2px solid var(--natgeo-yellow);
-            border-radius: 6px;
-            padding: 15px;
-        }
-
-        .pdf-viewer-container embed {
-            width: 100%;
-            height: 600px;
-            border: none;
-            border-radius: 4px;
         }
 
         /* FOOTER */
@@ -752,26 +778,36 @@
 
         <section id="entretenimiento" class="page-section">
             <h2 class="section-title">Entretenimiento Verde</h2>
-            <p style="margin-bottom: 25px;">Un espacio interactivo diseñado para aprender leyendo nuestras historias ilustradas directamente en la página.</p>
+            <p>Un espacio interactivo diseñado para aprender jugando a través de recursos educativos e interactivas dinámicas ambientales.</p>
             
-            <div class="grid-3">
-                <div class="card card-yellow">
-                    <h3><i class="fa-solid fa-book-open" style="color: var(--natgeo-yellow);"></i> Historias del Ayllu Verde - CAP 1</h3>
-                    <p>Descubre el inicio de esta aventura ambiental para proteger los paisajes y ecosistemas de nuestra comunidad.</p>
-                    <button class="btn-download" onclick="togglePdfViewer('pdfViewerCap1')"><i class="fa-solid fa-book-reader"></i> Leer Capítulo 1</button>
-                    
-                    <div id="pdfViewerCap1" class="pdf-viewer-container">
-                        <embed src="Historias del Ayllu Verde CAP1.pdf" type="application/pdf">
+            <div class="games-grid">
+                <div class="game-card">
+                    <img src="Ranaaa.png" alt="EcoConexiones: Desafío Ambiental" class="game-card-img">
+                    <div class="game-card-body">
+                        <div class="game-card-title">EcoConexiones: Desafío Ambiental</div>
+                        <a href="https://es.educaplay.com/recursos-educativos/29919461-ecoconexiones_desafio_ambiental.html" target="_blank" rel="noopener noreferrer" class="btn-play">
+                            <i class="fa-solid fa-gamepad"></i> Jugar
+                        </a>
                     </div>
                 </div>
 
-                <div class="card">
-                    <h3><i class="fa-solid fa-book-open" style="color: var(--eco-green);"></i> Historias del Ayllu Verde - CAP 2</h3>
-                    <p>Sigue aprendiendo sobre el impacto del reciclaje y el cuidado de la fauna silvestre en la continuación de la saga.</p>
-                    <button class="btn-download" onclick="togglePdfViewer('pdfViewerCap2')"><i class="fa-solid fa-book-reader"></i> Leer Capítulo 2</button>
-                    
-                    <div id="pdfViewerCap2" class="pdf-viewer-container">
-                        <embed src="Historias del Ayllu Verde CAP2.pdf" type="application/pdf">
+                <div class="game-card">
+                    <img src="Memoria.png" alt="Conecta Contaminación y Medio Ambiente" class="game-card-img">
+                    <div class="game-card-body">
+                        <div class="game-card-title">Conecta Contaminación y Medio Ambiente</div>
+                        <a href="https://es.educaplay.com/recursos-educativos/29919504-conecta_contaminacion_y_medio_ambiente.html" target="_blank" rel="noopener noreferrer" class="btn-play">
+                            <i class="fa-solid fa-gamepad"></i> Jugar
+                        </a>
+                    </div>
+                </div>
+
+                <div class="game-card">
+                    <img src="Si o no.png" alt="Contaminación y Cuidado del Planeta" class="game-card-img">
+                    <div class="game-card-body">
+                        <div class="game-card-title">Contaminación y Cuidado del Planeta</div>
+                        <a href="https://es.educaplay.com/recursos-educativos/29919562-contaminacion_y_cuidado_del_planeta.html" target="_blank" rel="noopener noreferrer" class="btn-play">
+                            <i class="fa-solid fa-gamepad"></i> Jugar
+                        </a>
                     </div>
                 </div>
             </div>
@@ -787,17 +823,10 @@
             </div>
 
             <div id="taki-podcasts" class="takikuna-subcontent active-subview">
-                <div class="media-link-card">
-                    <div>
-                        <span class="badge" style="background: var(--natgeo-yellow); color: black;">Episodio 1</span>
-                        <h4 style="margin-top: 5px;">Podcast Ambiental - Ayllu Eco-Friendly</h4>
-                    </div>
-                    <div class="audio-player-wrapper">
-                        <audio controls preload="metadata">
-                            <source src="Podcast.mp3" type="audio/mpeg">
-                            Tu navegador no soporta el reproductor de audio.
-                        </audio>
-                    </div>
+                <div class="placeholder-box" style="padding: 40px; border: 2px dashed #444; border-radius: 8px; text-align: center;">
+                    <i class="fa-solid fa-microphone-slash" style="font-size: 36px; color: var(--text-muted); margin-bottom: 15px;"></i>
+                    <h3>Podcasts no disponibles por el momento</h3>
+                    <p style="font-size: 14px; color: var(--text-muted); max-width: 600px; margin: 0 auto;">Estamos preparando los primeros episodios sobre el rescate de ecosistemas y leyendas de Izcuchaca. ¡Estarán listos muy pronto!</p>
                 </div>
             </div>
 
@@ -873,25 +902,37 @@
             <h2 class="section-title">Eco-Noticias</h2>
             
             <div class="news-container">
-                <div>
-                    <div class="grid-3" style="grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); margin-bottom: 0;">
-                        <div class="card card-yellow">
-                            <h3>Guía de Reciclaje en el Hogar</h3>
-                            <p>Aprende a segregar correctamente tus botellas plásticas y a darles un segundo uso útil mediante el diseño colaborativo.</p>
-                            <a href="#" class="btn-download">Leer Artículo</a>
-                        </div>
-                        <div class="card">
-                            <h3>El Impacto Oculto del Microplástico</h3>
-                            <p>Análisis crítico de cómo los desechos sintéticos afectan los ciclos biogeoquímicos de la flora andina.</p>
-                            <a href="#" class="btn-download">Leer Artículo</a>
-                        </div>
-                        <div class="card card-yellow">
-                            <h3>¿Qué es un Oasis Natural Urbano?</h3>
-                            <p>Descubre los beneficios térmicos, ambientales y paisajísticos de implementar plantaciones masivas de árboles locales.</p>
-                            <a href="#" class="btn-download">Leer Artículo</a>
-                        </div>
+                <article class="news-article">
+                    <h3>📰 Crónica Ambiental 2026 | Nacional / Política</h3>
+                    <div class="news-meta">Fecha: 15 de julio de 2026</div>
+                    
+                    <div class="news-subtitle">
+                        Tras las urnas, una crisis pendiente: el nuevo gobierno hereda un país marcado por economías ilegales y deterioro ambiental
                     </div>
-                </div>
+                    <p><em>Con un presidente ya electo, el Perú entra en una etapa de transición donde las promesas de campaña enfrentan una realidad dominada por la minería ilegal, el narcotráfico y la violencia territorial.</em></p>
+                    
+                    <p><strong>Lima. —</strong> A pocas semanas de la toma de mando, el Perú atraviesa un momento de aparente calma política que contrasta con la profundidad de los desafíos que el nuevo gobierno deberá enfrentar. Las elecciones han concluido, pero los problemas que definieron el debate público —la expansión de economías ilegales y el deterioro ambiental— no solo persisten, sino que se intensifican en diversas regiones del país.</p>
+
+                    <p>Entre ellos, la minería ilegal se mantiene como uno de los principales focos de inestabilidad. En zonas de la Amazonía, esta actividad ha evolucionado hacia sistemas organizados que operan con redes propias de transporte, financiamiento y protección armada. El futuro del Registro Integral de Formalización Minera (Reinfo), tema recurrente durante la campaña, se perfila ahora como una de las primeras decisiones críticas del gobierno entrante, especialmente ante el riesgo de que continúe funcionando como un mecanismo que diluye la frontera entre legalidad e ilegalidad (Mongabay Latam, 2026).</p>
+
+                    <p>A este escenario se suma el narcotráfico, cuya expansión sigue evidenciándose en las aproximadamente 89,000 hectáreas de cultivos de coca ilegal registradas en el país. Más allá de la cifra, el fenómeno refleja una realidad más compleja: la consolidación de economías paralelas en territorios donde la presencia del Estado es limitada o intermitente. En estos espacios, el crimen organizado no solo produce, sino que también regula y ejerce control social (Radio Marañón, 2026).</p>
+
+                    <p>El impacto ambiental de estas actividades es significativo. La deforestación en la Amazonía peruana continúa advancing, impulsada por la minería ilegal y la tala clandestina, generando la pérdida acelerada de biodiversidad y afectando ecosistemas clave para el equilibrio climático. Estas transformaciones no solo tienen consecuencias ecológicas, sino también sociales, al comprometer los medios de vida de comunidades indígenas (Mongabay Latam, 2026).</p>
+
+                    <p>En paralelo, los defensores ambientales siguen enfrentando altos niveles de riesgo. Las amenazas de muerte, los ataques selectivos y la falta de protección efectiva evidencian una situación de vulnerabilidad persistente. La implementación pendiente de instrumentos como el Acuerdo de Escazú continúa siendo una de las principales deudas del Estado en materia de derechos y protección territorial (Radio Marañón, 2026).</p>
+
+                    <p>A nivel internacional, el nuevo gobierno también deberá responder a crecientes exigencias. Normativas como la ley europea de “cero deforestación” imponen estándares más estrictos que podrían afectar las exportaciones si no se desarrollan políticas de adaptación adecuadas (Mongabay Latam, 2026).</p>
+
+                    <p>En este contexto, el periodo entre la elección y la asunción presidencial se convierte en un espacio clave no solo para la planificación política, sino para definir prioridades reales. La ciudadanía ya ha votado; ahora, la expectativa se centra en si el nuevo liderazgo será capaz de traducir sus propuestas en estrategias concretas frente a una crisis que no admite postergaciones.</p>
+
+                    <p>Porque en el Perú de hoy, ganar una elección no significa resolver los problemas, sino comenzar a enfrentarlos.</p>
+
+                    <div class="references">
+                        <strong>Referencias:</strong><br>
+                        • Mongabay Latam. (2026). Desafíos ambientales de Perú en 2026.<br>
+                        • Radio Marañón. (2026). ¿Cuáles son los siete desafíos ambientales en el Perú?
+                    </div>
+                </article>
 
                 <aside class="sidebar-panel">
                     <h3>¿Sabías que?</h3>
@@ -913,22 +954,97 @@
             <p>Un espacio visual para documentar nuestros logros ambientales, jornadas de reforestación y talleres de reciclaje.</p>
             
             <div class="gallery-grid">
-                <div class="gallery-placeholder-item">
-                    <i class="fa-regular fa-image"></i>
-                    <span>Foto 1 (Próximamente)</span>
-                </div>
-                <div class="gallery-placeholder-item">
-                    <i class="fa-regular fa-image"></i>
-                    <span>Foto 2 (Próximamente)</span>
-                </div>
-                <div class="gallery-placeholder-item">
-                    <i class="fa-regular fa-image"></i>
-                    <span>Foto 3 (Próximamente)</span>
-                </div>
-                <div class="gallery-placeholder-item">
-                    <i class="fa-regular fa-image"></i>
-                    <span>Foto 4 (Próximamente)</span>
-                </div>
+                <div class="gallery-img-item"><img src="1781711444292.jpg" alt="Galería Ayllu Eco"></div>
+                <div class="gallery-img-item"><img src="1781711444309.jpg" alt="Galería Ayllu Eco"></div>
+                <div class="gallery-img-item"><img src="1781711444326.jpg" alt="Galería Ayllu Eco"></div>
+                <div class="gallery-img-item"><img src="1781711444342.jpg" alt="Galería Ayllu Eco"></div>
+                <div class="gallery-img-item"><img src="1781711444359.jpg" alt="Galería Ayllu Eco"></div>
+                <div class="gallery-img-item"><img src="1781711444376.jpg" alt="Galería Ayllu Eco"></div>
+                <div class="gallery-img-item"><img src="1781711444391.jpg" alt="Galería Ayllu Eco"></div>
+                <div class="gallery-img-item"><img src="1781711444408.jpg" alt="Galería Ayllu Eco"></div>
+                <div class="gallery-img-item"><img src="1781711444425.jpg" alt="Galería Ayllu Eco"></div>
+                <div class="gallery-img-item"><img src="1781711444442.jpg" alt="Galería Ayllu Eco"></div>
+                <div class="gallery-img-item"><img src="1781711444459.jpg" alt="Galería Ayllu Eco"></div>
+                <div class="gallery-img-item"><img src="1781711444477.jpg" alt="Galería Ayllu Eco"></div>
+                <div class="gallery-img-item"><img src="1781711444492.jpg" alt="Galería Ayllu Eco"></div>
+                <div class="gallery-img-item"><img src="1781711444507.jpg" alt="Galería Ayllu Eco"></div>
+                <div class="gallery-img-item"><img src="1781711444525.jpg" alt="Galería Ayllu Eco"></div>
+                <div class="gallery-img-item"><img src="1781711444544.jpg" alt="Galería Ayllu Eco"></div>
+                <div class="gallery-img-item"><img src="1781711444559.jpg" alt="Galería Ayllu Eco"></div>
+                <div class="gallery-img-item"><img src="1781711444577.jpg" alt="Galería Ayllu Eco"></div>
+                <div class="gallery-img-item"><img src="1781711619793.jpg" alt="Galería Ayllu Eco"></div>
+                <div class="gallery-img-item"><img src="1781711619845.jpg" alt="Galería Ayllu Eco"></div>
+                <div class="gallery-img-item"><img src="1781711619894.jpg" alt="Galería Ayllu Eco"></div>
+                <div class="gallery-img-item"><img src="1781711619923.jpg" alt="Galería Ayllu Eco"></div>
+                <div class="gallery-img-item"><img src="1781711619949.jpg" alt="Galería Ayllu Eco"></div>
+                <div class="gallery-img-item"><img src="1781711619980.jpg" alt="Galería Ayllu Eco"></div>
+                <div class="gallery-img-item"><img src="1781711620012.jpg" alt="Galería Ayllu Eco"></div>
+                <div class="gallery-img-item"><img src="1781711620047.jpg" alt="Galería Ayllu Eco"></div>
+                <div class="gallery-img-item"><img src="1781711620078.jpg" alt="Galería Ayllu Eco"></div>
+                <div class="gallery-img-item"><img src="1781711620111.jpg" alt="Galería Ayllu Eco"></div>
+                <div class="gallery-img-item"><img src="1781711620140.jpg" alt="Galería Ayllu Eco"></div>
+                <div class="gallery-img-item"><img src="1781711620167.jpg" alt="Galería Ayllu Eco"></div>
+                <div class="gallery-img-item"><img src="1781711620184.jpg" alt="Galería Ayllu Eco"></div>
+                <div class="gallery-img-item"><img src="1781711620205.jpg" alt="Galería Ayllu Eco"></div>
+                <div class="gallery-img-item"><img src="1781712628008.jpg" alt="Galería Ayllu Eco"></div>
+                <div class="gallery-img-item"><img src="1781712628028.jpg" alt="Galería Ayllu Eco"></div>
+                <div class="gallery-img-item"><img src="1781712628045.jpg" alt="Galería Ayllu Eco"></div>
+                <div class="gallery-img-item"><img src="1781712628062.jpg" alt="Galería Ayllu Eco"></div>
+                <div class="gallery-img-item"><img src="1781712628082.jpg" alt="Galería Ayllu Eco"></div>
+                <div class="gallery-img-item"><img src="1781712628096.jpg" alt="Galería Ayllu Eco"></div>
+                <div class="gallery-img-item"><img src="1781712628111.jpg" alt="Galería Ayllu Eco"></div>
+                <div class="gallery-img-item"><img src="1781712628128.jpg" alt="Galería Ayllu Eco"></div>
+                <div class="gallery-img-item"><img src="1781712628143.jpg" alt="Galería Ayllu Eco"></div>
+                <div class="gallery-img-item"><img src="1781712628158.jpg" alt="Galería Ayllu Eco"></div>
+                <div class="gallery-img-item"><img src="1781712628175.jpg" alt="Galería Ayllu Eco"></div>
+                <div class="gallery-img-item"><img src="1781712628193.jpg" alt="Galería Ayllu Eco"></div>
+                <div class="gallery-img-item"><img src="1781712628210.jpg" alt="Galería Ayllu Eco"></div>
+                <div class="gallery-img-item"><img src="1781712628231.jpg" alt="Galería Ayllu Eco"></div>
+                <div class="gallery-img-item"><img src="1781712628261.jpg" alt="Galería Ayllu Eco"></div>
+                <div class="gallery-img-item"><img src="1781712628281.jpg" alt="Galería Ayllu Eco"></div>
+                <div class="gallery-img-item"><img src="1781712628303.jpg" alt="Galería Ayllu Eco"></div>
+                <div class="gallery-img-item"><img src="1781712628323.jpg" alt="Galería Ayllu Eco"></div>
+                <div class="gallery-img-item"><img src="1781712628337.jpg" alt="Galería Ayllu Eco"></div>
+                <div class="gallery-img-item"><img src="1781712628350.jpg" alt="Galería Ayllu Eco"></div>
+                <div class="gallery-img-item"><img src="1781712628375.jpg" alt="Galería Ayllu Eco"></div>
+                <div class="gallery-img-item"><img src="1781712628397.jpg" alt="Galería Ayllu Eco"></div>
+                <div class="gallery-img-item"><img src="1781712628414.jpg" alt="Galería Ayllu Eco"></div>
+                <div class="gallery-img-item"><img src="1781712628432.jpg" alt="Galería Ayllu Eco"></div>
+                <div class="gallery-img-item"><img src="1781712628454.jpg" alt="Galería Ayllu Eco"></div>
+                <div class="gallery-img-item"><img src="1781712628483.jpg" alt="Galería Ayllu Eco"></div>
+                <div class="gallery-img-item"><img src="1781712628498.jpg" alt="Galería Ayllu Eco"></div>
+                <div class="gallery-img-item"><img src="1781712628512.jpg" alt="Galería Ayllu Eco"></div>
+                <div class="gallery-img-item"><img src="1781712628531.jpg" alt="Galería Ayllu Eco"></div>
+                <div class="gallery-img-item"><img src="1781712628546.jpg" alt="Galería Ayllu Eco"></div>
+                <div class="gallery-img-item"><img src="1781712628568.jpg" alt="Galería Ayllu Eco"></div>
+                <div class="gallery-img-item"><img src="1781712628585.jpg" alt="Galería Ayllu Eco"></div>
+                <div class="gallery-img-item"><img src="1781712628604.jpg" alt="Galería Ayllu Eco"></div>
+                <div class="gallery-img-item"><img src="1781712628623.jpg" alt="Galería Ayllu Eco"></div>
+                <div class="gallery-img-item"><img src="1781712628641.jpg" alt="Galería Ayllu Eco"></div>
+                <div class="gallery-img-item"><img src="1781712628656.jpg" alt="Galería Ayllu Eco"></div>
+                <div class="gallery-img-item"><img src="1781712628674.jpg" alt="Galería Ayllu Eco"></div>
+                <div class="gallery-img-item"><img src="1781712628703.jpg" alt="Galería Ayllu Eco"></div>
+                <div class="gallery-img-item"><img src="1781712628724.jpg" alt="Galería Ayllu Eco"></div>
+                <div class="gallery-img-item"><img src="1781712628740.jpg" alt="Galería Ayllu Eco"></div>
+                <div class="gallery-img-item"><img src="1781712628758.jpg" alt="Galería Ayllu Eco"></div>
+                <div class="gallery-img-item"><img src="1781712628776.jpg" alt="Galería Ayllu Eco"></div>
+                <div class="gallery-img-item"><img src="1781712628790.jpg" alt="Galería Ayllu Eco"></div>
+                <div class="gallery-img-item"><img src="1781712628807.jpg" alt="Galería Ayllu Eco"></div>
+                <div class="gallery-img-item"><img src="1781712628822.jpg" alt="Galería Ayllu Eco"></div>
+                <div class="gallery-img-item"><img src="1781712628837.jpg" alt="Galería Ayllu Eco"></div>
+                <div class="gallery-img-item"><img src="1781712628853.jpg" alt="Galería Ayllu Eco"></div>
+                <div class="gallery-img-item"><img src="1781712628868.jpg" alt="Galería Ayllu Eco"></div>
+                <div class="gallery-img-item"><img src="1781712628882.jpg" alt="Galería Ayllu Eco"></div>
+                <div class="gallery-img-item"><img src="1781712628899.jpg" alt="Galería Ayllu Eco"></div>
+                <div class="gallery-img-item"><img src="1781713135399.jpg" alt="Galería Ayllu Eco"></div>
+                <div class="gallery-img-item"><img src="1781713135424.jpg" alt="Galería Ayllu Eco"></div>
+                <div class="gallery-img-item"><img src="1781713135450.jpg" alt="Galería Ayllu Eco"></div>
+                <div class="gallery-img-item"><img src="1781713135478.jpg" alt="Galería Ayllu Eco"></div>
+                <div class="gallery-img-item"><img src="1781713135507.jpg" alt="Galería Ayllu Eco"></div>
+                <div class="gallery-img-item"><img src="1781713135536.jpg" alt="Galería Ayllu Eco"></div>
+                <div class="gallery-img-item"><img src="1781713135566.jpg" alt="Galería Ayllu Eco"></div>
+                <div class="gallery-img-item"><img src="1781713135596.jpg" alt="Galería Ayllu Eco"></div>
+                <div class="gallery-img-item"><img src="1781713182278.jpg" alt="Galería Ayllu Eco"></div>
             </div>
         </section>
 
@@ -1101,13 +1217,18 @@
             <div class="grid-3" style="margin-top: 20px;">
                 <div class="card">
                     <h3>Papercraft</h3>
-                    <p>Plantillas imprimibles para armar figuras de papel de animales y fauna.</p>
-                    <button onclick="togglePapercraftModal(true)" class="btn-download"><i class="fa-solid fa-eye"></i> Ver Papercrafts</button>
+                    <p>Plantillas imprimibles para armar figuras de papel</p>
+                    <a href="#" class="btn-download"><i class="fa-solid fa-file-pdf"></i> Descargar PDF</a>
                 </div>
                 <div class="card card-yellow">
-                    <h3>Dibujos para Colorear: Flora y Fauna</h3>
-                    <p>Fichas didácticas infantiles para dar vida y reconocer los animales, ríos y paisajes nativos de nuestra región.</p>
-                    <button onclick="toggleDibujosModal(true)" class="btn-download"><i class="fa-solid fa-eye"></i> Ver Dibujos</button>
+                    <h3>Dibujos para Colorear: Flora Andina</h3>
+                    <p>Fichas didácticas infantiles para dar vida y reconocer los árboles y plantas nativas de nuestra región.</p>
+                    <a href="#" class="btn-download"><i class="fa-solid fa-image"></i> Descargar Pack</a>
+                </div>
+                <div class="card">
+                    <h3>Guía Comunitaria de las 3R</h3>
+                    <p>Manual técnico simplificado para el correcto diseño de artesanías estables con botellas y tapas descartables.</p>
+                    <a href="#" class="btn-download"><i class="fa-solid fa-file-pdf"></i> Descargar Manual</a>
                 </div>
             </div>
         </section>
@@ -1144,8 +1265,8 @@
                     <p style="font-size: 13px; color: var(--text-muted); margin-top: 10px;">Colabora difundiendo las acciones comunitarias de reciclaje y reforestación.</p>
                 </div>
 
-                <div class="placeholder-box" style="margin-top: 0; padding: 25px; display: flex; flex-direction: column; justify-content: center; background-color: var(--bg-dark-gray); border: 2px dashed #444; border-radius: 8px; text-align: center;">
-                    <i class="fa-solid fa-user-plus" style="font-size: 28px; color: var(--text-muted); margin-bottom:10px;"></i>
+                <div class="placeholder-box" style="background-color: var(--bg-dark-gray); border: 2px dashed #444; border-radius: 8px; margin-top: 0; padding: 25px; display: flex; flex-direction: column; justify-content: center; text-align: center;">
+                    <i class="fa-solid fa-user-plus" style="font-size: 28px; color: var(--text-muted); margin-bottom: 10px;"></i>
                     <h3 style="font-size: 18px; font-family: 'Oswald', sans-serif; margin-bottom: 5px;">¿Quieres colaborar?</h3>
                     <p style="font-size: 12px; color: var(--text-muted);">Espacio reservado para nuevas marcas, emprendimientos u organizaciones eco-friendly que deseen unirse.</p>
                 </div>
@@ -1179,83 +1300,6 @@
         </section>
 
     </main>
-
-    <div id="papercraftModal" class="modal-papercraft">
-        <div class="modal-papercraft-content">
-            <span class="close-modal" onclick="togglePapercraftModal(false)">&times;</span>
-            <h2 class="section-title" style="margin-bottom: 20px;">Galería de Papercrafts</h2>
-            <p style="margin-bottom: 25px; color: var(--text-muted);">Explora y descarga nuestras plantillas imprimibles para armar figuras en 3D.</p>
-            
-            <div class="grid-3" style="grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));">
-                <div class="papercraft-item-card">
-                    <img src="Canguro.jpeg" alt="Papercraft Canguro">
-                    <h4>Canguro</h4>
-                    <a href="Canguro.jpeg" download="Canguro.jpeg" class="btn-download"><i class="fa-solid fa-download"></i> Descargar</a>
-                </div>
-                <div class="papercraft-item-card">
-                    <img src="Gateto.jpeg" alt="Papercraft Gateto">
-                    <h4>Gateto</h4>
-                    <a href="Gateto.jpeg" download="Gateto.jpeg" class="btn-download"><i class="fa-solid fa-download"></i> Descargar</a>
-                </div>
-                <div class="papercraft-item-card">
-                    <img src="Tiger.jpeg" alt="Papercraft Tigre">
-                    <h4>Tigre</h4>
-                    <a href="Tiger.jpeg" download="Tiger.jpeg" class="btn-download"><i class="fa-solid fa-download"></i> Descargar</a>
-                </div>
-                <div class="papercraft-item-card">
-                    <img src="Ave.jpeg" alt="Papercraft Ave">
-                    <h4>Ave</h4>
-                    <a href="Ave.jpeg" download="Ave.jpeg" class="btn-download"><i class="fa-solid fa-download"></i> Descargar</a>
-                </div>
-                <div class="papercraft-item-card">
-                    <img src="Pez.jpeg" alt="Papercraft Pez">
-                    <h4>Pez</h4>
-                    <a href="Pez.jpeg" download="Pez.jpeg" class="btn-download"><i class="fa-solid fa-download"></i> Descargar</a>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div id="dibujosModal" class="modal-papercraft">
-        <div class="modal-papercraft-content">
-            <span class="close-modal" onclick="toggleDibujosModal(false)">&times;</span>
-            <h2 class="section-title" style="margin-bottom: 20px;">Dibujos para Colorear</h2>
-            <p style="margin-bottom: 25px; color: var(--text-muted);">Explora, visualiza y descarga nuestras fichas educativas listas para imprimir y pintar.</p>
-            
-            <div class="grid-3" style="grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));">
-                <div class="papercraft-item-card">
-                    <img src="Ranas.jpeg" alt="Dibujo Ranas">
-                    <h4>Ranas</h4>
-                    <a href="Ranas.jpeg" download="Ranas.jpeg" class="btn-download"><i class="fa-solid fa-download"></i> Descargar</a>
-                </div>
-                <div class="papercraft-item-card">
-                    <img src="JTWYA.jpeg" alt="Dibujo JTWYA">
-                    <h4>JTWYA</h4>
-                    <a href="JTWYA.jpeg" download="JTWYA.jpeg" class="btn-download"><i class="fa-solid fa-download"></i> Descargar</a>
-                </div>
-                <div class="papercraft-item-card">
-                    <img src="Peces.jpeg" alt="Dibujo Peces">
-                    <h4>Peces</h4>
-                    <a href="Peces.jpeg" download="Peces.jpeg" class="btn-download"><i class="fa-solid fa-download"></i> Descargar</a>
-                </div>
-                <div class="papercraft-item-card">
-                    <img src="Campo.jpeg" alt="Dibujo Campo">
-                    <h4>Campo</h4>
-                    <a href="Campo.jpeg" download="Campo.jpeg" class="btn-download"><i class="fa-solid fa-download"></i> Descargar</a>
-                </div>
-                <div class="papercraft-item-card">
-                    <img src="Río.jpeg" alt="Dibujo Río">
-                    <h4>Río</h4>
-                    <a href="Río.jpeg" download="Río.jpeg" class="btn-download"><i class="fa-solid fa-download"></i> Descargar</a>
-                </div>
-                <div class="papercraft-item-card">
-                    <img src="Niño.jpeg" alt="Dibujo Niño">
-                    <h4>Niño</h4>
-                    <a href="Niño.jpeg" download="Niño.jpeg" class="btn-download"><i class="fa-solid fa-download"></i> Descargar</a>
-                </div>
-            </div>
-        </div>
-    </div>
 
     <footer>
         <p>&copy; 2026 Ayllu Eco-Friendly. Impulsando la Conciencia e Impacto Ambiental en la Comunidad de Anta.</p>
@@ -1332,36 +1376,6 @@
 
             document.getElementById(subviewId).classList.add('active-subview');
             event.currentTarget.classList.add('active-tab');
-        }
-
-        // Función para abrir / cerrar modal de Papercrafts
-        function togglePapercraftModal(show) {
-            const modal = document.getElementById('papercraftModal');
-            if (show) {
-                modal.style.display = 'block';
-            } else {
-                modal.style.display = 'none';
-            }
-        }
-
-        // Función para abrir / cerrar modal de Dibujos para colorear
-        function toggleDibujosModal(show) {
-            const modal = document.getElementById('dibujosModal');
-            if (show) {
-                modal.style.display = 'block';
-            } else {
-                modal.style.display = 'none';
-            }
-        }
-
-        // Función para expandir/colapsar Visor PDF en Entretenimiento
-        function togglePdfViewer(containerId) {
-            const container = document.getElementById(containerId);
-            if (container.style.display === 'block') {
-                container.style.display = 'none';
-            } else {
-                container.style.display = 'block';
-            }
         }
 
         // 1. LÓGICA: CALCULADORA DE CARBONO MEJORADA
@@ -1615,7 +1629,6 @@
             addPoints(15);
         }
 
-        // Lógica de la calculadora de Compostaje
         function calcularCompost() {
             const kilos = parseFloat(document.getElementById('residuosKilos').value) || 0;
             const tieneEspacio = document.getElementById('composteraEspacio').value;
