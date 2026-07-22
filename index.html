@@ -32,7 +32,6 @@
             line-height: 1.6;
         }
 
-        /* LOGO & HEADER STYLE NATGEO */
         header {
             background-color: var(--bg-black);
             border-bottom: 3px solid var(--natgeo-yellow);
@@ -84,7 +83,6 @@
             margin-left: 5px;
         }
 
-        /* NAVIGATION BAR */
         nav ul {
             display: flex;
             list-style: none;
@@ -107,7 +105,6 @@
             color: var(--natgeo-yellow);
         }
 
-        /* MAIN CONTENT SECTIONS */
         main {
             max-width: 1200px;
             margin: 40px auto;
@@ -139,7 +136,6 @@
             letter-spacing: 1px;
         }
 
-        /* HERO / INICIO STYLE */
         .hero {
             background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1200&q=80') center/cover;
             padding: 100px 40px;
@@ -163,7 +159,6 @@
             color: var(--text-muted);
         }
 
-        /* GRID LAYOUTS */
         .grid-3 {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -171,7 +166,6 @@
             margin-bottom: 40px;
         }
 
-        /* NOTICIAS LAYOUT CON PANEL LATERAL */
         .news-container {
             display: grid;
             grid-template-columns: 2.5fr 1fr;
@@ -184,47 +178,40 @@
             }
         }
 
-        .news-article {
+        .article-card {
             background-color: var(--bg-dark-gray);
             border: 1px solid #2c2c2c;
-            border-top: 3px solid var(--natgeo-yellow);
+            border-top: 4px solid var(--natgeo-yellow);
             padding: 30px;
             border-radius: 4px;
+            line-height: 1.8;
         }
 
-        .news-article h3 {
+        .article-card h3.article-title {
             font-family: 'Oswald', sans-serif;
-            font-size: 28px;
+            font-size: 26px;
+            margin-top: 10px;
+            margin-bottom: 15px;
             color: var(--text-light);
-            margin-bottom: 8px;
             line-height: 1.3;
         }
 
-        .news-article .news-meta {
+        .article-meta {
             font-size: 13px;
             color: var(--natgeo-yellow);
             font-weight: bold;
-            margin-bottom: 20px;
             text-transform: uppercase;
-        }
-
-        .news-article .news-subtitle {
-            font-weight: bold;
-            font-size: 16px;
-            color: var(--text-light);
             margin-bottom: 15px;
-            border-left: 3px solid var(--eco-green);
-            padding-left: 10px;
         }
 
-        .news-article p {
+        .article-content p {
             margin-bottom: 15px;
             color: #d1d1d1;
             font-size: 15px;
             text-align: justify;
         }
 
-        .news-article .references {
+        .article-references {
             margin-top: 25px;
             padding-top: 15px;
             border-top: 1px solid #333;
@@ -282,7 +269,108 @@
             margin-bottom: 15px;
         }
 
-        /* RECURSOS & BLOG */
+        .game-card {
+            background-color: var(--bg-dark-gray);
+            border: 1px solid #2c2c2c;
+            border-top: 3px solid var(--eco-green);
+            border-radius: 6px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s, border-color 0.3s;
+        }
+
+        .game-card:hover {
+            transform: translateY(-5px);
+            border-top-color: var(--natgeo-yellow);
+        }
+
+        .game-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-bottom: 1px solid #333;
+        }
+
+        .game-card-body {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+            justify-content: space-between;
+        }
+
+        .game-card-body h3 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 20px;
+            margin-bottom: 15px;
+            color: var(--text-light);
+        }
+
+        .btn-play {
+            display: inline-block;
+            background-color: var(--natgeo-yellow);
+            color: var(--bg-black);
+            text-align: center;
+            padding: 10px 20px;
+            font-family: 'Oswald', sans-serif;
+            font-size: 16px;
+            font-weight: bold;
+            text-transform: uppercase;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background 0.3s, transform 0.2s;
+            margin-top: 10px;
+        }
+
+        .btn-play:hover {
+            background-color: #e6b800;
+            transform: scale(1.02);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .gallery-item {
+            background-color: var(--bg-dark-gray);
+            border: 1px solid #333;
+            border-radius: 6px;
+            overflow: hidden;
+            aspect-ratio: 4 / 3;
+            transition: transform 0.3s, border-color 0.3s;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.03);
+            border-color: var(--natgeo-yellow);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .placeholder-box {
+            background-color: var(--bg-dark-gray);
+            border: 2px dashed #444;
+            padding: 40px;
+            text-align: center;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+
+        .placeholder-box i {
+            font-size: 36px;
+            color: var(--natgeo-yellow);
+            margin-bottom: 15px;
+        }
+
         .btn-download {
             background-color: transparent;
             border: 2px solid var(--text-light);
@@ -302,7 +390,6 @@
             color: var(--bg-black);
         }
 
-        /* SECCIÓN SUBSECCIONES TAKIKUNA */
         .subnav-tabs {
             display: flex;
             gap: 15px;
@@ -335,7 +422,6 @@
             display: block;
         }
 
-        /* AUDIO PLAYER CARDS (TAKIKUNA) */
         .media-link-card {
             background: #1c1c1c;
             border: 1px solid #333;
@@ -373,103 +459,6 @@
             outline: none;
         }
 
-        /* GALLERY SECTION */
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-            gap: 15px;
-            margin-top: 20px;
-        }
-
-        .gallery-img-item {
-            background-color: var(--bg-dark-gray);
-            border: 1px solid #333;
-            border-radius: 6px;
-            overflow: hidden;
-            aspect-ratio: 4 / 3;
-            transition: transform 0.3s, border-color 0.3s;
-        }
-
-        .gallery-img-item:hover {
-            transform: scale(1.03);
-            border-color: var(--natgeo-yellow);
-        }
-
-        .gallery-img-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-        }
-
-        /* GAMES SECTION (ENTRETENIMIENTO) */
-        .games-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-            margin-top: 25px;
-        }
-
-        .game-card {
-            background-color: var(--bg-dark-gray);
-            border: 1px solid #2c2c2c;
-            border-top: 3px solid var(--eco-green);
-            border-radius: 6px;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            transition: transform 0.3s;
-        }
-
-        .game-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .game-card-img {
-            width: 100%;
-            height: 180px;
-            object-fit: cover;
-            background-color: #000;
-        }
-
-        .game-card-body {
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            flex-grow: 1;
-            justify-content: space-between;
-        }
-
-        .game-card-title {
-            font-family: 'Oswald', sans-serif;
-            font-size: 20px;
-            margin-bottom: 10px;
-            color: var(--text-light);
-        }
-
-        .btn-play {
-            background-color: var(--natgeo-yellow);
-            color: var(--bg-black);
-            font-family: 'Oswald', sans-serif;
-            font-size: 16px;
-            font-weight: bold;
-            text-align: center;
-            text-decoration: none;
-            padding: 10px 20px;
-            border-radius: 4px;
-            text-transform: uppercase;
-            display: inline-block;
-            margin-top: 15px;
-            transition: background-color 0.3s, transform 0.2s;
-        }
-
-        .btn-play:hover {
-            background-color: #e6b800;
-            transform: scale(1.02);
-        }
-
-        /* VIDEO RESPONSIVE EMBED */
         .video-wrapper {
             margin-top: 20px;
             margin-bottom: 30px;
@@ -487,7 +476,6 @@
             background-color: #000;
         }
 
-        /* HERRAMIENTAS GAMIFICADAS */
         .eco-profile-panel {
             background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
             border-radius: 8px;
@@ -706,7 +694,6 @@
             display: none;
         }
 
-        /* FOOTER */
         footer {
             background-color: #000;
             border-top: 1px solid #222;
@@ -778,38 +765,38 @@
 
         <section id="entretenimiento" class="page-section">
             <h2 class="section-title">Entretenimiento Verde</h2>
-            <p>Un espacio interactivo diseñado para aprender jugando a través de recursos educativos e interactivas dinámicas ambientales.</p>
+            <p style="margin-bottom: 25px;">Un espacio interactivo diseñado para aprender jugando a través de la literatura, retos interactivos y desafíos dinámicos.</p>
             
-            <div class="games-grid">
+            <div class="grid-3">
                 <div class="game-card">
-                    <img src="Ranaaa.png" alt="EcoConexiones: Desafío Ambiental" class="game-card-img">
+                    <img src="Ranaaa.png" alt="Ecoconexiones: Desafío Ambiental">
                     <div class="game-card-body">
-                        <div class="game-card-title">EcoConexiones: Desafío Ambiental</div>
-                        <a href="https://es.educaplay.com/recursos-educativos/29919461-ecoconexiones_desafio_ambiental.html" target="_blank" rel="noopener noreferrer" class="btn-play">
-                            <i class="fa-solid fa-gamepad"></i> Jugar
-                        </a>
+                        <h3>Ecoconexiones: Desafío Ambiental</h3>
+                        <a href="https://es.educaplay.com/recursos-educativos/29919461-ecoconexiones_desafio_ambiental.html" target="_blank" class="btn-play">Jugar <i class="fa-solid fa-gamepad"></i></a>
                     </div>
                 </div>
 
                 <div class="game-card">
-                    <img src="Memoria.png" alt="Conecta Contaminación y Medio Ambiente" class="game-card-img">
+                    <img src="Memoria.png" alt="Conecta Contaminación y Medio Ambiente">
                     <div class="game-card-body">
-                        <div class="game-card-title">Conecta Contaminación y Medio Ambiente</div>
-                        <a href="https://es.educaplay.com/recursos-educativos/29919504-conecta_contaminacion_y_medio_ambiente.html" target="_blank" rel="noopener noreferrer" class="btn-play">
-                            <i class="fa-solid fa-gamepad"></i> Jugar
-                        </a>
+                        <h3>Conecta Contaminación y Medio Ambiente</h3>
+                        <a href="https://es.educaplay.com/recursos-educativos/29919504-conecta_contaminacion_y_medio_ambiente.html" target="_blank" class="btn-play">Jugar <i class="fa-solid fa-gamepad"></i></a>
                     </div>
                 </div>
 
                 <div class="game-card">
-                    <img src="Si o no.png" alt="Contaminación y Cuidado del Planeta" class="game-card-img">
+                    <img src="Si o no.png" alt="Contaminación y Cuidado del Planeta">
                     <div class="game-card-body">
-                        <div class="game-card-title">Contaminación y Cuidado del Planeta</div>
-                        <a href="https://es.educaplay.com/recursos-educativos/29919562-contaminacion_y_cuidado_del_planeta.html" target="_blank" rel="noopener noreferrer" class="btn-play">
-                            <i class="fa-solid fa-gamepad"></i> Jugar
-                        </a>
+                        <h3>Contaminación y Cuidado del Planeta</h3>
+                        <a href="https://es.educaplay.com/recursos-educativos/29919562-contaminacion_y_cuidado_del_planeta.html" target="_blank" class="btn-play">Jugar <i class="fa-solid fa-gamepad"></i></a>
                     </div>
                 </div>
+            </div>
+
+            <div class="placeholder-box">
+                <i class="fa-solid fa-book-open"></i>
+                <h3>Cuentos, Cómics y Trivias Ecológicas</h3>
+                <p>Estamos preparando increíbles aventuras gráficas e historias inspiradas en la conservación de nuestros paisajes andinos. ¡Próximamente!</p>
             </div>
         </section>
 
@@ -823,7 +810,7 @@
             </div>
 
             <div id="taki-podcasts" class="takikuna-subcontent active-subview">
-                <div class="placeholder-box" style="padding: 40px; border: 2px dashed #444; border-radius: 8px; text-align: center;">
+                <div class="placeholder-box" style="padding: 40px; border-style: dotted;">
                     <i class="fa-solid fa-microphone-slash" style="font-size: 36px; color: var(--text-muted); margin-bottom: 15px;"></i>
                     <h3>Podcasts no disponibles por el momento</h3>
                     <p style="font-size: 14px; color: var(--text-muted); max-width: 600px; margin: 0 auto;">Estamos preparando los primeros episodios sobre el rescate de ecosistemas y leyendas de Izcuchaca. ¡Estarán listos muy pronto!</p>
@@ -902,32 +889,33 @@
             <h2 class="section-title">Eco-Noticias</h2>
             
             <div class="news-container">
-                <article class="news-article">
-                    <h3>📰 Crónica Ambiental 2026 | Nacional / Política</h3>
-                    <div class="news-meta">Fecha: 15 de julio de 2026</div>
-                    
-                    <div class="news-subtitle">
-                        Tras las urnas, una crisis pendiente: el nuevo gobierno hereda un país marcado por economías ilegales y deterioro ambiental
+                <article class="article-card">
+                    <div class="article-meta">
+                        📰 Crónica Ambiental 2026 | Nacional / Política &bull; Fecha: 15 de julio de 2026
                     </div>
-                    <p><em>Con un presidente ya electo, el Perú entra en una etapa de transición donde las promesas de campaña enfrentan una realidad dominada por la minería ilegal, el narcotráfico y la violencia territorial.</em></p>
+                    <h3 class="article-title">Tras las urnas, una crisis pendiente: el nuevo gobierno hereda un país marcado por economías ilegales y deterioro ambiental</h3>
                     
-                    <p><strong>Lima. —</strong> A pocas semanas de la toma de mando, el Perú atraviesa un momento de aparente calma política que contrasta con la profundidad de los desafíos que el nuevo gobierno deberá enfrentar. Las elecciones han concluido, pero los problemas que definieron el debate público —la expansión de economías ilegales y el deterioro ambiental— no solo persisten, sino que se intensifican en diversas regiones del país.</p>
+                    <div class="article-content">
+                        <p><strong>Con un presidente ya electo, el Perú entra en una etapa de transición donde las promesas de campaña enfrentan una realidad dominada por la minería ilegal, el narcotráfico y la violencia territorial.</strong></p>
+                        
+                        <p><strong>Lima. —</strong> A pocas semanas de la toma de mando, el Perú atraviesa un momento de aparente calma política que contrasta con la profundidad de los desafíos que el nuevo gobierno deberá enfrentar. Las elecciones han concluido, pero los problemas que definieron el debate público —la expansión de economías ilegales y el deterioro ambiental— no solo persisten, sino que se intensifican en diversas regiones del país.</p>
+                        
+                        <p>Entre ellos, la minería ilegal se mantiene como uno de los principales focos de inestabilidad. En zonas de la Amazonía, esta actividad ha evolucionado hacia sistemas organizados que operan con redes propias de transporte, financiamiento y protección armada. El futuro del Registro Integral de Formalización Minera (Reinfo), tema recurrente durante la campaña, se perfila ahora como una de las primeras decisiones críticas del gobierno entrante, especialmente ante el riesgo de que continúe funcionando como un mecanismo que diluye la frontera entre legalidad e ilegalidad (Mongabay Latam, 2026).</p>
+                        
+                        <p>A este escenario se suma el narcotráfico, cuya expansión sigue evidenciándose en las aproximadamente 89,000 hectáreas de cultivos de coca ilegal registradas en el país. Más allá de la cifra, el fenómeno refleja una realidad más compleja: la consolidación de economías paralelas en territorios donde la presencia del Estado es limitada o intermitente. En estos espacios, el crimen organizado no solo produce, sino que también regula y ejerce control social (Radio Marañón, 2026).</p>
+                        
+                        <p>El impacto ambiental de estas actividades es significativo. La deforestación en la Amazonía peruana continúa advancing, impulsada por la minería ilegal y la tala clandestina, generando la pérdida acelerada de biodiversidad y afectando ecosistemas clave para el equilibrio climático. Estas transformaciones no solo tienen consecuencias ecológicas, sino también sociales, al comprometer los medios de vida de comunidades indígenas (Mongabay Latam, 2026).</p>
+                        
+                        <p>En paralelo, los defensores ambientales siguen enfrentando altos niveles de riesgo. Las amenazas de muerte, los ataques selectivos y la falta de protección efectiva evidencian una situación de vulnerabilidad persistente. La implementación pendiente de instrumentos como el Acuerdo de Escazú continúa siendo una de las principales deudas del Estado en materia de derechos y protección territorial (Radio Marañón, 2026).</p>
+                        
+                        <p>A nivel internacional, el nuevo gobierno también deberá responder a crecientes exigencias. Normativas como la ley europea de “cero deforestación” imponen estándares más estrictos que podrían afectar las exportaciones si no se desarrollan políticas de adaptación adecuadas (Mongabay Latam, 2026).</p>
+                        
+                        <p>En este contexto, el periodo entre la elección y la asunción presidencial se convierte en un espacio clave no solo para la planificación política, sino para definir prioridades reales. La ciudadanía ya ha votado; ahora, la expectativa se centra en si el nuevo liderazgo será capaz de traducir sus propuestas en estrategias concretas frente a una crisis que no admite postergaciones.</p>
+                        
+                        <p><strong>Porque en el Perú de hoy, ganar una elección no significa resolver los problemas, sino comenzar a enfrentarlos.</strong></p>
+                    </div>
 
-                    <p>Entre ellos, la minería ilegal se mantiene como uno de los principales focos de inestabilidad. En zonas de la Amazonía, esta actividad ha evolucionado hacia sistemas organizados que operan con redes propias de transporte, financiamiento y protección armada. El futuro del Registro Integral de Formalización Minera (Reinfo), tema recurrente durante la campaña, se perfila ahora como una de las primeras decisiones críticas del gobierno entrante, especialmente ante el riesgo de que continúe funcionando como un mecanismo que diluye la frontera entre legalidad e ilegalidad (Mongabay Latam, 2026).</p>
-
-                    <p>A este escenario se suma el narcotráfico, cuya expansión sigue evidenciándose en las aproximadamente 89,000 hectáreas de cultivos de coca ilegal registradas en el país. Más allá de la cifra, el fenómeno refleja una realidad más compleja: la consolidación de economías paralelas en territorios donde la presencia del Estado es limitada o intermitente. En estos espacios, el crimen organizado no solo produce, sino que también regula y ejerce control social (Radio Marañón, 2026).</p>
-
-                    <p>El impacto ambiental de estas actividades es significativo. La deforestación en la Amazonía peruana continúa advancing, impulsada por la minería ilegal y la tala clandestina, generando la pérdida acelerada de biodiversidad y afectando ecosistemas clave para el equilibrio climático. Estas transformaciones no solo tienen consecuencias ecológicas, sino también sociales, al comprometer los medios de vida de comunidades indígenas (Mongabay Latam, 2026).</p>
-
-                    <p>En paralelo, los defensores ambientales siguen enfrentando altos niveles de riesgo. Las amenazas de muerte, los ataques selectivos y la falta de protección efectiva evidencian una situación de vulnerabilidad persistente. La implementación pendiente de instrumentos como el Acuerdo de Escazú continúa siendo una de las principales deudas del Estado en materia de derechos y protección territorial (Radio Marañón, 2026).</p>
-
-                    <p>A nivel internacional, el nuevo gobierno también deberá responder a crecientes exigencias. Normativas como la ley europea de “cero deforestación” imponen estándares más estrictos que podrían afectar las exportaciones si no se desarrollan políticas de adaptación adecuadas (Mongabay Latam, 2026).</p>
-
-                    <p>En este contexto, el periodo entre la elección y la asunción presidencial se convierte en un espacio clave no solo para la planificación política, sino para definir prioridades reales. La ciudadanía ya ha votado; ahora, la expectativa se centra en si el nuevo liderazgo será capaz de traducir sus propuestas en estrategias concretas frente a una crisis que no admite postergaciones.</p>
-
-                    <p>Porque en el Perú de hoy, ganar una elección no significa resolver los problemas, sino comenzar a enfrentarlos.</p>
-
-                    <div class="references">
+                    <div class="article-references">
                         <strong>Referencias:</strong><br>
                         • Mongabay Latam. (2026). Desafíos ambientales de Perú en 2026.<br>
                         • Radio Marañón. (2026). ¿Cuáles son los siete desafíos ambientales en el Perú?
@@ -954,97 +942,97 @@
             <p>Un espacio visual para documentar nuestros logros ambientales, jornadas de reforestación y talleres de reciclaje.</p>
             
             <div class="gallery-grid">
-                <div class="gallery-img-item"><img src="1781711444292.jpg" alt="Galería Ayllu Eco"></div>
-                <div class="gallery-img-item"><img src="1781711444309.jpg" alt="Galería Ayllu Eco"></div>
-                <div class="gallery-img-item"><img src="1781711444326.jpg" alt="Galería Ayllu Eco"></div>
-                <div class="gallery-img-item"><img src="1781711444342.jpg" alt="Galería Ayllu Eco"></div>
-                <div class="gallery-img-item"><img src="1781711444359.jpg" alt="Galería Ayllu Eco"></div>
-                <div class="gallery-img-item"><img src="1781711444376.jpg" alt="Galería Ayllu Eco"></div>
-                <div class="gallery-img-item"><img src="1781711444391.jpg" alt="Galería Ayllu Eco"></div>
-                <div class="gallery-img-item"><img src="1781711444408.jpg" alt="Galería Ayllu Eco"></div>
-                <div class="gallery-img-item"><img src="1781711444425.jpg" alt="Galería Ayllu Eco"></div>
-                <div class="gallery-img-item"><img src="1781711444442.jpg" alt="Galería Ayllu Eco"></div>
-                <div class="gallery-img-item"><img src="1781711444459.jpg" alt="Galería Ayllu Eco"></div>
-                <div class="gallery-img-item"><img src="1781711444477.jpg" alt="Galería Ayllu Eco"></div>
-                <div class="gallery-img-item"><img src="1781711444492.jpg" alt="Galería Ayllu Eco"></div>
-                <div class="gallery-img-item"><img src="1781711444507.jpg" alt="Galería Ayllu Eco"></div>
-                <div class="gallery-img-item"><img src="1781711444525.jpg" alt="Galería Ayllu Eco"></div>
-                <div class="gallery-img-item"><img src="1781711444544.jpg" alt="Galería Ayllu Eco"></div>
-                <div class="gallery-img-item"><img src="1781711444559.jpg" alt="Galería Ayllu Eco"></div>
-                <div class="gallery-img-item"><img src="1781711444577.jpg" alt="Galería Ayllu Eco"></div>
-                <div class="gallery-img-item"><img src="1781711619793.jpg" alt="Galería Ayllu Eco"></div>
-                <div class="gallery-img-item"><img src="1781711619845.jpg" alt="Galería Ayllu Eco"></div>
-                <div class="gallery-img-item"><img src="1781711619894.jpg" alt="Galería Ayllu Eco"></div>
-                <div class="gallery-img-item"><img src="1781711619923.jpg" alt="Galería Ayllu Eco"></div>
-                <div class="gallery-img-item"><img src="1781711619949.jpg" alt="Galería Ayllu Eco"></div>
-                <div class="gallery-img-item"><img src="1781711619980.jpg" alt="Galería Ayllu Eco"></div>
-                <div class="gallery-img-item"><img src="1781711620012.jpg" alt="Galería Ayllu Eco"></div>
-                <div class="gallery-img-item"><img src="1781711620047.jpg" alt="Galería Ayllu Eco"></div>
-                <div class="gallery-img-item"><img src="1781711620078.jpg" alt="Galería Ayllu Eco"></div>
-                <div class="gallery-img-item"><img src="1781711620111.jpg" alt="Galería Ayllu Eco"></div>
-                <div class="gallery-img-item"><img src="1781711620140.jpg" alt="Galería Ayllu Eco"></div>
-                <div class="gallery-img-item"><img src="1781711620167.jpg" alt="Galería Ayllu Eco"></div>
-                <div class="gallery-img-item"><img src="1781711620184.jpg" alt="Galería Ayllu Eco"></div>
-                <div class="gallery-img-item"><img src="1781711620205.jpg" alt="Galería Ayllu Eco"></div>
-                <div class="gallery-img-item"><img src="1781712628008.jpg" alt="Galería Ayllu Eco"></div>
-                <div class="gallery-img-item"><img src="1781712628028.jpg" alt="Galería Ayllu Eco"></div>
-                <div class="gallery-img-item"><img src="1781712628045.jpg" alt="Galería Ayllu Eco"></div>
-                <div class="gallery-img-item"><img src="1781712628062.jpg" alt="Galería Ayllu Eco"></div>
-                <div class="gallery-img-item"><img src="1781712628082.jpg" alt="Galería Ayllu Eco"></div>
-                <div class="gallery-img-item"><img src="1781712628096.jpg" alt="Galería Ayllu Eco"></div>
-                <div class="gallery-img-item"><img src="1781712628111.jpg" alt="Galería Ayllu Eco"></div>
-                <div class="gallery-img-item"><img src="1781712628128.jpg" alt="Galería Ayllu Eco"></div>
-                <div class="gallery-img-item"><img src="1781712628143.jpg" alt="Galería Ayllu Eco"></div>
-                <div class="gallery-img-item"><img src="1781712628158.jpg" alt="Galería Ayllu Eco"></div>
-                <div class="gallery-img-item"><img src="1781712628175.jpg" alt="Galería Ayllu Eco"></div>
-                <div class="gallery-img-item"><img src="1781712628193.jpg" alt="Galería Ayllu Eco"></div>
-                <div class="gallery-img-item"><img src="1781712628210.jpg" alt="Galería Ayllu Eco"></div>
-                <div class="gallery-img-item"><img src="1781712628231.jpg" alt="Galería Ayllu Eco"></div>
-                <div class="gallery-img-item"><img src="1781712628261.jpg" alt="Galería Ayllu Eco"></div>
-                <div class="gallery-img-item"><img src="1781712628281.jpg" alt="Galería Ayllu Eco"></div>
-                <div class="gallery-img-item"><img src="1781712628303.jpg" alt="Galería Ayllu Eco"></div>
-                <div class="gallery-img-item"><img src="1781712628323.jpg" alt="Galería Ayllu Eco"></div>
-                <div class="gallery-img-item"><img src="1781712628337.jpg" alt="Galería Ayllu Eco"></div>
-                <div class="gallery-img-item"><img src="1781712628350.jpg" alt="Galería Ayllu Eco"></div>
-                <div class="gallery-img-item"><img src="1781712628375.jpg" alt="Galería Ayllu Eco"></div>
-                <div class="gallery-img-item"><img src="1781712628397.jpg" alt="Galería Ayllu Eco"></div>
-                <div class="gallery-img-item"><img src="1781712628414.jpg" alt="Galería Ayllu Eco"></div>
-                <div class="gallery-img-item"><img src="1781712628432.jpg" alt="Galería Ayllu Eco"></div>
-                <div class="gallery-img-item"><img src="1781712628454.jpg" alt="Galería Ayllu Eco"></div>
-                <div class="gallery-img-item"><img src="1781712628483.jpg" alt="Galería Ayllu Eco"></div>
-                <div class="gallery-img-item"><img src="1781712628498.jpg" alt="Galería Ayllu Eco"></div>
-                <div class="gallery-img-item"><img src="1781712628512.jpg" alt="Galería Ayllu Eco"></div>
-                <div class="gallery-img-item"><img src="1781712628531.jpg" alt="Galería Ayllu Eco"></div>
-                <div class="gallery-img-item"><img src="1781712628546.jpg" alt="Galería Ayllu Eco"></div>
-                <div class="gallery-img-item"><img src="1781712628568.jpg" alt="Galería Ayllu Eco"></div>
-                <div class="gallery-img-item"><img src="1781712628585.jpg" alt="Galería Ayllu Eco"></div>
-                <div class="gallery-img-item"><img src="1781712628604.jpg" alt="Galería Ayllu Eco"></div>
-                <div class="gallery-img-item"><img src="1781712628623.jpg" alt="Galería Ayllu Eco"></div>
-                <div class="gallery-img-item"><img src="1781712628641.jpg" alt="Galería Ayllu Eco"></div>
-                <div class="gallery-img-item"><img src="1781712628656.jpg" alt="Galería Ayllu Eco"></div>
-                <div class="gallery-img-item"><img src="1781712628674.jpg" alt="Galería Ayllu Eco"></div>
-                <div class="gallery-img-item"><img src="1781712628703.jpg" alt="Galería Ayllu Eco"></div>
-                <div class="gallery-img-item"><img src="1781712628724.jpg" alt="Galería Ayllu Eco"></div>
-                <div class="gallery-img-item"><img src="1781712628740.jpg" alt="Galería Ayllu Eco"></div>
-                <div class="gallery-img-item"><img src="1781712628758.jpg" alt="Galería Ayllu Eco"></div>
-                <div class="gallery-img-item"><img src="1781712628776.jpg" alt="Galería Ayllu Eco"></div>
-                <div class="gallery-img-item"><img src="1781712628790.jpg" alt="Galería Ayllu Eco"></div>
-                <div class="gallery-img-item"><img src="1781712628807.jpg" alt="Galería Ayllu Eco"></div>
-                <div class="gallery-img-item"><img src="1781712628822.jpg" alt="Galería Ayllu Eco"></div>
-                <div class="gallery-img-item"><img src="1781712628837.jpg" alt="Galería Ayllu Eco"></div>
-                <div class="gallery-img-item"><img src="1781712628853.jpg" alt="Galería Ayllu Eco"></div>
-                <div class="gallery-img-item"><img src="1781712628868.jpg" alt="Galería Ayllu Eco"></div>
-                <div class="gallery-img-item"><img src="1781712628882.jpg" alt="Galería Ayllu Eco"></div>
-                <div class="gallery-img-item"><img src="1781712628899.jpg" alt="Galería Ayllu Eco"></div>
-                <div class="gallery-img-item"><img src="1781713135399.jpg" alt="Galería Ayllu Eco"></div>
-                <div class="gallery-img-item"><img src="1781713135424.jpg" alt="Galería Ayllu Eco"></div>
-                <div class="gallery-img-item"><img src="1781713135450.jpg" alt="Galería Ayllu Eco"></div>
-                <div class="gallery-img-item"><img src="1781713135478.jpg" alt="Galería Ayllu Eco"></div>
-                <div class="gallery-img-item"><img src="1781713135507.jpg" alt="Galería Ayllu Eco"></div>
-                <div class="gallery-img-item"><img src="1781713135536.jpg" alt="Galería Ayllu Eco"></div>
-                <div class="gallery-img-item"><img src="1781713135566.jpg" alt="Galería Ayllu Eco"></div>
-                <div class="gallery-img-item"><img src="1781713135596.jpg" alt="Galería Ayllu Eco"></div>
-                <div class="gallery-img-item"><img src="1781713182278.jpg" alt="Galería Ayllu Eco"></div>
+                <div class="gallery-item"><img src="1781711444292.jpg" alt="Galería Ayllu Eco-Friendly"></div>
+                <div class="gallery-item"><img src="1781711444309.jpg" alt="Galería Ayllu Eco-Friendly"></div>
+                <div class="gallery-item"><img src="1781711444326.jpg" alt="Galería Ayllu Eco-Friendly"></div>
+                <div class="gallery-item"><img src="1781711444342.jpg" alt="Galería Ayllu Eco-Friendly"></div>
+                <div class="gallery-item"><img src="1781711444359.jpg" alt="Galería Ayllu Eco-Friendly"></div>
+                <div class="gallery-item"><img src="1781711444376.jpg" alt="Galería Ayllu Eco-Friendly"></div>
+                <div class="gallery-item"><img src="1781711444391.jpg" alt="Galería Ayllu Eco-Friendly"></div>
+                <div class="gallery-item"><img src="1781711444408.jpg" alt="Galería Ayllu Eco-Friendly"></div>
+                <div class="gallery-item"><img src="1781711444425.jpg" alt="Galería Ayllu Eco-Friendly"></div>
+                <div class="gallery-item"><img src="1781711444442.jpg" alt="Galería Ayllu Eco-Friendly"></div>
+                <div class="gallery-item"><img src="1781711444459.jpg" alt="Galería Ayllu Eco-Friendly"></div>
+                <div class="gallery-item"><img src="1781711444477.jpg" alt="Galería Ayllu Eco-Friendly"></div>
+                <div class="gallery-item"><img src="1781711444492.jpg" alt="Galería Ayllu Eco-Friendly"></div>
+                <div class="gallery-item"><img src="1781711444507.jpg" alt="Galería Ayllu Eco-Friendly"></div>
+                <div class="gallery-item"><img src="1781711444525.jpg" alt="Galería Ayllu Eco-Friendly"></div>
+                <div class="gallery-item"><img src="1781711444544.jpg" alt="Galería Ayllu Eco-Friendly"></div>
+                <div class="gallery-item"><img src="1781711444559.jpg" alt="Galería Ayllu Eco-Friendly"></div>
+                <div class="gallery-item"><img src="1781711444577.jpg" alt="Galería Ayllu Eco-Friendly"></div>
+                <div class="gallery-item"><img src="1781711619793.jpg" alt="Galería Ayllu Eco-Friendly"></div>
+                <div class="gallery-item"><img src="1781711619845.jpg" alt="Galería Ayllu Eco-Friendly"></div>
+                <div class="gallery-item"><img src="1781711619894.jpg" alt="Galería Ayllu Eco-Friendly"></div>
+                <div class="gallery-item"><img src="1781711619923.jpg" alt="Galería Ayllu Eco-Friendly"></div>
+                <div class="gallery-item"><img src="1781711619949.jpg" alt="Galería Ayllu Eco-Friendly"></div>
+                <div class="gallery-item"><img src="1781711619980.jpg" alt="Galería Ayllu Eco-Friendly"></div>
+                <div class="gallery-item"><img src="1781711620012.jpg" alt="Galería Ayllu Eco-Friendly"></div>
+                <div class="gallery-item"><img src="1781711620047.jpg" alt="Galería Ayllu Eco-Friendly"></div>
+                <div class="gallery-item"><img src="1781711620078.jpg" alt="Galería Ayllu Eco-Friendly"></div>
+                <div class="gallery-item"><img src="1781711620111.jpg" alt="Galería Ayllu Eco-Friendly"></div>
+                <div class="gallery-item"><img src="1781711620140.jpg" alt="Galería Ayllu Eco-Friendly"></div>
+                <div class="gallery-item"><img src="1781711620167.jpg" alt="Galería Ayllu Eco-Friendly"></div>
+                <div class="gallery-item"><img src="1781711620184.jpg" alt="Galería Ayllu Eco-Friendly"></div>
+                <div class="gallery-item"><img src="1781711620205.jpg" alt="Galería Ayllu Eco-Friendly"></div>
+                <div class="gallery-item"><img src="1781712628008.jpg" alt="Galería Ayllu Eco-Friendly"></div>
+                <div class="gallery-item"><img src="1781712628028.jpg" alt="Galería Ayllu Eco-Friendly"></div>
+                <div class="gallery-item"><img src="1781712628045.jpg" alt="Galería Ayllu Eco-Friendly"></div>
+                <div class="gallery-item"><img src="1781712628062.jpg" alt="Galería Ayllu Eco-Friendly"></div>
+                <div class="gallery-item"><img src="1781712628082.jpg" alt="Galería Ayllu Eco-Friendly"></div>
+                <div class="gallery-item"><img src="1781712628096.jpg" alt="Galería Ayllu Eco-Friendly"></div>
+                <div class="gallery-item"><img src="1781712628111.jpg" alt="Galería Ayllu Eco-Friendly"></div>
+                <div class="gallery-item"><img src="1781712628128.jpg" alt="Galería Ayllu Eco-Friendly"></div>
+                <div class="gallery-item"><img src="1781712628143.jpg" alt="Galería Ayllu Eco-Friendly"></div>
+                <div class="gallery-item"><img src="1781712628158.jpg" alt="Galería Ayllu Eco-Friendly"></div>
+                <div class="gallery-item"><img src="1781712628175.jpg" alt="Galería Ayllu Eco-Friendly"></div>
+                <div class="gallery-item"><img src="1781712628193.jpg" alt="Galería Ayllu Eco-Friendly"></div>
+                <div class="gallery-item"><img src="1781712628210.jpg" alt="Galería Ayllu Eco-Friendly"></div>
+                <div class="gallery-item"><img src="1781712628231.jpg" alt="Galería Ayllu Eco-Friendly"></div>
+                <div class="gallery-item"><img src="1781712628261.jpg" alt="Galería Ayllu Eco-Friendly"></div>
+                <div class="gallery-item"><img src="1781712628281.jpg" alt="Galería Ayllu Eco-Friendly"></div>
+                <div class="gallery-item"><img src="1781712628303.jpg" alt="Galería Ayllu Eco-Friendly"></div>
+                <div class="gallery-item"><img src="1781712628323.jpg" alt="Galería Ayllu Eco-Friendly"></div>
+                <div class="gallery-item"><img src="1781712628337.jpg" alt="Galería Ayllu Eco-Friendly"></div>
+                <div class="gallery-item"><img src="1781712628350.jpg" alt="Galería Ayllu Eco-Friendly"></div>
+                <div class="gallery-item"><img src="1781712628375.jpg" alt="Galería Ayllu Eco-Friendly"></div>
+                <div class="gallery-item"><img src="1781712628397.jpg" alt="Galería Ayllu Eco-Friendly"></div>
+                <div class="gallery-item"><img src="1781712628414.jpg" alt="Galería Ayllu Eco-Friendly"></div>
+                <div class="gallery-item"><img src="1781712628432.jpg" alt="Galería Ayllu Eco-Friendly"></div>
+                <div class="gallery-item"><img src="1781712628454.jpg" alt="Galería Ayllu Eco-Friendly"></div>
+                <div class="gallery-item"><img src="1781712628483.jpg" alt="Galería Ayllu Eco-Friendly"></div>
+                <div class="gallery-item"><img src="1781712628498.jpg" alt="Galería Ayllu Eco-Friendly"></div>
+                <div class="gallery-item"><img src="1781712628512.jpg" alt="Galería Ayllu Eco-Friendly"></div>
+                <div class="gallery-item"><img src="1781712628531.jpg" alt="Galería Ayllu Eco-Friendly"></div>
+                <div class="gallery-item"><img src="1781712628546.jpg" alt="Galería Ayllu Eco-Friendly"></div>
+                <div class="gallery-item"><img src="1781712628568.jpg" alt="Galería Ayllu Eco-Friendly"></div>
+                <div class="gallery-item"><img src="1781712628585.jpg" alt="Galería Ayllu Eco-Friendly"></div>
+                <div class="gallery-item"><img src="1781712628604.jpg" alt="Galería Ayllu Eco-Friendly"></div>
+                <div class="gallery-item"><img src="1781712628623.jpg" alt="Galería Ayllu Eco-Friendly"></div>
+                <div class="gallery-item"><img src="1781712628641.jpg" alt="Galería Ayllu Eco-Friendly"></div>
+                <div class="gallery-item"><img src="1781712628656.jpg" alt="Galería Ayllu Eco-Friendly"></div>
+                <div class="gallery-item"><img src="1781712628674.jpg" alt="Galería Ayllu Eco-Friendly"></div>
+                <div class="gallery-item"><img src="1781712628703.jpg" alt="Galería Ayllu Eco-Friendly"></div>
+                <div class="gallery-item"><img src="1781712628724.jpg" alt="Galería Ayllu Eco-Friendly"></div>
+                <div class="gallery-item"><img src="1781712628740.jpg" alt="Galería Ayllu Eco-Friendly"></div>
+                <div class="gallery-item"><img src="1781712628758.jpg" alt="Galería Ayllu Eco-Friendly"></div>
+                <div class="gallery-item"><img src="1781712628776.jpg" alt="Galería Ayllu Eco-Friendly"></div>
+                <div class="gallery-item"><img src="1781712628790.jpg" alt="Galería Ayllu Eco-Friendly"></div>
+                <div class="gallery-item"><img src="1781712628807.jpg" alt="Galería Ayllu Eco-Friendly"></div>
+                <div class="gallery-item"><img src="1781712628822.jpg" alt="Galería Ayllu Eco-Friendly"></div>
+                <div class="gallery-item"><img src="1781712628837.jpg" alt="Galería Ayllu Eco-Friendly"></div>
+                <div class="gallery-item"><img src="1781712628853.jpg" alt="Galería Ayllu Eco-Friendly"></div>
+                <div class="gallery-item"><img src="1781712628868.jpg" alt="Galería Ayllu Eco-Friendly"></div>
+                <div class="gallery-item"><img src="1781712628882.jpg" alt="Galería Ayllu Eco-Friendly"></div>
+                <div class="gallery-item"><img src="1781712628899.jpg" alt="Galería Ayllu Eco-Friendly"></div>
+                <div class="gallery-item"><img src="1781713135399.jpg" alt="Galería Ayllu Eco-Friendly"></div>
+                <div class="gallery-item"><img src="1781713135424.jpg" alt="Galería Ayllu Eco-Friendly"></div>
+                <div class="gallery-item"><img src="1781713135450.jpg" alt="Galería Ayllu Eco-Friendly"></div>
+                <div class="gallery-item"><img src="1781713135478.jpg" alt="Galería Ayllu Eco-Friendly"></div>
+                <div class="gallery-item"><img src="1781713135507.jpg" alt="Galería Ayllu Eco-Friendly"></div>
+                <div class="gallery-item"><img src="1781713135536.jpg" alt="Galería Ayllu Eco-Friendly"></div>
+                <div class="gallery-item"><img src="1781713135566.jpg" alt="Galería Ayllu Eco-Friendly"></div>
+                <div class="gallery-item"><img src="1781713135596.jpg" alt="Galería Ayllu Eco-Friendly"></div>
+                <div class="gallery-item"><img src="1781713182278.jpg" alt="Galería Ayllu Eco-Friendly"></div>
             </div>
         </section>
 
@@ -1265,8 +1253,8 @@
                     <p style="font-size: 13px; color: var(--text-muted); margin-top: 10px;">Colabora difundiendo las acciones comunitarias de reciclaje y reforestación.</p>
                 </div>
 
-                <div class="placeholder-box" style="background-color: var(--bg-dark-gray); border: 2px dashed #444; border-radius: 8px; margin-top: 0; padding: 25px; display: flex; flex-direction: column; justify-content: center; text-align: center;">
-                    <i class="fa-solid fa-user-plus" style="font-size: 28px; color: var(--text-muted); margin-bottom: 10px;"></i>
+                <div class="placeholder-box" style="margin-top: 0; padding: 25px; display: flex; flex-direction: column; justify-content: center;">
+                    <i class="fa-solid fa-user-plus" style="font-size: 28px; color: var(--text-muted);"></i>
                     <h3 style="font-size: 18px; font-family: 'Oswald', sans-serif; margin-bottom: 5px;">¿Quieres colaborar?</h3>
                     <p style="font-size: 12px; color: var(--text-muted);">Espacio reservado para nuevas marcas, emprendimientos u organizaciones eco-friendly que deseen unirse.</p>
                 </div>
@@ -1307,7 +1295,6 @@
     </footer>
 
     <script>
-        // Sistema de Gamificación - Estados Globales
         let ecoPoints = 0;
 
         function addPoints(pts) {
@@ -1321,7 +1308,6 @@
             const planetVisualEl = document.getElementById('planetVisual');
             const planetStatusText = document.getElementById('planetStatusText');
             
-            // Lógica de Rangos
             if (ecoPoints >= 80) {
                 rangeEl.innerText = "🏆 Eco-Héroe";
                 rangeEl.style.color = "var(--natgeo-yellow)";
@@ -1345,7 +1331,6 @@
             }
         }
 
-        // Función para cambiar de sección de forma dinámica (SPA)
         function switchSection(sectionId) {
             const sections = document.querySelectorAll('.page-section');
             sections.forEach(sec => sec.classList.remove('active-section'));
@@ -1366,7 +1351,6 @@
             window.scrollTo({top: 0, behavior: 'smooth'});
         }
 
-        // Lógica de navegación interna para la pestaña Takikuna
         function switchTakikunaTab(subviewId) {
             const contents = document.querySelectorAll('.takikuna-subcontent');
             contents.forEach(c => c.classList.remove('active-subview'));
@@ -1378,7 +1362,6 @@
             event.currentTarget.classList.add('active-tab');
         }
 
-        // 1. LÓGICA: CALCULADORA DE CARBONO MEJORADA
         function calcularHuellaCarbono() {
             const transporte = document.getElementById('carbonTransporte').value;
             const dispositivos = parseFloat(document.getElementById('carbonDispositivos').value) || 0;
@@ -1420,7 +1403,6 @@
             addPoints(5);
         }
 
-        // 2. LÓGICA: CALCULADORA DE AGUA MEJORADA
         function calcularAguaCompleto() {
             const shower = parseFloat(document.getElementById('waterShower').value) || 0;
             const laundry = parseFloat(document.getElementById('waterLaundry').value) || 0;
@@ -1446,7 +1428,6 @@
             addPoints(5);
         }
 
-        // 3. LÓGICA: CLASIFICADOR DE RESIDUOS
         const databaseResiduos = {
             "botella": { contenedor: "Amarillo (Plásticos)", degradacion: "450 años", dato: "Reutilizándolas puedes crear hermosos maceteros o manualidades para tu hogar." },
             "pila": { contenedor: "Contenedor de Pilas / Residuos Peligrosos", degradacion: "1000 años", dato: "Contienen metales pesados altamente tóxicos. ¡Nunca las mezcles con tu basura común!" },
@@ -1490,7 +1471,6 @@
             }
         }
 
-        // 4. LÓGICA: LÍNEA DE TIEMPO DE DEGRADACIÓN
         const dataDegradacion = {
             platano: { titulo: "Cáscara de Plátano 🍌", tiempo: "2 meses", desc: "Aunque es de origen orgánico y se composta fácil, tirarlo en asfalto tarda semanas y puede atraer plagas indeseadas." },
             papel: { titulo: "Papel o Cartón 📄", tiempo: "1 año", desc: "Se biodegrada rápido si hay humedad, pero si se compacta en vertederos sin oxígeno puede tardar mucho más." },
@@ -1509,7 +1489,6 @@
             addPoints(2);
         }
 
-        // 5. LÓGICA: TRIVIA / QUIZ AMBIENTAL
         const databaseQuiz = [
             {
                 q: "¿Cuánto tarda una botella de plástico común en degradarse?",
@@ -1583,7 +1562,6 @@
 
         loadQuizQuestion();
 
-        // 6. LÓGICA: RULETA VERDE DE MISIONES DIARIAS
         const misionesRuleta = [
             "Lleva hoy tu propia botella reutilizable y evita comprar una descartable.",
             "Desconecta todos los cargadores de tu habitación que no estés utilizando ahora.",
